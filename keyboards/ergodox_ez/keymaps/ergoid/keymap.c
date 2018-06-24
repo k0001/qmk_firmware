@@ -3,9 +3,9 @@
 #include "action_layer.h"
 #include "version.h"
 
-#define BASE 0 // default layer
-#define SYMB 1 // symbols
-#define MDIA 2 // media keys
+#define LAY0 0 // ASCII and programming layer.
+#define LAY1 1 // Uppercase letters.
+#define LAY2 2 // TODO AltGR stuff
 
 // us altgr-intl keycodes
 #define UAI_STAR S(KC_8) // *
@@ -36,9 +36,6 @@
 #define UAI_NUFLO S(KC_GRV) // ~
 #define UAI_HASH S(KC_3) // #
 
-
-
-
 /* English:
  *   - Letters: e t a o i n s rh dl ucm f ywg p b v k xqjz
  *   - Bigrams: th he in er an re es on st nt
@@ -52,7 +49,7 @@
  *              ta te or do io ac st na ro un
  */
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-/* Keymap 0: Basic layer
+/* Layer 0: ASCII and programming layer.
  *
  * Left:
  * ,--------------------------------------------------.
@@ -84,20 +81,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,------|------|------|       |------+--------+------.
  * |      |      |      |       |      |        |      |
  * |------|------|------|       |------|--------|------|
- * | Space|      |      |       |      |        |      |
+ * | Space|      | S    |       |      |        |      |
  * `--------------------'       `----------------------'
  *
- * i' emits `ui` if `q` is pressed as well.
- *
+ * - '.' emits ';' if ',' is pressed as well.
  */
-// If it accepts an argument (i.e, is a function), it doesn't need KC_.
-// Otherwise, it needs KC_*
-[BASE] = LAYOUT_ergodox_80(  // layer 0 : default
+[LAY0] = LAYOUT_ergodox_80(
         // left hand
-        UAI_VERTB, UAI_AMP,   UAI_STAR, KC_MINUS,  UAI_AT, UAI_CAROT, UAI_NUFLO,
-        UAI_LPAR,  KC_SLSH,   KC_F,      KC_R,      KC_P,    KC_V,  UAI_PLUS,
+        UAI_VERTB, UAI_AMP,   UAI_STAR, KC_MINUS,   UAI_AT,  UAI_CAROT, UAI_NUFLO,
+        UAI_LPAR,  KC_SLSH,   KC_F,      KC_R,      KC_P,    KC_V,      UAI_PLUS,
         KC_COMMA,  KC_A,      KC_S,      KC_H,      KC_T,    KC_G,
-        UAI_LCRB,  KC_Q,      KC_Z,      UAI_RCRB,  KC_M,    KC_K,  UAI_HASH,
+        UAI_LCRB,  KC_Q,      KC_Z,      UAI_RCRB,  KC_M,    KC_K,      UAI_HASH,
         KC_NO,     KC_NO,     KC_NO,     KC_GRV,    UAI_USCOR,
         // left thumb
                 KC_NO,   KC_NO,
@@ -113,50 +107,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // right thumb
         KC_NO, KC_NO,
         KC_NO, KC_NO,  KC_NO,
-        KC_NO, KC_NO,  KC_NO
+        KC_NO, KC_NO,  TT(LAY1)
     ),
-/* Keymap 1: Symbol Layer
- *
- * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |Version |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  |  F10 |   F11  |
- * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |   !  |   @  |   {  |   }  |   |  |      |           |      |   Up |   7  |   8  |   9  |   *  |   F12  |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |   #  |   $  |   (  |   )  |   `  |------|           |------| Down |   4  |   5  |   6  |   +  |        |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |   %  |   ^  |   [  |   ]  |   ~  |      |           |      |   &  |   1  |   2  |   3  |   \  |        |
- * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      |      |      |      |      |                                       |      |    . |   0  |   =  |      |
- *   `----------------------------------'                                       `----------------------------------'
- *                                        ,-------------.       ,-------------.
- *                                        |      |      |       |      |      |
- *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      |      |       |      |      |      |
- *                                 |------|------|------|       |------|------|------|
- *                                 |      |      |      |       |      |      |      |
- *                                 `--------------------'       `--------------------'
+
+/* Layer 1: Uppercase letters
  */
-// SYMBOLS
-[SYMB] = LAYOUT_ergodox_80(
-       // left hand
-       M(0),   KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_TRNS,
-       KC_TRNS,KC_EXLM,KC_AT,  KC_LCBR,KC_RCBR,KC_PIPE,KC_TRNS,
-       KC_TRNS,KC_HASH,KC_DLR, KC_LPRN,KC_RPRN,KC_GRV,
-       KC_TRNS,KC_PERC,KC_CIRC,KC_LBRC,KC_RBRC,KC_TILD,KC_TRNS,
-       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-                                       KC_TRNS,KC_TRNS,
-                               KC_TRNS,KC_TRNS,KC_TRNS,
-                               KC_TRNS,KC_TRNS,KC_TRNS,
-       // right hand
-       KC_TRNS, KC_F6,   KC_F7,  KC_F8,   KC_F9,   KC_F10,  KC_F11,
-       KC_TRNS, KC_UP,   KC_7,   KC_8,    KC_9,    KC_ASTR, KC_F12,
-                KC_DOWN, KC_4,   KC_5,    KC_6,    KC_PLUS, KC_TRNS,
-       KC_TRNS, KC_AMPR, KC_1,   KC_2,    KC_3,    KC_BSLS, KC_TRNS,
-                         KC_TRNS,KC_DOT,  KC_0,    KC_EQL,  KC_TRNS,
-       KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS
-),
+[LAY1] = LAYOUT_ergodox_80(
+        // left hand
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS, KC_TRNS, S(KC_F), S(KC_R), S(KC_P), S(KC_V), KC_TRNS,
+        KC_TRNS, S(KC_A), S(KC_S), S(KC_H), S(KC_T), S(KC_G),
+        KC_TRNS, S(KC_Q), S(KC_Z), KC_TRNS, S(KC_M), S(KC_K), KC_TRNS,
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        // left thumb
+                   KC_TRNS,   KC_TRNS,
+        KC_TRNS,  KC_TRNS,   KC_TRNS,
+        KC_TRNS,  KC_TRNS,   KC_TRNS,
+
+        // right hand
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS, S(KC_B), S(KC_L), S(KC_O), S(KC_W), S(KC_X), KC_TRNS,
+                 S(KC_C), S(KC_N), S(KC_E), S(KC_U), S(KC_I), KC_TRNS,
+        KC_TRNS, KC_TRNS, S(KC_D), KC_TRNS, S(KC_J), S(KC_Y), KC_TRNS,
+                          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        // right thumb
+        KC_TRNS, KC_TRNS,
+        KC_TRNS, KC_TRNS,  KC_TRNS,
+        KC_TRNS, KC_TRNS,  KC_TRNS
+    ),
+
 /* Keymap 2: Media and mouse keys
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
@@ -179,7 +158,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 `--------------------'       `------------------------'
  */
 // MEDIA AND MOUSE
-[MDIA] = LAYOUT_ergodox_80(
+[LAY2] = LAYOUT_ergodox_80(
        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
        KC_TRNS, KC_TRNS, KC_TRNS, KC_MS_U, KC_TRNS, KC_TRNS, KC_TRNS,
        KC_TRNS, KC_TRNS, KC_MS_L, KC_MS_D, KC_MS_R, KC_TRNS,

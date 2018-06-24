@@ -5,6 +5,7 @@ NKRO_ENABLE      = yes # USB Nkey Rollover - for issues, see github.com/tmk/tmk_
 SWAP_HANDS_ENABLE= yes # Allow swapping hands of keyboard
 KEY_LOCK_ENABLE  = yes # Enable the KC_LOCK key
 CONSOLE_ENABLE   = yes  # Console for debug
+TAPPING_TOGGLE   = 2
 
 TAP_DANCE_ENABLE = no  # Enable the tap dance feature.
 BOOTMAGIC_ENABLE = no  # Virtual DIP switch configuration
