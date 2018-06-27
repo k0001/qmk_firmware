@@ -3,10 +3,15 @@
 #include "action_layer.h"
 #include "version.h"
 
+// TT(...)
+#undef TAPPING_TOGGLE
+#define TAPPING_TOGGLE 3
+
 // Layers.
 #define LAY0 0 // ASCII and programming.
 #define LAY1 1 // Like LAY0 but with uppercase letters.
 #define LAY2 2 // Media keys, Fn keys, mouse, keypad.
+#define LAY3 3 // Diacritics and characters for languages with latin alphabet.
 
 // us altgr-intl keycodes
 #define UAI_STAR S(KC_8) // *
@@ -36,6 +41,28 @@
 #define UAI_PLUS S(KC_EQL) // +
 #define UAI_NUFLO S(KC_GRV) // ~
 #define UAI_HASH S(KC_3) // #
+#define UAI_A_DIERESIS RALT(Q) // ä
+#define UAI_C_CEDILLA RALT(KC_COMMA) // ç
+#define UAI_DEAD_ACUTE RALT(KC_QUOT) // ◌́ – acute
+#define UAI_DEAD_UMLAUT S(RALT(KC_QUOT)) // ◌̈ – diaeresis or umlaut
+#define UAI_DEAD_GRAVE RALT(KC_GRV) // ◌̀ – grave
+#define UAI_DEAD_DACUTE S(RALT(KC_2)) // ◌̋ – double acute
+#define UAI_DEAD_CAROT RALT(KC_6) // ◌̂ – circumflex
+#define UAI_DEAD_CARON S(RALT(KC_DOT)) // ◌̌ – caron
+#define UAI_DEAD_OVERDOT RALT(KC_DOT) // ◌̇ – overdot
+#define UAI_DEAD_UNDERDOT S(RALT(KC_MINUS)) // ◌̣ – underdot
+#define UAI_DEAD_BREVE S(RALT(KC_9)) // ◌̆ – breve
+#define UAI_DEAD_NUFLO S(RALT(KC_GRV)) // ◌̃ - tilde
+#define UAI_DEAD_MACRON S(RALT(KC_3)) // ◌̄ – macron
+#define UAI_DEAD_ORING S(RALT(KC_0)) // ◌̊ – overring
+#define UAI_DEAD_OGONEK S(RALT(KC_8)) // ◌̨ – ogonek
+#define UAI_DEAD_CEDILLA S(RALT(KC_5)) // ◌̧ – cedilla
+
+// Unicode input (for stuff absent from us-altgr-intl)
+#define UNI_S_COMMA UC(0x0218) // Ș
+#define UNI_S_COMMA_U UC(0x0219) // ș
+#define UNI_T_COMMA UC(0x021b) // ț
+#define UNI_T_COMMA_U UC(0x021a) // Ț
 
 /* English:
  *   - Letters: e t a o i n s rh dl ucm f ywg p b v k xqjz
@@ -62,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|   #  |
  * |     {  |   q  |   z  |   }  |   m  |   k  |      |
  * `--------+------+------+------+------+-------------'
- *   |      |      |      |  `   |   _  |
+ *   | LAY2 |      |   ASADAZXZCX   |  `   |   _  |
  *   `----------------------------------'
  * Right:
  * ,--------------------------------------------------.
@@ -93,7 +120,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     UAI_LPAR,  KC_SLSH,   KC_F,      KC_R,      KC_P,    KC_V,      UAI_PLUS,
     KC_COMMA,  KC_A,      KC_S,      KC_H,      KC_T,    KC_G,
     UAI_LCRB,  KC_Q,      KC_Z,      UAI_RCRB,  KC_M,    KC_K,      UAI_HASH,
-    KC_NO,     KC_NO,     KC_NO,     KC_GRV,    UAI_USCOR,
+    TT(LAY2),  KC_NO,     UNI_S_COMMA,     KC_GRV,    UAI_USCOR,
     // left thumb
             KC_NO,   KC_NO,
     KC_NO,  KC_NO,   KC_NO,
@@ -106,7 +133,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     UAI_PERC,    UAI_QUES,     KC_D,     UAI_COLO,  KC_J,     KC_Y,     UAI_DOLLAR,
                                KC_ESC,   KC_QUOT,   KC_NO,    KC_NO,    KC_NO,
     // right thumb
-    TO(LAY2), KC_NO,
+    KC_NO, KC_NO,
     KC_NO, KC_NO,    KC_NO,
     KC_NO, KC_ENTER, TT(LAY1)
     ),
@@ -194,7 +221,43 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO,   KC_NO,
     KC_NO,   KC_NO,   KC_NO,
     KC_NO,   KC_NO,   KC_NO
-    )
+    ),
+
+/* Layer 3: Diacritics and characters for languages with latin alphabet.
+ *
+ * Left:
+ * ,--------------------------------------------------.
+ * |     |  |   &  |   *  |   -  |   @  |   ^  |   ~  |
+ * |--------+------+------+------+------+-------------|
+ * |     (  |   /  |   f  |   r  |   p  |   v  |   +  |
+ * |--------+------+------+------+------+------|      |
+ * |     ,  |   a  |   s  |   h  |   t  |   g  |------|
+ * |--------+------+------+------+------+------|   #  |
+ * |     {  |   q  |   z  |   }  |   m  |   k  |      |
+ * `--------+------+------+------+------+-------------'
+ *   | LAY2 |      |      |  `   |   _  |
+ *   `----------------------------------'
+ * Right:
+ * ,--------------------------------------------------.
+ * |  [   |   ]  |   "" |   !  |   <  |  >   | =      |
+ * |------+------+------+------+------+------+--------|
+ * |  \   |   b  |   l  |   o  |   w  |  x   | )      |
+ * |      |------+------+------+------+------+--------|
+ * |------|   c  |   n  |   e  |   u  |  i   | .;     |
+ * |  %   |------+------+------+------+------+--------|
+ * |      |   ?  |   d  |   :  |   j  |  y   | $      |
+ * `-------------+------+------+------+------+--------'
+ *               |  Esc |   '  |      |      |      |
+ *               `----------------------------------'
+ * Left:                        Right:
+ *        ,-------------.       ,-------------.
+ *        |      |      |       |      |        |
+ * ,------|------|------|       |------+--------+------.
+ * |      |      |      |       |      |        |      |
+ * |------|------|------|       |------|--------|------|
+ * | Space|      |      |       |      | Enter  | LAY1 |
+ * `--------------------'       `----------------------'
+ */
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -232,7 +295,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 // Runs just one time when the keyboard initializes.
-void matrix_init_user(void) { };
+void matrix_init_user(void) {
+    set_unicode_input_mode(UC_LNX);
+};
 
 // Runs constantly in the background, in a loop.
 void matrix_scan_user(void) {
