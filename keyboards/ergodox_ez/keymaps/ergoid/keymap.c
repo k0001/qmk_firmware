@@ -89,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|   #  |
  * |     {  |   q  |   z  |   }  |   m  |   k  |      |
  * `--------+------+------+------+------+-------------'
- *   | LAY2 |      |   ASADAZXZCX   |  `   |   _  |
+ *   |      |      |      |  `   |   _  |
  *   `----------------------------------'
  * Right:
  * ,--------------------------------------------------.
@@ -172,11 +172,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+-------------|
  * |        |      | Btn2 | MsUp | Btn3 |      |      |
  * |--------+------+------+------+------+------|      |
- * |        | Btn1 |MsLeft|MsDown|MsRght| WBack|------|
+ * |   Prev | Btn1 |MsLeft|MsDown|MsRght| WBack|------|
  * |--------+------+------+------+------+------|      |
- * |        |  F8  |  F9  |  F10 |  F11 |  F12 |      |
+ * |   Next |  F8  |  F9  |  F10 |  F11 |  F12 |      |
  * `--------+------+------+------+------+-------------'
- *   | VolDn| VolUp| Prev | Next | Play |
+ *   | LAY0 | VMute| VolDn| VolUp| Play |
  *   `----------------------------------'
  * Right:
  * ,--------------------------------------------------.
@@ -192,7 +192,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *               `----------------------------------'
  * Left:                        Right:
  *        ,-------------.       ,-------------.
- *        | LAY0 |      |       |      |        |
+ *        |      |      |       |      |        |
  * ,------|------|------|       |------+--------+------.
  * |      |      |      |       |      |        |      |
  * |------|------|------|       |------|--------|------|
@@ -204,9 +204,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // left hand
     KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,
     KC_NO,   KC_NO,   KC_BTN2, KC_MS_U, KC_BTN3, KC_NO,   KC_NO,
-    KC_NO,   KC_BTN1, KC_MS_L, KC_MS_D, KC_MS_R, KC_WBAK,
-    KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_NO,   KC_NO,
-    KC_VOLD, KC_VOLU, KC_MPRV, KC_MNXT, KC_MPLY,
+    KC_MPRV, KC_BTN1, KC_MS_L, KC_MS_D, KC_MS_R, KC_WBAK,
+    KC_MNXT, KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_NO,
+    TO(LAY0),KC_MUTE, KC_VOLD, KC_VOLU, KC_MPLY,
     // left thumb
              KC_NO,   KC_NO,
     KC_NO,   KC_NO,   KC_NO,
