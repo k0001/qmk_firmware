@@ -58,11 +58,16 @@
 #define UAI_DEAD_OGONEK S(RALT(KC_8)) // ◌̨ – ogonek
 #define UAI_DEAD_CEDILLA S(RALT(KC_5)) // ◌̧ – cedilla
 
-// Unicode input (for stuff absent from us-altgr-intl)
-#define UNI_S_COMMA UC(0x0218) // Ș
-#define UNI_S_COMMA_U UC(0x0219) // ș
-#define UNI_T_COMMA UC(0x021b) // ț
-#define UNI_T_COMMA_U UC(0x021a) // Ț
+// Right Control is our Compose Key.
+#define SS_COMPOSE(string) SS_DOWN(X_RCTRL) string SS_UP(X_RCTRL)
+#define SEND_COMPOSE(string) SEND_STRING(SS_COMPOSE(string))
+
+enum my_keycodes {
+    MY_S_COMMA = SAFE_RANGE,
+    MY_S_COMMA_U,
+    MY_T_COMMA,
+    MY_T_COMMA_U,
+};
 
 /* English:
  *   - Letters: e t a o i n s rh dl ucm f ywg p b v k xqjz
@@ -120,7 +125,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     UAI_LPAR,  KC_SLSH,   KC_F,      KC_R,      KC_P,    KC_V,      UAI_PLUS,
     KC_COMMA,  KC_A,      KC_S,      KC_H,      KC_T,    KC_G,
     UAI_LCRB,  KC_Q,      KC_Z,      UAI_RCRB,  KC_M,    KC_K,      UAI_HASH,
-    TT(LAY2),  KC_NO,     UNI_S_COMMA,     KC_GRV,    UAI_USCOR,
+    TT(LAY2),  KC_NO,     MY_S_COMMA,KC_GRV,    UAI_USCOR,
     // left thumb
             KC_NO,   KC_NO,
     KC_NO,  KC_NO,   KC_NO,
@@ -170,10 +175,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.
  * |    F1  |   F2 |  F3  |  F4  |   F5 |  F6  |  F7  |
  * |--------+------+------+------+------+-------------|
- * |        |      | Btn2 | MsUp | Btn3 |      |      |
+ * |        |      | Btn2 | MsUp | Btn3 |      | PgUp |
  * |--------+------+------+------+------+------|      |
  * |   Prev | Btn1 |MsLeft|MsDown|MsRght| WBack|------|
- * |--------+------+------+------+------+------|      |
+ * |--------+------+------+------+------+------| PgDn |
  * |   Next |  F8  |  F9  |  F10 |  F11 |  F12 |      |
  * `--------+------+------+------+------+-------------'
  *   | LAY0 | VMute| VolDn| VolUp| Play |
@@ -184,11 +189,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+--------|
  % |      |   %  |   7  |   8  |   9  |  (   |  )     |
  * |      |------+------+------+------+------+--------|
- * |------|   /  |   4  |   5  |   6  |  *   |        |
+ * |------|   /  |   4  |   5  |   6  |  -   |        |
  * |      |------+------+------+------+------+--------|
  * |      |   *  |   1  |   2  |   3  |  +   |        |
  * `-------------+------+------+------+------+--------'
- *               |   0  |   .  |   ,  | Enter|      |
+ *               |   0  |   .  |   ,  |      | Enter|
  *               `----------------------------------'
  * Left:                        Right:
  *        ,-------------.       ,-------------.
@@ -196,27 +201,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,------|------|------|       |------+--------+------.
  * |      |      |      |       |      |        |      |
  * |------|------|------|       |------|--------|------|
- * |      |      |      |       |      |        |      |
+ * | Btn1 |      |      |       |      |        |      |
  * `--------------------'       `----------------------'
  */
 // Mouse, media, keypad.
 [LAY2] = LAYOUT_ergodox_80(
     // left hand
     KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,
-    KC_NO,   KC_NO,   KC_BTN2, KC_MS_U, KC_BTN3, KC_NO,   KC_NO,
+    KC_NO,   KC_NO,   KC_BTN2, KC_MS_U, KC_BTN3, KC_NO,   KC_PGUP,
     KC_MPRV, KC_BTN1, KC_MS_L, KC_MS_D, KC_MS_R, KC_WBAK,
-    KC_MNXT, KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_NO,
+    KC_MNXT, KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_PGDN,
     TO(LAY0),KC_MUTE, KC_VOLD, KC_VOLU, KC_MPLY,
     // left thumb
              KC_NO,   KC_NO,
     KC_NO,   KC_NO,   KC_NO,
-    KC_NO,   KC_NO,   KC_NO,
+    KC_BTN1, KC_NO,   KC_NO,
     // right hand
     KC_A,  KC_B,     KC_C, KC_D,   KC_E,     KC_F,     KC_EQL,
     KC_NO, UAI_PERC, KC_7, KC_8,   KC_9,     UAI_LPAR, UAI_RPAR,
-           KC_SLSH,  KC_4, KC_5,   KC_6,     UAI_STAR, KC_NO,
+           KC_SLSH,  KC_4, KC_5,   KC_6,     KC_MINUS, KC_NO,
     KC_NO, UAI_STAR, KC_1, KC_2,   KC_3,     UAI_PLUS, KC_NO,
-                     KC_0, KC_DOT, KC_COMMA, KC_ENTER, KC_NO,
+                     KC_0, KC_DOT, KC_COMMA, KC_NO,    KC_ENTER,
     // right thumb
     KC_NO,   KC_NO,
     KC_NO,   KC_NO,   KC_NO,
@@ -267,6 +272,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
         // On key down
         switch (keycode) {
+        // Compose key stuff.
+        case MY_S_COMMA: SEND_COMPOSE(";s"); return false;
+        case MY_S_COMMA_U: SEND_COMPOSE(";S"); return false;
+        case MY_T_COMMA: SEND_COMPOSE(";t"); return false;
+        case MY_T_COMMA_U: SEND_COMPOSE(";T"); return false;
+        // Semicolon special handling.
         case KC_COMMA:
             is_down_comma = true;
             print_comma = true;
@@ -296,7 +307,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 // Runs just one time when the keyboard initializes.
 void matrix_init_user(void) {
-    set_unicode_input_mode(UC_LNX);
 };
 
 // Runs constantly in the background, in a loop.
