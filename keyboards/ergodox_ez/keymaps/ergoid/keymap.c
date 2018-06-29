@@ -13,6 +13,7 @@
 #define LAY2 2 // Letters and accents of latin european languages.
 #define LAY3 3 // Letters of LAY2 in uppercase.
 #define LAY4 4 // Media keys, Fn keys, mouse, keypad.
+#define LAY5 5 // Like LAY4, for TG() purposes.
 
 // us altgr-intl keycodes
 #define UAI_STAR S(KC_8) // *
@@ -74,7 +75,7 @@
 
 enum my_keycodes {
     /* These keycodes get mapped to macros that emit Compose strings */
-    MY_S_COMMA =   /* ș */ SAFE_RANGE,
+    MY_S_COMMA = SAFE_RANGE, // ș
     MY_S_COMMA_U,  // Ș
     MY_T_COMMA,    // ț
     MY_T_COMMA_U,  // Ț
@@ -93,30 +94,18 @@ enum my_keycodes {
     MY_ESZET_U,    // ẞ
 };
 
-/* English:
- *   - Letters: e t a o i n s rh dl ucm f ywg p b v k xqjz
- *   - Bigrams: th he in er an re es on st nt
- *              en at ed nd to or ea ti ar te
- *              ng al it as is ha et se ou of
- *  ztrneiasthzniedsznre
- * Spanish:
- *   - Letters: e a o s n r il dtu c mp b hqyvg fjz xkw
- *   - Bigrams: de es en el la os on as er ra
- *              ad ar re al an nt ue ci co se
- *              ta te or do io ac st na ro un
- */
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Layer 0: ASCII and programming layer.
  *
  * Left:
  * ,--------------------------------------------------.
- * |     |  |   &  |   *  |   -  |   @  |   ^  |   ~  |
+ * |      | |   &  |   *  |   -  |   @  |   ^  |   ~  |
  * |--------+------+------+------+------+-------------|
- * |     (  |   /  |   f  |   r  |   p  |   v  |   +  |
+ * |      ( |   /  |   f  |   r  |   p  |   v  |   +  |
  * |--------+------+------+------+------+------|      |
- * |     ,  |   a  |   s  |   h  |   t  |   g  |------|
+ * | LAY4 , |   a  |   s  |   h  |   t  |   g  |------|
  * |--------+------+------+------+------+------|   #  |
- * |     {  |   q  |   z  |   }  |   m  |   k  |      |
+ * |      { |   q  |   z  |   }  |   m  |   k  |      |
  * `--------+------+------+------+------+-------------'
  *   |      |      |      |  `   |   _  |
  *   `----------------------------------'
@@ -145,11 +134,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [LAY0] = LAYOUT_ergodox_80(
     // left hand
-    UAI_VERTB, UAI_AMP,   UAI_STAR, KC_MINUS,   UAI_AT,  UAI_CAROT, UAI_TILDE,
-    UAI_LPAR,  KC_SLSH,   KC_F,      KC_R,      KC_P,    KC_V,      UAI_PLUS,
-    KC_COMMA,  KC_A,      KC_S,      KC_H,      KC_T,    KC_G,
-    UAI_LCRB,  KC_Q,      KC_Z,      UAI_RCRB,  KC_M,    KC_K,      UAI_HASH,
-    TT(LAY4),  KC_NO,     MY_S_COMMA,KC_GRV,    UAI_USCOR,
+    UAI_VERTB,            UAI_AMP,   UAI_STAR, KC_MINUS,   UAI_AT,  UAI_CAROT, UAI_TILDE,
+    UAI_LPAR,             KC_SLSH,   KC_F,      KC_R,      KC_P,    KC_V,      UAI_PLUS,
+    LT(LAY4, KC_COMMA),   KC_A,      KC_S,      KC_H,      KC_T,    KC_G,
+    UAI_LCRB,             KC_Q,      KC_Z,      UAI_RCRB,  KC_M,    KC_K,      UAI_HASH,
+    KC_NO,                KC_NO,     MY_S_COMMA,KC_GRV,    UAI_USCOR,
     // left thumb
             KC_NO,   KC_NO,
     KC_NO,  KC_NO,   KC_NO,
@@ -178,7 +167,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // left thumb
               KC_TRNS,   KC_TRNS,
     KC_TRNS,  KC_TRNS,   KC_TRNS,
-    KC_TRNS,  KC_TRNS,   KC_TRNS,
+    KC_TRNS,  MO(LAY3),  KC_TRNS,
 
     // right hand
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
@@ -198,11 +187,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |
  * |--------+------+------+------+------+-------------|
- * |        |   æ  |   ș  |   ◌̂  |   ț  |      |      |
+ * |        |   æ  |   ș  |   ◌̀  |   ț  |      |      |
  * |--------+------+------+------+------+------|      |
- * |     ă  |   á  |   ß  |   ◌̈  |   ◌̀  |   ◌́  |------|
+ * |     ă  |   á  |   ß  |   ◌̄  |  ◌̈   |   ◌́  |------|
  * |--------+------+------+------+------+------|      |
- * |     å  |   ã  |      |   ◌̄  |   ◌̋  |      |      |
+ * |     å  |   ã  |      |   ◌̋  |  ◌̂   |     |       |
  * `--------+------+------+------+------+-------------'
  *   |      |      |      |      |      |
  *   `----------------------------------'
@@ -230,9 +219,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [LAY2] = LAYOUT_ergodox_80(
     // left hand
     KC_NO,      KC_NO,       KC_NO,      KC_NO,           KC_NO,           KC_NO,          KC_NO,
-    KC_NO,      UAI_AE,      MY_S_COMMA, UAI_DEAD_CAROT,  MY_T_COMMA,      KC_NO,          KC_NO,
-    MY_A_BREVE, UAI_A_ACUTE, UAI_ESZET,  UAI_DEAD_UMLAUT, UAI_DEAD_GRAVE,  UAI_DEAD_ACUTE,
-    MY_A_ORING, MY_A_TILDE,  KC_NO,      UAI_DEAD_MACRON, UAI_DEAD_DACUTE, KC_NO,          KC_NO,
+    KC_NO,      UAI_AE,      MY_S_COMMA, UAI_DEAD_GRAVE,  MY_T_COMMA,      KC_NO,          KC_NO,
+    MY_A_BREVE, UAI_A_ACUTE, UAI_ESZET,  UAI_DEAD_MACRON, UAI_DEAD_UMLAUT, UAI_DEAD_ACUTE,
+    MY_A_ORING, MY_A_TILDE,  KC_NO,      UAI_DEAD_DACUTE, UAI_DEAD_CAROT,  KC_NO,          KC_NO,
     KC_NO,      KC_NO,       KC_NO,      KC_NO,           KC_NO,
     // left thumb
            KC_NO, KC_NO,
@@ -248,7 +237,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // right thumb
     KC_NO, KC_NO,
     KC_NO, KC_NO, KC_NO,
-    KC_NO, KC_NO, KC_NO
+    KC_NO, MO(LAY3), KC_NO
     ),
 
 /* Layer 3: Letters of LAY2 in uppercase. */
@@ -311,14 +300,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | Btn1 |      |      |       |      |        |      |
  * `--------------------'       `----------------------'
  */
-// Mouse, media, keypad.
 [LAY4] = LAYOUT_ergodox_80(
     // left hand
     KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,
-    KC_NO,   KC_NO,   KC_BTN2, KC_MS_U, KC_BTN3, KC_NO,   KC_PGUP,
-    KC_MPRV, KC_BTN1, KC_MS_L, KC_MS_D, KC_MS_R, KC_WBAK,
-    KC_MNXT, KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_PGDN,
-    TO(LAY0),KC_MUTE, KC_VOLD, KC_VOLU, KC_MPLY,
+    TO(LAY5), KC_NO,   KC_BTN2, KC_MS_U, KC_BTN3, KC_NO,   KC_PGUP,
+    KC_NO,   KC_BTN1, KC_MS_L, KC_MS_D, KC_MS_R, KC_WBAK,
+    KC_MUTE, KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_PGDN,
+    KC_MPRV, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY,
     // left thumb
              KC_NO,   KC_NO,
     KC_NO,   KC_NO,   KC_NO,
@@ -326,7 +314,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // right hand
     KC_A,  KC_B,     KC_C, KC_D,   KC_E,     KC_F,     KC_EQL,
     KC_NO, UAI_PERC, KC_7, KC_8,   KC_9,     UAI_LPAR, UAI_RPAR,
-           KC_SLSH,  KC_4, KC_5,   KC_6,     KC_MINUS, KC_NO,
+           KC_SLSH,  KC_4, KC_5,   KC_6,     KC_MINUS, KC_SCLN,
     KC_NO, UAI_STAR, KC_1, KC_2,   KC_3,     UAI_PLUS, KC_NO,
                      KC_0, KC_DOT, KC_COMMA, KC_NO,    KC_ENTER,
     // right thumb
@@ -335,47 +323,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO,   KC_NO,   KC_NO
     ),
 
-/* Layer 3: Diacritics and characters for languages with latin alphabet.
- *
- * Left:
- * ,--------------------------------------------------.
- * |     |  |   &  |   *  |   -  |   @  |   ^  |   ~  |
- * |--------+------+------+------+------+-------------|
- * |     (  |   /  |   f  |   r  |   p  |   v  |   +  |
- * |--------+------+------+------+------+------|      |
- * |     ,  |   a  |   s  |   h  |   t  |   g  |------|
- * |--------+------+------+------+------+------|   #  |
- * |     {  |   q  |   z  |   }  |   m  |   k  |      |
- * `--------+------+------+------+------+-------------'
- *   | LAY4 |      |      |  `   |   _  |
- *   `----------------------------------'
- * Right:
- * ,--------------------------------------------------.
- * |  [   |   ]  |   "" |   !  |   <  |  >   | =      |
- * |------+------+------+------+------+------+--------|
- * |  \   |   b  |   l  |   o  |   w  |  x   | )      |
- * |      |------+------+------+------+------+--------|
- * |------|   c  |   n  |   e  |   u  |  i   | .;     |
- * |  %   |------+------+------+------+------+--------|
- * |      |   ?  |   d  |   :  |   j  |  y   | $      |
- * `-------------+------+------+------+------+--------'
- *               |  Esc |   '  |      |      |      |
- *               `----------------------------------'
- * Left:                        Right:
- *        ,-------------.       ,-------------.
- *        |      |      |       |      |        |
- * ,------|------|------|       |------+--------+------.
- * |      |      |      |       |      |        |      |
- * |------|------|------|       |------|--------|------|
- * | Space|      |      |       |      | Enter  | LAY1 |
- * `--------------------'       `----------------------'
- */
+/* Layer 5: Like LAY4, for TG() purposes. */
+[LAY5] = LAYOUT_ergodox_80(
+    // left hand
+    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,
+    KC_NO,   KC_NO,   KC_BTN2, KC_MS_U, KC_BTN3, KC_NO,   KC_PGUP,
+    TO(LAY0),KC_BTN1, KC_MS_L, KC_MS_D, KC_MS_R, KC_WBAK,
+    KC_MUTE, KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_PGDN,
+    KC_MPRV, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY,
+    // left thumb
+             KC_NO,   KC_NO,
+    KC_NO,   KC_NO,   KC_NO,
+    KC_BTN1, KC_NO,   KC_NO,
+    // right hand
+    KC_A,  KC_B,     KC_C, KC_D,   KC_E,     KC_F,     KC_EQL,
+    KC_NO, UAI_PERC, KC_7, KC_8,   KC_9,     UAI_LPAR, UAI_RPAR,
+           KC_SLSH,  KC_4, KC_5,   KC_6,     KC_MINUS, KC_SCLN,
+    KC_NO, UAI_STAR, KC_1, KC_2,   KC_3,     UAI_PLUS, KC_NO,
+                     KC_0, KC_DOT, KC_COMMA, KC_NO,    KC_ENTER,
+    // right thumb
+    KC_NO,   KC_NO,
+    KC_NO,   KC_NO,   KC_NO,
+    KC_NO,   KC_NO,   KC_NO
+    ),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    static bool is_down_comma = false;
-    static bool print_comma = false;
-
     if (record->event.pressed) {
         // On key down
         switch (keycode) {
@@ -397,30 +370,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case MY_A_BREVE:   SEND_COMPOSE("ba"); return false;
         case MY_A_BREVE_U: SEND_COMPOSE("bA"); return false;
         case MY_ESZET_U:   SEND_COMPOSE("SS"); return false;
-        // Semicolon special handling.
-        case KC_COMMA:
-            is_down_comma = true;
-            print_comma = true;
-            return false;
-        case KC_DOT:
-            if (is_down_comma) {
-                print_comma = false;
-                SEND_STRING(";");
-                return false;
-            };
-        default:
-            if (print_comma) {
-               print_comma = false;
-               SEND_STRING(",");
-            };
+        default: break;
         }
-    } else {
-        // On key up
-        is_down_comma = false;
-        if (print_comma) {
-            print_comma = false;
-            SEND_STRING(",");
-        };
     }
     return true;
 }
@@ -431,7 +382,6 @@ void matrix_init_user(void) {
 
 // Runs constantly in the background, in a loop.
 void matrix_scan_user(void) {
-
     uint8_t layer = biton32(layer_state);
 
     ergodox_board_led_off();
@@ -439,15 +389,23 @@ void matrix_scan_user(void) {
     ergodox_right_led_2_off();
     ergodox_right_led_3_off();
     switch (layer) {
-      // TODO: Make this relevant to the ErgoDox EZ.
-        case 1:
-            ergodox_right_led_1_on();
-            break;
-        case 2:
+        case LAY1:
             ergodox_right_led_2_on();
             break;
+        case LAY2:
+            ergodox_right_led_3_on();
+            break;
+        case LAY3:
+            ergodox_right_led_2_on();
+            ergodox_right_led_3_on();
+            break;
+        case LAY4:
+            ergodox_right_led_1_on();
+            break;
+        case LAY5:
+            ergodox_right_led_1_on();
+            break;
         default:
-            // none
             break;
     }
 
