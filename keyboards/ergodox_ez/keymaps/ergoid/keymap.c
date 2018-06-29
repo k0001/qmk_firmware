@@ -10,8 +10,9 @@
 // Layers.
 #define LAY0 0 // ASCII and programming.
 #define LAY1 1 // Like LAY0 but with uppercase letters.
-#define LAY2 2 // Media keys, Fn keys, mouse, keypad.
-#define LAY3 3 // Diacritics and characters for languages with latin alphabet.
+#define LAY2 2 // Letters and accents of latin european languages.
+#define LAY3 3 // Letters of LAY2 in uppercase.
+#define LAY4 4 // Media keys, Fn keys, mouse, keypad.
 
 // us altgr-intl keycodes
 #define UAI_STAR S(KC_8) // *
@@ -39,10 +40,19 @@
 #define UAI_PERC S(KC_5) // %
 #define UAI_USCOR S(KC_MINUS) // _
 #define UAI_PLUS S(KC_EQL) // +
-#define UAI_NUFLO S(KC_GRV) // ~
+#define UAI_TILDE S(KC_GRV) // ~
 #define UAI_HASH S(KC_3) // #
-#define UAI_A_DIERESIS RALT(Q) // ä
+#define UAI_A_ACUTE RALT(KC_A) // á
+#define UAI_E_ACUTE RALT(KC_E) // é
+#define UAI_I_ACUTE RALT(KC_I) // í
+#define UAI_O_ACUTE RALT(KC_O) // ó
+#define UAI_U_ACUTE RALT(KC_U) // ú
+#define UAI_O_SLASH RALT(KC_L) // ø
 #define UAI_C_CEDILLA RALT(KC_COMMA) // ç
+#define UAI_N_TILDE RALT(KC_N) // ñ
+#define UAI_ESZET RALT(KC_S) // ß
+#define UAI_OE RALT(KC_X) // œ
+#define UAI_AE RALT(KC_Z) // æ
 #define UAI_DEAD_ACUTE RALT(KC_QUOT) // ◌́ – acute
 #define UAI_DEAD_UMLAUT S(RALT(KC_QUOT)) // ◌̈ – diaeresis or umlaut
 #define UAI_DEAD_GRAVE RALT(KC_GRV) // ◌̀ – grave
@@ -52,7 +62,7 @@
 #define UAI_DEAD_OVERDOT RALT(KC_DOT) // ◌̇ – overdot
 #define UAI_DEAD_UNDERDOT S(RALT(KC_MINUS)) // ◌̣ – underdot
 #define UAI_DEAD_BREVE S(RALT(KC_9)) // ◌̆ – breve
-#define UAI_DEAD_NUFLO S(RALT(KC_GRV)) // ◌̃ - tilde
+#define UAI_DEAD_TILDE S(RALT(KC_GRV)) // ◌̃ - tilde
 #define UAI_DEAD_MACRON S(RALT(KC_3)) // ◌̄ – macron
 #define UAI_DEAD_ORING S(RALT(KC_0)) // ◌̊ – overring
 #define UAI_DEAD_OGONEK S(RALT(KC_8)) // ◌̨ – ogonek
@@ -63,10 +73,24 @@
 #define SEND_COMPOSE(string) SEND_STRING(SS_COMPOSE(string))
 
 enum my_keycodes {
-    MY_S_COMMA = SAFE_RANGE,
-    MY_S_COMMA_U,
-    MY_T_COMMA,
-    MY_T_COMMA_U,
+    /* These keycodes get mapped to macros that emit Compose strings */
+    MY_S_COMMA =   /* ș */ SAFE_RANGE,
+    MY_S_COMMA_U,  // Ș
+    MY_T_COMMA,    // ț
+    MY_T_COMMA_U,  // Ț
+    MY_Y_ACUTE,    // ý
+    MY_Y_ACUTE_U,  // Ý
+    MY_L_SLASH,    // ł
+    MY_L_SLASH_U,  // Ł
+    MY_A_ORING,    // å
+    MY_A_ORING_U,  // Å
+    MY_U_ORING,    // ů
+    MY_U_ORING_U,  // Ů
+    MY_A_TILDE,    // ã
+    MY_A_TILDE_U,  // Ã
+    MY_A_BREVE,    // ă
+    MY_A_BREVE_U,  // Ă
+    MY_ESZET_U,    // ẞ
 };
 
 /* English:
@@ -114,22 +138,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,------|------|------|       |------+--------+------.
  * |      |      |      |       |      |        |      |
  * |------|------|------|       |------|--------|------|
- * | Space| LAY1 |      |       |Backsp| LAY3   | Enter|
+ * | Space| LAY2 |Backsp|       |      | LAY1   | Enter|
  * `--------------------'       `----------------------'
  *
  * - '.' emits ';' if ',' is pressed as well.
  */
 [LAY0] = LAYOUT_ergodox_80(
     // left hand
-    UAI_VERTB, UAI_AMP,   UAI_STAR, KC_MINUS,   UAI_AT,  UAI_CAROT, UAI_NUFLO,
+    UAI_VERTB, UAI_AMP,   UAI_STAR, KC_MINUS,   UAI_AT,  UAI_CAROT, UAI_TILDE,
     UAI_LPAR,  KC_SLSH,   KC_F,      KC_R,      KC_P,    KC_V,      UAI_PLUS,
     KC_COMMA,  KC_A,      KC_S,      KC_H,      KC_T,    KC_G,
     UAI_LCRB,  KC_Q,      KC_Z,      UAI_RCRB,  KC_M,    KC_K,      UAI_HASH,
-    TT(LAY2),  KC_NO,     MY_S_COMMA,KC_GRV,    UAI_USCOR,
+    TT(LAY4),  KC_NO,     MY_S_COMMA,KC_GRV,    UAI_USCOR,
     // left thumb
             KC_NO,   KC_NO,
     KC_NO,  KC_NO,   KC_NO,
-    KC_SPC, MO(LAY1),   KC_NO,
+    KC_SPC, MO(LAY2),KC_BSPACE,
 
     // right hand
     KC_LBRACKET, KC_RBRACKET,  UAI_DQUO, UAI_RBANG, UAI_LANG, UAI_RANG, KC_EQL,
@@ -140,11 +164,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // right thumb
     KC_NO,     KC_NO,
     KC_NO,     KC_NO,    KC_NO,
-    KC_BSPACE, MO(LAY3), KC_ENTER
+    KC_NO,     MO(LAY1), KC_ENTER
     ),
 
-/* Layer 1: Uppercase letters
- */
+/* Layer 1: Uppercase letters */
 [LAY1] = LAYOUT_ergodox_80(
     // left hand
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
@@ -169,7 +192,91 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS, KC_TRNS,  KC_TRNS
     ),
 
-/* Keymap 2: Media keys, Fn keys, mouse, keypad.
+/* Layer 2: Letters and accents of latin european languages.
+ *
+ * Left:
+ * ,--------------------------------------------------.
+ * |        |      |      |      |      |      |      |
+ * |--------+------+------+------+------+-------------|
+ * |        |   æ  |   ș  |   ◌̂  |   ț  |      |      |
+ * |--------+------+------+------+------+------|      |
+ * |     ă  |   á  |   ß  |   ◌̈  |   ◌̀  |   ◌́  |------|
+ * |--------+------+------+------+------+------|      |
+ * |     å  |   ã  |      |   ◌̄  |   ◌̋  |      |      |
+ * `--------+------+------+------+------+-------------'
+ *   |      |      |      |      |      |
+ *   `----------------------------------'
+ * Right:
+ * ,--------------------------------------------------.
+ * |      |      |      |      |      |      |        |
+ * |------+------+------+------+------+------+--------|
+ * |      |      |   ł  |   ó  |   ◌̌  |  œ   |        |
+ * |      |------+------+------+------+------+--------|
+ * |------|   ç  |   ñ  |   é  |   ú  |  í   |  ø     |
+ * |      |------+------+------+------+------+--------|
+ * |      |      |   ◌̨  |   ◌̇  |   ů  |  ý   |        |
+ * `-------------+------+------+------+------+--------'
+ *               |      |      |      |      |      |
+ *               `----------------------------------'
+ * Left:                        Right:
+ *        ,-------------.       ,-------------.
+ *        |      |      |       |      |        |
+ * ,------|------|------|       |------+--------+------.
+ * |      |      |      |       |      |        |      |
+ * |------|------|------|       |------|--------|------|
+ * |      |      |      |       |      | LAY3   |      |
+ * `--------------------'       `----------------------'
+ */
+[LAY2] = LAYOUT_ergodox_80(
+    // left hand
+    KC_NO,      KC_NO,       KC_NO,      KC_NO,           KC_NO,           KC_NO,          KC_NO,
+    KC_NO,      UAI_AE,      MY_S_COMMA, UAI_DEAD_CAROT,  MY_T_COMMA,      KC_NO,          KC_NO,
+    MY_A_BREVE, UAI_A_ACUTE, UAI_ESZET,  UAI_DEAD_UMLAUT, UAI_DEAD_GRAVE,  UAI_DEAD_ACUTE,
+    MY_A_ORING, MY_A_TILDE,  KC_NO,      UAI_DEAD_MACRON, UAI_DEAD_DACUTE, KC_NO,          KC_NO,
+    KC_NO,      KC_NO,       KC_NO,      KC_NO,           KC_NO,
+    // left thumb
+           KC_NO, KC_NO,
+    KC_NO, KC_NO, KC_NO,
+    KC_NO, KC_NO, KC_NO,
+
+    // right hand
+    KC_NO, KC_NO,         KC_NO,           KC_NO,            KC_NO,          KC_NO,       KC_NO,
+    KC_NO, KC_NO,         MY_L_SLASH,      UAI_O_ACUTE,      UAI_DEAD_CARON, UAI_OE,      KC_NO,
+           UAI_C_CEDILLA, UAI_N_TILDE,     UAI_E_ACUTE,      UAI_U_ACUTE,    UAI_I_ACUTE, UAI_O_SLASH,
+    KC_NO, KC_NO,         UAI_DEAD_OGONEK, UAI_DEAD_OVERDOT, MY_U_ORING,     MY_Y_ACUTE,  KC_NO,
+                          KC_NO,           KC_NO,            KC_NO,          KC_NO,       KC_NO,
+    // right thumb
+    KC_NO, KC_NO,
+    KC_NO, KC_NO, KC_NO,
+    KC_NO, KC_NO, KC_NO
+    ),
+
+/* Layer 3: Letters of LAY2 in uppercase. */
+[LAY3] = LAYOUT_ergodox_80(
+    // left hand
+    KC_TRNS,      KC_TRNS,        KC_TRNS,      KC_TRNS,KC_TRNS,       KC_TRNS, KC_TRNS,
+    KC_TRNS,      S(UAI_AE),      MY_S_COMMA_U, KC_TRNS,MY_T_COMMA_U,  KC_TRNS, KC_TRNS,
+    MY_A_BREVE_U, S(UAI_A_ACUTE), MY_ESZET_U,   KC_TRNS,KC_TRNS,       KC_TRNS,
+    MY_A_ORING_U, MY_A_TILDE_U,   KC_TRNS,      KC_TRNS,KC_TRNS,       KC_TRNS, KC_TRNS,
+    KC_TRNS,      KC_TRNS,        KC_TRNS,      KC_TRNS,KC_TRNS,
+    // left thumb
+             KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS,
+
+    // right hand
+    KC_TRNS, KC_TRNS,          KC_TRNS,        KC_TRNS,          KC_TRNS,        KC_TRNS,        KC_TRNS,
+    KC_TRNS, KC_TRNS,          MY_L_SLASH_U,   S(UAI_O_ACUTE),   KC_TRNS,        S(UAI_OE),      KC_TRNS,
+             S(UAI_C_CEDILLA), S(UAI_N_TILDE), S(UAI_E_ACUTE),   S(UAI_U_ACUTE), S(UAI_I_ACUTE), S(UAI_O_SLASH),
+    KC_TRNS, KC_TRNS,          KC_TRNS,        KC_TRNS,          MY_U_ORING_U,   MY_Y_ACUTE_U,   KC_TRNS,
+                               KC_TRNS,        KC_TRNS,          KC_TRNS,        KC_TRNS,        KC_TRNS,
+    // right thumb
+    KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS
+    ),
+
+/* Layer 4: Media keys, Fn keys, mouse, keypad.
  *
  * Left hand:
  * ,--------------------------------------------------.
@@ -205,7 +312,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `--------------------'       `----------------------'
  */
 // Mouse, media, keypad.
-[LAY2] = LAYOUT_ergodox_80(
+[LAY4] = LAYOUT_ergodox_80(
     // left hand
     KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,
     KC_NO,   KC_NO,   KC_BTN2, KC_MS_U, KC_BTN3, KC_NO,   KC_PGUP,
@@ -240,7 +347,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|   #  |
  * |     {  |   q  |   z  |   }  |   m  |   k  |      |
  * `--------+------+------+------+------+-------------'
- *   | LAY2 |      |      |  `   |   _  |
+ *   | LAY4 |      |      |  `   |   _  |
  *   `----------------------------------'
  * Right:
  * ,--------------------------------------------------.
@@ -273,10 +380,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         // On key down
         switch (keycode) {
         // Compose key stuff.
-        case MY_S_COMMA: SEND_COMPOSE(";s"); return false;
+        case MY_S_COMMA:   SEND_COMPOSE(";s"); return false;
         case MY_S_COMMA_U: SEND_COMPOSE(";S"); return false;
-        case MY_T_COMMA: SEND_COMPOSE(";t"); return false;
+        case MY_T_COMMA:   SEND_COMPOSE(";t"); return false;
         case MY_T_COMMA_U: SEND_COMPOSE(";T"); return false;
+        case MY_Y_ACUTE:   SEND_COMPOSE("'y"); return false;
+        case MY_Y_ACUTE_U: SEND_COMPOSE("'Y"); return false;
+        case MY_L_SLASH:   SEND_COMPOSE("/l"); return false;
+        case MY_L_SLASH_U: SEND_COMPOSE("/L"); return false;
+        case MY_A_ORING:   SEND_COMPOSE("oa"); return false;
+        case MY_A_ORING_U: SEND_COMPOSE("oA"); return false;
+        case MY_U_ORING:   SEND_COMPOSE("ou"); return false;
+        case MY_U_ORING_U: SEND_COMPOSE("oU"); return false;
+        case MY_A_TILDE:   SEND_COMPOSE("~a"); return false;
+        case MY_A_TILDE_U: SEND_COMPOSE("~A"); return false;
+        case MY_A_BREVE:   SEND_COMPOSE("ba"); return false;
+        case MY_A_BREVE_U: SEND_COMPOSE("bA"); return false;
+        case MY_ESZET_U:   SEND_COMPOSE("SS"); return false;
         // Semicolon special handling.
         case KC_COMMA:
             is_down_comma = true;
