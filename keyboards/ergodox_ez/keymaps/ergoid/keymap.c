@@ -110,11 +110,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *               `----------------------------------'
  * Left:                        Right:
  *        ,-------------.       ,-------------.
- *        | LAY2 |      |       |      |        |
+ *        |      |      |       |      |        |
  * ,------|------|------|       |------+--------+------.
  * |      |      |      |       |      |        |      |
  * |------|------|------|       |------|--------|------|
- * | Space|      |      |       |      | Enter  | LAY1 |
+ * | Space| LAY1 |      |       |Backsp| LAY3   | Enter|
  * `--------------------'       `----------------------'
  *
  * - '.' emits ';' if ',' is pressed as well.
@@ -129,7 +129,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // left thumb
             KC_NO,   KC_NO,
     KC_NO,  KC_NO,   KC_NO,
-    KC_SPC, KC_NO,   KC_NO,
+    KC_SPC, MO(LAY1),   KC_NO,
 
     // right hand
     KC_LBRACKET, KC_RBRACKET,  UAI_DQUO, UAI_RBANG, UAI_LANG, UAI_RANG, KC_EQL,
@@ -138,9 +138,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     UAI_PERC,    UAI_QUES,     KC_D,     UAI_COLO,  KC_J,     KC_Y,     UAI_DOLLAR,
                                KC_ESC,   KC_QUOT,   KC_NO,    KC_NO,    KC_NO,
     // right thumb
-    KC_NO, KC_NO,
-    KC_NO, KC_NO,    KC_NO,
-    KC_NO, KC_ENTER, TT(LAY1)
+    KC_NO,     KC_NO,
+    KC_NO,     KC_NO,    KC_NO,
+    KC_BSPACE, MO(LAY3), KC_ENTER
     ),
 
 /* Layer 1: Uppercase letters
