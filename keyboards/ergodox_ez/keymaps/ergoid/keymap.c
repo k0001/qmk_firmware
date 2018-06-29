@@ -127,7 +127,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,------|------|------|       |------+--------+------.
  * |      |      |      |       |      |        |      |
  * |------|------|------|       |------|--------|------|
- * | Space| LAY2 |Backsp|       |      | LAY1   | Enter|
+ * | Space| LAY2 | Enter|       |      | LAY1   |Backsp|
  * `--------------------'       `----------------------'
  *
  * - '.' emits ';' if ',' is pressed as well.
@@ -142,7 +142,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // left thumb
             KC_NO,   KC_NO,
     KC_NO,  KC_NO,   KC_NO,
-    KC_SPC, MO(LAY2),KC_BSPACE,
+    KC_SPC, MO(LAY2),KC_ENTER,
 
     // right hand
     KC_LBRACKET, KC_RBRACKET,  UAI_DQUO, UAI_RBANG, UAI_LANG, UAI_RANG, KC_EQL,
@@ -153,7 +153,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // right thumb
     KC_NO,     KC_NO,
     KC_NO,     KC_NO,    KC_NO,
-    KC_NO,     MO(LAY1), KC_ENTER
+    KC_NO,     MO(LAY1), KC_BSPACE
     ),
 
 /* Layer 1: Uppercase letters */
