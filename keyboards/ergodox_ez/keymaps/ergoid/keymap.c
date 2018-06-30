@@ -149,7 +149,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LBRACKET, KC_RBRACKET,  UAI_DQUO, UAI_RBANG, UAI_LANG, UAI_RANG, KC_EQL,
     KC_BSLS,     KC_B,         KC_L,     KC_O,      KC_W,     KC_QUOT,  UAI_RPAR,
                  KC_C,         KC_N,     KC_E,      KC_U,     KC_I,     KC_Y,
-    UAI_PERC,    UAI_QUES,     KC_D,     UAI_COLO,  KC_J,     KC_Y,     KC_DOT,
+    UAI_PERC,    UAI_QUES,     KC_D,     UAI_COLO,  KC_J,     KC_X,     KC_DOT,
                                KC_ESC,   UAI_DOLLAR,UAI_EURO, KC_NO,    KC_NO,
     // right thumb
     KC_NO,     KC_NO,
