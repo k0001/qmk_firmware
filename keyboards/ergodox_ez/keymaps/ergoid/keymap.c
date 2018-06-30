@@ -38,6 +38,7 @@
 #define UAI_RBANG S(KC_1) // !
 #define UAI_AMP S(KC_7) // &
 #define UAI_DOLLAR S(KC_4) // $
+#define UAI_EURO RALT(KC_5) // €
 #define UAI_PERC S(KC_5) // %
 #define UAI_USCOR S(KC_MINUS) // _
 #define UAI_PLUS S(KC_EQL) // +
@@ -113,13 +114,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.
  * |  [   |   ]  |   "" |   !  |   <  |  >   | =      |
  * |------+------+------+------+------+------+--------|
- * |  \   |   b  |   l  |   o  |   w  |  x   | )      |
+ * |  \   |   b  |   l  |   o  |   w  |  '   | )      |
  * |      |------+------+------+------+------+--------|
- * |------|   c  |   n  |   e  |   u  |  i   | .;     |
+ * |------|   c  |   n  |   e  |   u  |  i   | y      |
  * |  %   |------+------+------+------+------+--------|
- * |      |   ?  |   d  |   :  |   j  |  y   | $      |
+ * |      |   ?  |   d  |   :  |   j  |  x   | .      |
  * `-------------+------+------+------+------+--------'
- *               |  Esc |   '  |      |      |      |
+ *               |  Esc |   $  |   €  |      |      |
  *               `----------------------------------'
  * Left:                        Right:
  *        ,-------------.       ,-------------.
@@ -146,10 +147,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     // right hand
     KC_LBRACKET, KC_RBRACKET,  UAI_DQUO, UAI_RBANG, UAI_LANG, UAI_RANG, KC_EQL,
-    KC_BSLS,     KC_B,         KC_L,     KC_O,      KC_W,     KC_X,     UAI_RPAR,
-                 KC_C,         KC_N,     KC_E,      KC_U,     KC_I,     KC_DOT,
-    UAI_PERC,    UAI_QUES,     KC_D,     UAI_COLO,  KC_J,     KC_Y,     UAI_DOLLAR,
-                               KC_ESC,   KC_QUOT,   KC_NO,    KC_NO,    KC_NO,
+    KC_BSLS,     KC_B,         KC_L,     KC_O,      KC_W,     KC_QUOT,  UAI_RPAR,
+                 KC_C,         KC_N,     KC_E,      KC_U,     KC_I,     KC_Y,
+    UAI_PERC,    UAI_QUES,     KC_D,     UAI_COLO,  KC_J,     KC_Y,     KC_DOT,
+                               KC_ESC,   UAI_DOLLAR,UAI_EURO, KC_NO,    KC_NO,
     // right thumb
     KC_NO,     KC_NO,
     KC_NO,     KC_NO,    KC_NO,
