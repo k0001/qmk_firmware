@@ -102,13 +102,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.
  * |      | |   &  |   *  |   -  |   @  |   ^  |   ~  |
  * |--------+------+------+------+------+-------------|
- * |      ( |   /  |   f  |   r  |   p  |   v  |   +  |
+ * |      ( |   x  |   f  |   r  |   p  |   v  |   +  |
  * |--------+------+------+------+------+------|      |
  * | LAY4 , |   a  |   s  |   h  |   t  |   g  |------|
  * |--------+------+------+------+------+------|   #  |
- * |      { |   q  |   z  |   }  |   m  |   k  |      |
+ * | LCTL . |   q  |   z  |   :  |   m  |   k  |      |
  * `--------+------+------+------+------+-------------'
- *   |      |      |      |  `   |   _  |
+ *   | TAB  |      |      |  `   |LALT _|
  *   `----------------------------------'
  * Right:
  * ,--------------------------------------------------.
@@ -118,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |      |------+------+------+------+------+--------|
  * |------|   c  |   n  |   e  |   u  |  i   | y      |
  * |  %   |------+------+------+------+------+--------|
- * |      |   ?  |   d  |   :  |   j  |  x   | .      |
+ * |      |   ?  |   d  |   {  |   }  |  j   | /      |
  * `-------------+------+------+------+------+--------'
  *               |  Esc |   $  |   €  |      |      |
  *               `----------------------------------'
@@ -126,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *        ,-------------.       ,-------------.
  *        |      |      |       |      |        |
  * ,------|------|------|       |------+--------+------.
- * |      |      |      |       |      |        |      |
+ * |      |      |      |       |PrtScr|        |      |
  * |------|------|------|       |------|--------|------|
  * | Space| LAY2 | Enter|       |      | LAY1   |Backsp|
  * `--------------------'       `----------------------'
@@ -135,11 +135,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [LAY0] = LAYOUT_ergodox_80(
     // left hand
-    UAI_VERTB,            UAI_AMP,   UAI_STAR, KC_MINUS,   UAI_AT,  UAI_CAROT, UAI_TILDE,
-    UAI_LPAR,             KC_SLSH,   KC_F,      KC_R,      KC_P,    KC_V,      UAI_PLUS,
-    LT(LAY4, KC_COMMA),   KC_A,      KC_S,      KC_H,      KC_T,    KC_G,
-    UAI_LCRB,             KC_Q,      KC_Z,      UAI_RCRB,  KC_M,    KC_K,      UAI_HASH,
-    KC_NO,                KC_NO,     MY_S_COMMA,KC_GRV,    UAI_USCOR,
+    UAI_VERTB,            UAI_AMP,   UAI_STAR, KC_MINUS,   UAI_AT,                  UAI_CAROT, UAI_TILDE,
+    UAI_LPAR,             KC_X,      KC_F,      KC_R,      KC_P,                    KC_V,      UAI_PLUS,
+    LT(LAY4, KC_COMMA),   KC_A,      KC_S,      KC_H,      KC_T,                    KC_G,
+    MT(MOD_LCTL, KC_DOT), KC_Q,      KC_Z,      UAI_COLO,  KC_M,                    KC_K,      UAI_HASH,
+    KC_TAB,               KC_NO,     MY_S_COMMA,KC_GRV,    MT(MOD_LALT, UAI_USCOR),
     // left thumb
             KC_NO,   KC_NO,
     KC_NO,  KC_NO,   KC_NO,
@@ -149,11 +149,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LBRACKET, KC_RBRACKET,  UAI_DQUO, UAI_RBANG, UAI_LANG, UAI_RANG, KC_EQL,
     KC_BSLS,     KC_B,         KC_L,     KC_O,      KC_W,     KC_QUOT,  UAI_RPAR,
                  KC_C,         KC_N,     KC_E,      KC_U,     KC_I,     KC_Y,
-    UAI_PERC,    UAI_QUES,     KC_D,     UAI_COLO,  KC_J,     KC_X,     KC_DOT,
+    UAI_PERC,    UAI_QUES,     KC_D,     UAI_LCRB,  UAI_RCRB, KC_J,     KC_SLSH,
                                KC_ESC,   UAI_DOLLAR,UAI_EURO, KC_NO,    KC_NO,
     // right thumb
     KC_NO,     KC_NO,
-    KC_NO,     KC_NO,    KC_NO,
+    KC_PSCR,   KC_NO,    KC_NO,
     KC_NO,     MO(LAY1), KC_BSPACE
     ),
 
