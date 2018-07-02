@@ -108,7 +108,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|   #  |
  * | LCTL . |   q  |   z  |   :  |   m  |   k  |      |
  * `--------+------+------+------+------+-------------'
- *   | TAB  |      |      |  `   |LALT _|
+ *   | TAB  |      |      |TAB ` |   _  |
  *   `----------------------------------'
  * Right:
  * ,--------------------------------------------------.
@@ -135,11 +135,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [LAY0] = LAYOUT_ergodox_80(
     // left hand
-    UAI_VERTB,            UAI_AMP,   UAI_STAR, KC_MINUS,   UAI_AT,                  UAI_CAROT, UAI_TILDE,
-    UAI_LPAR,             KC_X,      KC_F,      KC_R,      KC_P,                    KC_V,      UAI_PLUS,
-    LT(LAY4, KC_COMMA),   KC_A,      KC_S,      KC_H,      KC_T,                    KC_G,
-    MT(MOD_LCTL, KC_DOT), KC_Q,      KC_Z,      UAI_COLO,  KC_M,                    KC_K,      UAI_HASH,
-    KC_TAB,               KC_NO,     MY_S_COMMA,KC_GRV,    MT(MOD_LALT, UAI_USCOR),
+    UAI_VERTB,            UAI_AMP,   UAI_STAR,  KC_MINUS,                UAI_AT,                  UAI_CAROT, UAI_TILDE,
+    UAI_LPAR,             KC_X,      KC_F,      KC_R,                    KC_P,                    KC_V,      UAI_PLUS,
+    LT(LAY4, KC_COMMA),   KC_A,      KC_S,      KC_H,                    KC_T,                    KC_G,
+    MT(MOD_LCTL, KC_DOT), KC_Q,      KC_Z,      UAI_COLO,                KC_M,                    KC_K,      UAI_HASH,
+    KC_TAB,               KC_NO,     MY_S_COMMA,MT(MOD_LALT, KC_GRV),    UAI_USCOR,
     // left thumb
             KC_NO,   KC_NO,
     KC_NO,  KC_NO,   KC_NO,
