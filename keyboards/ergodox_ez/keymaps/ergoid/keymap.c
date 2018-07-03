@@ -70,6 +70,9 @@
 #define UAI_DEAD_OGONEK S(RALT(KC_8)) // ◌̨ – ogonek
 #define UAI_DEAD_CEDILLA S(RALT(KC_5)) // ◌̧ – cedilla
 
+#define KC_BRDN 0xE8 // Screen brightness down
+#define KC_BRUP 0xE9 // Screen brightness up
+
 
 // Right Control is our Compose Key.
 #define SS_COMPOSE(string) SS_DOWN(X_RCTRL) string SS_UP(X_RCTRL)
@@ -337,9 +340,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [LAY4] = LAYOUT_ergodox_80(
     // left hand
     KC_F1,    KC_F2,   KC_F3,   KC_BTN3, KC_F4,   KC_F5,   KC_F6,
-    KC_SPC,   KC_TAB,  KC_BTN1, KC_MS_U, KC_BTN2, KC_PGUP, BL_INC,
+    KC_SPC,   KC_TAB,  KC_BTN1, KC_MS_U, KC_BTN2, KC_PGUP, KC_NO,
     KC_ENTER, KC_WBAK, KC_MS_L, KC_MS_D, KC_MS_R, KC_PGDN,
-    KC_MPLY,  KC_MPRV, KC_MNXT, KC_UP,   KC_DEL,  KC_BSPC, BL_DEC,
+    KC_MPLY,  KC_MPRV, KC_MNXT, KC_UP,   KC_DEL,  KC_BSPC, KC_NO,
     TO(LAY0), KC_NO,   KC_LEFT, KC_DOWN, KC_RIGHT,
     // left thumb
              KC_NO,   KC_NO,
@@ -347,9 +350,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LSFT, KC_LALT, KC_LCTL,
     // right hand
     KC_F7,   KC_F8,    KC_F9,   KC_BTN3,KC_F10,   KC_F11,   KC_F12,
-    BL_INC,  KC_PGUP,  KC_BTN1, KC_MS_U,KC_BTN2,  KC_TAB,   KC_SPC,
+    KC_NO,   KC_PGUP,  KC_BTN1, KC_MS_U,KC_BTN2,  KC_TAB,   KC_SPC,
              KC_PGDN,  KC_MS_L, KC_MS_D,KC_MS_R,  KC_WBAK,  KC_ENTER,
-    BL_DEC,  KC_BSPC,  KC_DEL,  KC_UP,  KC_VOLD,  KC_VOLU,  KC_MUTE,
+    KC_NO,   KC_BSPC,  KC_DEL,  KC_UP,  KC_VOLD,  KC_VOLU,  KC_MUTE,
                        KC_LEFT, KC_DOWN,KC_RIGHT, KC_NO,    TO(LAY0),
     // right thumb
     KC_NO,   KC_NO,
@@ -398,7 +401,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
-        // On key down
+        /* On key down */
         switch (keycode) {
         // Compose key stuff.
         case MY_S_COMMA:   SEND_COMPOSE(";s"); return false;
@@ -418,6 +421,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case MY_A_BREVE:   SEND_COMPOSE("ba"); return false;
         case MY_A_BREVE_U: SEND_COMPOSE("bA"); return false;
         case MY_ESZET_U:   SEND_COMPOSE("SS"); return false;
+        default: break;
+        }
+    } else {
+        /* On key down */
+        switch (keycode) {
         default: break;
         }
     }
