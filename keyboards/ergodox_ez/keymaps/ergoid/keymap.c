@@ -128,7 +128,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,------|------|------|       |------+--------+------.
  * |      | End  | PgDn |       |PrtScr| RGui   |Delete|
  * |------|------|------|       |------|--------|------|
- * | Space| LAY2 |      |       |      | LAY1   |Backsp|
+ * | Space| LAY2 | Enter|       |      | LAY1   |Backsp|
  * `--------------------'       `----------------------'
  */
 [LAY0] = LAYOUT_ergodox_80(
@@ -141,13 +141,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // left thumb
             KC_HOME, KC_PGUP,
     KC_NO,  KC_END,  KC_PGDN,
-    KC_SPC, MO(LAY2),KC_NO,
+    KC_SPC, MO(LAY2),KC_ENTER,
 
     // right hand
     KC_LBRACKET, KC_RBRACKET,  UAI_DQUO, UAI_RBANG, UAI_LANG, UAI_RANG, KC_EQL,
     KC_BSLS,     KC_B,         KC_L,     KC_O,      KC_W,     KC_QUOT,  UAI_RPAR,
                  KC_C,         KC_N,     KC_E,      KC_U,     KC_I,     KC_Y,
-    UAI_PERC,    UAI_QUES,     KC_D,     UAI_COLO,  KC_UP,    KC_J,     KC_SLSH,
+    UAI_DOLLAR,  UAI_QUES,     KC_D,     UAI_COLO,  KC_UP,    KC_J,     KC_SLSH,
                                KC_ESC,   KC_LEFT,   KC_DOWN,  KC_RIGHT, KC_ENTER,
     // right thumb
     KC_RSFT,   KC_INSERT,
@@ -179,7 +179,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |  $   |------+------+------+------+------+--------|
  * |      |   ?  |   D  |   ;  |  UP  |  J   | /      |
  * `-------------+------+------+------+------+--------'
- *               |  Esc | Left | Down | Right|      |
+ *               |  Esc | Left | Down | Right| Enter|
  *               `----------------------------------'
  * Left:                        Right:
  *        ,-------------.       ,---------------.
