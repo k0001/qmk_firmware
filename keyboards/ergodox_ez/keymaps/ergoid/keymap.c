@@ -70,6 +70,10 @@
 #define UAI_DEAD_OGONEK S(RALT(KC_8)) // ◌̨ – ogonek
 #define UAI_DEAD_CEDILLA S(RALT(KC_5)) // ◌̧ – cedilla
 
+#define UAI_BRUP KC_F14 // brightness up
+#define UAI_BRDN KC_F15 // brightness down
+
+
 // Right Control is our Compose Key.
 #define SS_COMPOSE(string) SS_DOWN(X_RCTRL) string SS_UP(X_RCTRL)
 #define SEND_COMPOSE(string) SEND_STRING(SS_COMPOSE(string))
@@ -96,7 +100,7 @@ enum my_keycodes {
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-/* Layer 0: ASCII and programming layer.
+/* LAY0: ASCII and programming layer.
  *
  * Left:
  * ,--------------------------------------------------.
@@ -155,7 +159,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,    MO(LAY1), KC_BSPC
     ),
 
-/* Layer 1: Uppercase, numbers.
+/* LAY1: Uppercase, numbers.
  *
  * Left:
  * ,--------------------------------------------------.
@@ -214,7 +218,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS, KC_TRNS,  KC_TRNS
     ),
 
-/* Layer 2: Letters and accents of latin european languages.
+/* LAY2: Letters and accents of latin european languages.
  *
  * Left:
  * ,--------------------------------------------------.
@@ -273,7 +277,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO, MO(LAY3), KC_NO
     ),
 
-/* Layer 3: Letters of LAY2 in uppercase. */
+/* LAY3: Letters of LAY2 in uppercase. */
 [LAY3] = LAYOUT_ergodox_80(
     // left hand
     KC_TRNS,      KC_TRNS,        KC_TRNS,      KC_TRNS,KC_TRNS,       KC_TRNS, KC_TRNS,
@@ -298,16 +302,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS, KC_TRNS, KC_TRNS
     ),
 
-/* Layer 4: Media keys, Fn keys, mouse.
+/* LAY4: Media keys, Fn keys, mouse.
  *
  * Left hand:
  * ,--------------------------------------------------.
  * |    F1  |   F2 |  F3  | Btn3 |  F4  |  F5  |  F6  |
  * |--------+------+------+------+------+-------------|
- * | Space  | Tab  | Btn1 | MsUp | Btn2 | PgUp |      |
+ * | Space  | Tab  | Btn1 | MsUp | Btn2 | PgUp | BrUp |
  * |--------+------+------+------+------+------|      |
  * | Enter  | WBack|MsLeft|MsDown|MsRght| PgDn |------|
- * |--------+------+------+------+------+------|      |
+ * |--------+------+------+------+------+------| BrDn |
  * | Play   | Prev | Next |  Up  | Del  | Bspc |      |
  * `--------+------+------+------+------+-------------'
  *   | LAY0 |      | Left | Down | Right|
@@ -316,10 +320,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.
  * |  F7  |  F8  |  F9  | Btn3 |  F10 |  F11 | F12    |
  * |------+------+------+------+------+------+--------|
- % |      | PgUp | Btn1 | MsUp | Btn2 | Tab  | Space  |
+ % | BrUp | PgUp | Btn1 | MsUp | Btn2 | Tab  | Space  |
  * |      |------+------+------+------+------+--------|
  * |------| PgDn | MsLft| MsDn | MsRgt| WBack| Enter  |
- * |      |------+------+------+------+------+--------|
+ * | BrDn |------+------+------+------+------+--------|
  * |      | Bspc | Del  |  Up  | VolDn| VolUp| Mute   |
  * `-------------+------+------+------+------+--------'
  *               | Left | Down | Right|      | LAY0 |
@@ -336,9 +340,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [LAY4] = LAYOUT_ergodox_80(
     // left hand
     KC_F1,    KC_F2,   KC_F3,   KC_BTN3, KC_F4,   KC_F5,   KC_F6,
-    KC_SPC,   KC_TAB,  KC_BTN1, KC_MS_U, KC_BTN2, KC_PGUP, KC_NO,
+    KC_SPC,   KC_TAB,  KC_BTN1, KC_MS_U, KC_BTN2, KC_PGUP, UAI_BRUP,
     KC_ENTER, KC_WBAK, KC_MS_L, KC_MS_D, KC_MS_R, KC_PGDN,
-    KC_MPLY,  KC_MPRV, KC_MNXT, KC_UP,   KC_DEL,  KC_BSPC, KC_NO,
+    KC_MPLY,  KC_MPRV, KC_MNXT, KC_UP,   KC_DEL,  KC_BSPC, UAI_BRDN,
     TO(LAY0), KC_NO,   KC_LEFT, KC_DOWN, KC_RIGHT,
     // left thumb
              KC_NO,   KC_NO,
@@ -346,9 +350,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LSFT, KC_LALT, KC_LCTL,
     // right hand
     KC_F7,   KC_F8,    KC_F9,   KC_BTN3,KC_F10,   KC_F11,   KC_F12,
-    KC_NO,   KC_PGUP,  KC_BTN1, KC_MS_U,KC_BTN2,  KC_TAB,   KC_SPC,
+    UAI_BRUP,KC_PGUP,  KC_BTN1, KC_MS_U,KC_BTN2,  KC_TAB,   KC_SPC,
              KC_PGDN,  KC_MS_L, KC_MS_D,KC_MS_R,  KC_WBAK,  KC_ENTER,
-    KC_NO,   KC_BSPC,  KC_DEL,  KC_UP,  KC_VOLD,  KC_VOLU,  KC_MUTE,
+    UAI_BRDN,KC_BSPC,  KC_DEL,  KC_UP,  KC_VOLD,  KC_VOLU,  KC_MUTE,
                        KC_LEFT, KC_DOWN,KC_RIGHT, KC_NO,    TO(LAY0),
     // right thumb
     KC_NO,   KC_NO,
@@ -356,7 +360,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_RCTL, KC_RALT, KC_RSFT
     ),
 
-/* Layer 5: numeric keypad.
+/* LAY5: Numeric keypad.
  *
  * Right:
  * ,--------------------------------------------------.
