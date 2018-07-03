@@ -14,6 +14,7 @@
 #define LAY3 3 // Letters of LAY2 in uppercase.
 #define LAY4 4 // Media keys, Fn keys, mouse, keypad.
 #define LAY5 5 // Like LAY4, for TG() purposes.
+#define LAY6 6 // Vim HJKL stuff
 
 // us altgr-intl keycodes
 #define UAI_STAR S(KC_8) // *
@@ -128,7 +129,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,------|------|------|       |------+--------+------.
  * |      | End  | PgDn |       |PrtScr| RGui   |Delete|
  * |------|------|------|       |------|--------|------|
- * | Space| LAY2 | Enter|       |      | LAY1   |Backsp|
+ * | Space| LAY2 | Enter|       |      | LAY1   |LAY6  |
+ * |      |      |      |       |      |        |Backsp|
  * `--------------------'       `----------------------'
  */
 [LAY0] = LAYOUT_ergodox_80(
@@ -152,7 +154,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // right thumb
     KC_RSFT,   KC_INSERT,
     KC_PSCR,   KC_RGUI,  KC_DELETE,
-    KC_NO,     MO(LAY1), KC_BSPACE
+    KC_NO,     MO(LAY1), LT(LAY6, KC_BSPACE)
     ),
 
 /* Layer 1: Uppercase, numbers, some extra symbols (€)
@@ -187,7 +189,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,------|------|------|       |------+--------+------.
  * |      | End  | PgDn |       |PrtScr| RGui   |Delete|
  * |------|------|------|       |------|--------|------|
- * | Space| LAY3 | Enter|       |      | LAY1   |Backsp|
+ * | Space| LAY3 | Enter|       |      | LAY1   |LAY6  |
+ * |      |      |      |       |      |        |Backsp|
  * `--------------------'       `----------------------'
  */
 [LAY1] = LAYOUT_ergodox_80(
@@ -379,6 +382,63 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO,   KC_NO,   KC_NO,
     KC_NO,   KC_NO,   KC_NO
     ),
+/* Layer 6: Vim HJKL stuff.
+ *
+ * Left hand:
+ * ,--------------------------------------------------.
+ * |        |      |      |      |      |      |      |
+ * |--------+------+------+------+------+-------------|
+ * |        |      |      |      |      |      |      |
+ * |--------+------+------+------+------+------|      |
+ * |        |      |      |      |      |      |------|
+ * |--------+------+------+------+------+------|      |
+ * |        |      |      |      |      |      |      |
+ * `--------+------+------+------+------+-------------'
+ *   |      |      |      |      |      |
+ *   `----------------------------------'
+ * Right:
+ * ,--------------------------------------------------.
+ * |      |      |      |      |      |      |        |
+ * |------+------+------+------+------+------+--------|
+ * |      |      |      |      |      |      |        |
+ * |      |------+------+------+------+------+--------|
+ * |------|      |   h  |   j  |   k  |   l  |        |
+ * |      |------+------+------+------+------+--------|
+ * |      |      |      |      |      |      |        |
+ * `-------------+------+------+------+------+--------'
+ *               |      |      |      |      |      |
+ *               `----------------------------------'
+ * Left:                        Right:
+ *        ,-------------.       ,-------------.
+ *        |      |      |       |      |        |
+ * ,------|------|------|       |------+--------+------.
+ * |      |      |      |       |      |        |      |
+ * |------|------|------|       |------|--------|------|
+ * |      |      |      |       |      |        |      |
+ * `--------------------'       `----------------------'
+ */
+[LAY6] = LAYOUT_ergodox_80(
+    // left hand
+    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+    // left thumb
+             KC_NO,   KC_NO,
+    KC_NO,   KC_NO,   KC_NO,
+    KC_BTN1, KC_NO,   KC_NO,
+    // right hand
+    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+             KC_NO,   KC_H,    KC_J,    KC_K,    KC_L,    KC_NO,
+    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+                      KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+    // right thumb
+    KC_NO,   KC_NO,
+    KC_NO,   KC_NO,   KC_NO,
+    KC_NO,   KC_NO,   KC_NO
+    )
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
