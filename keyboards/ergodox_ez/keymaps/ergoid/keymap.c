@@ -70,9 +70,6 @@
 #define UAI_DEAD_OGONEK S(RALT(KC_8)) // ◌̨ – ogonek
 #define UAI_DEAD_CEDILLA S(RALT(KC_5)) // ◌̧ – cedilla
 
-#define UAI_BRUP KC_F14 // brightness up
-#define UAI_BRDN KC_F15 // brightness down
-
 
 // Right Control is our Compose Key.
 #define SS_COMPOSE(string) SS_DOWN(X_RCTRL) string SS_UP(X_RCTRL)
@@ -121,10 +118,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |  \   |   b  |   l  |   o  |   w  |  '   | )      |
  * |      |------+------+------+------+------+--------|
  * |------|   c  |   n  |   e  |   u  |  i   | y      |
- * |  $   |------+------+------+------+------+--------|
+ * | LAY5 |------+------+------+------+------+--------|
  * |      |   ?  |   d  |  Up  |   ;  |  j   | /      |
  * `-------------+------+------+------+------+--------'
- *               | Left | Down | Right| LAY5 | LAY4 |
+ *               | Left | Down | Right|  $   | LAY4 |
  *               `----------------------------------'
  * Left:                        Right:
  *        ,-------------.       ,---------------.
@@ -148,11 +145,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_SPC, MO(LAY2),KC_ENTER,
 
     // right hand
-    KC_LBRACKET, KC_RBRACKET,  UAI_DQUO, UAI_RBANG, UAI_LANG, UAI_RANG, KC_EQL,
-    KC_BSLS,     KC_B,         KC_L,     KC_O,      KC_W,     KC_QUOT,  UAI_RPAR,
-                 KC_C,         KC_N,     KC_E,      KC_U,     KC_I,     KC_Y,
-    UAI_DOLLAR,  UAI_QUES,     KC_D,     KC_UP,     UAI_COLO, KC_J,     KC_SLSH,
-                               KC_LEFT,  KC_DOWN,   KC_RIGHT, TO(LAY5), TO(LAY4),
+    KC_LBRACKET, KC_RBRACKET,  UAI_DQUO, UAI_RBANG, UAI_LANG, UAI_RANG,  KC_EQL,
+    KC_BSLS,     KC_B,         KC_L,     KC_O,      KC_W,     KC_QUOT,   UAI_RPAR,
+                 KC_C,         KC_N,     KC_E,      KC_U,     KC_I,      KC_Y,
+    TO(LAY5),    UAI_QUES,     KC_D,     KC_UP,     UAI_COLO, KC_J,      KC_SLSH,
+                               KC_LEFT,  KC_DOWN,   KC_RIGHT, UAI_DOLLAR,TO(LAY4),
     // right thumb
     KC_RSFT,   KC_INSERT,
     KC_PSCR,   KC_RGUI,  KC_DELETE,
@@ -340,9 +337,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [LAY4] = LAYOUT_ergodox_80(
     // left hand
     KC_F1,    KC_F2,   KC_F3,   KC_BTN3, KC_F4,   KC_F5,   KC_F6,
-    KC_SPC,   KC_TAB,  KC_BTN1, KC_MS_U, KC_BTN2, KC_PGUP, UAI_BRUP,
+    KC_SPC,   KC_TAB,  KC_BTN1, KC_MS_U, KC_BTN2, KC_PGUP, BL_INC,
     KC_ENTER, KC_WBAK, KC_MS_L, KC_MS_D, KC_MS_R, KC_PGDN,
-    KC_MPLY,  KC_MPRV, KC_MNXT, KC_UP,   KC_DEL,  KC_BSPC, UAI_BRDN,
+    KC_MPLY,  KC_MPRV, KC_MNXT, KC_UP,   KC_DEL,  KC_BSPC, BL_DEC,
     TO(LAY0), KC_NO,   KC_LEFT, KC_DOWN, KC_RIGHT,
     // left thumb
              KC_NO,   KC_NO,
@@ -350,9 +347,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LSFT, KC_LALT, KC_LCTL,
     // right hand
     KC_F7,   KC_F8,    KC_F9,   KC_BTN3,KC_F10,   KC_F11,   KC_F12,
-    UAI_BRUP,KC_PGUP,  KC_BTN1, KC_MS_U,KC_BTN2,  KC_TAB,   KC_SPC,
+    BL_INC,  KC_PGUP,  KC_BTN1, KC_MS_U,KC_BTN2,  KC_TAB,   KC_SPC,
              KC_PGDN,  KC_MS_L, KC_MS_D,KC_MS_R,  KC_WBAK,  KC_ENTER,
-    UAI_BRDN,KC_BSPC,  KC_DEL,  KC_UP,  KC_VOLD,  KC_VOLU,  KC_MUTE,
+    BL_DEC,  KC_BSPC,  KC_DEL,  KC_UP,  KC_VOLD,  KC_VOLU,  KC_MUTE,
                        KC_LEFT, KC_DOWN,KC_RIGHT, KC_NO,    TO(LAY0),
     // right thumb
     KC_NO,   KC_NO,
