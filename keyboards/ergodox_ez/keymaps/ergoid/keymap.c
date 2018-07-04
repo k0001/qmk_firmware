@@ -120,7 +120,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+--------|
  * |  \   |   b  |   l  |   o  |   w  |  '   | )      |
  * |      |------+------+------+------+------+--------|
- * |------|   c  |   n  |   e  |   u  |  i   | y      |
+ * |------|   c  |   n  |   e  |   u  |  i   | RGUI y |
  * | LAY5 |------+------+------+------+------+--------|
  * |      |   ?  |   d  |  Up  |   ;  |  j   | /      |
  * `-------------+------+------+------+------+--------'
@@ -150,7 +150,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // right hand
     KC_LBRACKET, KC_RBRACKET,  UAI_DQUO, UAI_RBANG, UAI_LANG, UAI_RANG,  KC_EQL,
     KC_BSLS,     KC_B,         KC_L,     KC_O,      KC_W,     KC_QUOT,   UAI_RPAR,
-                 KC_C,         KC_N,     KC_E,      KC_U,     KC_I,      KC_Y,
+                 KC_C,         KC_N,     KC_E,      KC_U,     KC_I,      MT(MOD_RGUI, KC_Y),
     TO(LAY5),    UAI_QUES,     KC_D,     KC_UP,     UAI_COLO, KC_J,      KC_SLSH,
                                KC_LEFT,  KC_DOWN,   KC_RIGHT, UAI_DOLLAR,TO(LAY4),
     // right thumb
