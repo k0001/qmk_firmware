@@ -1,0 +1,43 @@
+default xkb_keycodes "ergodox80" {
+  minimum = 8;
+  maximum = 255;
+
+  // Left hand, first row from top, left to right.
+  <L11> = 38; <L12> = 56; <L13> = 54; <L14> = 40; <L15> = 26; <L16> = 41; <L17> = 42;
+  // Left hand, second row from top, left to right.
+  <L21> = 43; <L22> = 31; <L23> = 44; <L24> = 45; <L25> = 46; <L26> = 58; <L27> = 57;
+  // Left hand, third row from top, left to right.
+  <L31> = 32; <L32> = 33; <L33> = 24; <L34> = 27; <L35> = 39; <L36> = 28;
+  // Left hand, fourth row from top, left to right.
+  <L41> = 37; <L42> = 30; <L43> = 55; <L44> = 25; <L45> = 53; <L46> = 29; <L47> = 52;
+  // Left hand, fifth row from top, left to right.
+  <L51> = 10; <L52> = 11; <L53> = 12; <L54> = 13; <L55> = 14;
+  // Left thumb, first row from top, left to right.
+  <LT11> = 15; <LT12> = 16;
+  // Left thumb, second row from top, left to right.
+  <LT21> = 17; <LT22> = 18; <LT23> = 19;
+  // Left thumb, third row from top, left to right.
+  <LT31> = 36; <LT32> = 50; <LT33> = 9;
+
+  // Right hand, first row from top, left to right.
+  <R11> = 22; <R12> = 23; <R13> = 65; <R14> = 20; <R15> = 21; <R16> = 34; <R17> = 35;
+  // Right hand, second row from top, left to right.
+  <R21> = 51; <R22> = 47; <R23> = 48; <R24> = 49; <R25> = 59; <R26> = 60; <R27> = 61;
+  // Right hand, third row from top, left to right.
+  <R31> = 66; <R32> = 67; <R33> = 68; <R34> = 69; <R35> = 70; <R36> = 71;
+  // Right hand, fourth row from top, left to right.
+  <R41> = 72; <R42> = 73; <R43> = 74; <R44> = 75; <R45> = 76; <R46> = 95; <R47> = 134;
+  // Right hand, fifth row from top, left to right.
+  <R51> = 95; <R52> = 96; <R53> = 107; <R54> = 78; <R55> = 127;
+  // Right thumb, first row from top, left to right.
+  <RT11> = 118; <RT12> = 110;
+  // Right thumb, second row from top, left to right.
+  <RT21> = 112; <RT22> = 119; <RT23> = 115;
+  // Right thumb, third row from top, left to right.
+  <RT31> = 117; <RT32> = 108; <RT33> = 114;
+
+  // Left modifiers
+  <LCTL> = 37; <LSFT> = 50; <LALT> = 64; <LGUI> = 133;
+  // Right modifiers
+  <RCTL> = 105; <RSFT> = 62; <RALT> = 108; <RGUI> = 134;
+};
