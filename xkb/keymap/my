@@ -1,0 +1,8 @@
+xkb_keymap "my" {
+  xkb_keycodes        { include "ergodox80" };
+  xkb_symbols         { include "ergoid80"  };
+  xkb_types           { include "complete"  };
+  xkb_compatibility   { include "complete"  };
+  xkb_geometry        { include "pc"        };
+};
+

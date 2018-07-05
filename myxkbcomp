@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -x
+dids=$(xinput -list | grep ErgoDox | grep keyboard | sed 's/.*id=\([0-9]\+\).*/\1/')
+for did in $dids; do
+  xkbcomp -i $did -I$PWD/xkb $PWD/xkb/keymap/my $DISPLAY
+done
+
+

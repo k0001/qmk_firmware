@@ -28,16 +28,12 @@ default xkb_keycodes "ergodox80" {
   // Right hand, fourth row from top, left to right.
   <R41> = 72; <R42> = 73; <R43> = 74; <R44> = 75; <R45> = 76; <R46> = 95; <R47> = 134;
   // Right hand, fifth row from top, left to right.
-  <R51> = 95; <R52> = 96; <R53> = 107; <R54> = 78; <R55> = 127;
+  <R51> = 96; <R52> = 107; <R53> = 78; <R54> = 127; <R55> = 118;
   // Right thumb, first row from top, left to right.
-  <RT11> = 118; <RT12> = 110;
+  <RT11> = 110; <RT12> = 112;
   // Right thumb, second row from top, left to right.
-  <RT21> = 112; <RT22> = 119; <RT23> = 115;
+  <RT21> = 119; <RT22> = 115; <RT23> = 117;
   // Right thumb, third row from top, left to right.
-  <RT31> = 117; <RT32> = 108; <RT33> = 114;
+  <RT31> = 114; <RT32> = 108; <RT33> = 113;
 
-  // Left modifiers
-  <LCTL> = 37; <LSFT> = 50; <LALT> = 64; <LGUI> = 133;
-  // Right modifiers
-  <RCTL> = 105; <RSFT> = 62; <RALT> = 108; <RGUI> = 134;
 };

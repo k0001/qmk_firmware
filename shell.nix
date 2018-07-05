@@ -1,5 +1,6 @@
 { pkgs ? import <nixpkgs> {}
-, avr ? true, arm ? true, teensy ? true }:
+, avr ? true, arm ? true, teensy ? true
+, xkb ? true }:
 
 with pkgs;
 let
@@ -20,7 +21,8 @@ stdenv.mkDerivation {
   buildInputs = [ dfu-programmer dfu-util diffutils git ]
     ++ lib.optional avr [ avrbinutils avrgcc avrlibc ]
     ++ lib.optional arm [ gcc-arm-embedded ]
-    ++ lib.optional teensy [ teensy-loader-cli ];
+    ++ lib.optional teensy [ teensy-loader-cli ]
+    ++ lib.optional xkb [ xorg.xkbcomp ] ;
 
   CFLAGS = lib.optional avr avr_incflags;
   ASFLAGS = lib.optional avr avr_incflags;
