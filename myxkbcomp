@@ -2,7 +2,8 @@
 set -x
 dids=$(xinput -list | grep ErgoDox | grep keyboard | sed 's/.*id=\([0-9]\+\).*/\1/')
 for did in $dids; do
-  xkbcomp -i $did -I$PWD/xkb $PWD/xkb/keymap/my $DISPLAY
+  xkbcomp -I$PWD/xkb $PWD/xkb/keymap/my -o /tmp/tmp.xkb -xkb || exit 1
+  xkbcomp -i $did /tmp/tmp.xkb -o "$DISPLAY"
 done
 
 

@@ -1,0 +1,13 @@
+default xkb_types "my_level5" {
+  include "completebasic"
+  // virtual_modifiers LevelThree,NumLock;
+  // type "FIVE_LEVEL" {
+  //   modifiers = Shift+LevelThree+NumLock;
+  //   map[None] = Level1;
+  //   map[Shift] = Level2;
+  //   map[LevelThree] = Level3;
+  //   map[Shift+LevelThree] = Level4;
+  //   map[NumLock] = Level5;
+  // };
+};
+
