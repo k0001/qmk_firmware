@@ -1,8 +1,9 @@
 default xkb_symbols "ergoid80" {
   name[Group1] = "Ergoid80";
+  key.type[Group1] = "EIGHT_LEVEL";
 
   // Left hand, first row from top, left to right.
-  key <L11> { [ ] };
+  key <L11> { [ a, b, c, d, e, f, g, h ] };
   key <L12> { [ ampersand, 1, degree ] };
   key <L13> { [ asterisk, 2, U201c, U2018 ] }; // “̛ ‘
   key <L14> { [ minus, 3, U201d, U2019 ] }; // ” ’
@@ -54,7 +55,7 @@ default xkb_symbols "ergoid80" {
 
   // Left thumb, third row from top, left to right.
   key <LT31> { [ space ] };
-  key <LT32> { [ Shift_L ] };
+  key <LT32> { [ Shift_L, Shift_L, Shift_L, Shift_L, Shift_L, Shift_L, Shift_L, Shift_L ] };
   key <LT33> { [ Return ] };
 
   // Right hand, first row from top, left to right.
@@ -97,7 +98,8 @@ default xkb_symbols "ergoid80" {
   key <R52> { [ Down, Down, Next, U2193 ] }; // ↓
   key <R53> { [ Right, Right, End, U2192 ] }; // →
   key <R54> { [ Escape ] };
-  key <R55> { [ ] };
+  key <R55> { [ ISO_Level5_Lock, ISO_Level5_Lock, ISO_Level5_Lock, ISO_Level5_Lock,
+                ISO_Level5_Lock, ISO_Level5_Lock, ISO_Level5_Lock, ISO_Level5_Lock  ] };
   // Right thumb, first row from top, left to right.
   key <RT11> { [ ] };
   key <RT12> { [ Multi_key ] };
@@ -109,13 +111,14 @@ default xkb_symbols "ergoid80" {
 
   // Right thumb, third row from top, left to right.
   key <RT31> { [ Tab ] };
-  key <RT32> { [ ISO_Level3_Shift ] };
+  key <RT32> { [ ISO_Level3_Shift, ISO_Level3_Shift, ISO_Level3_Shift, ISO_Level3_Shift,
+                 ISO_Level3_Shift, ISO_Level3_Shift, ISO_Level3_Shift, ISO_Level3_Shift  ] };
   key <RT33> { [ BackSpace ] };
 
   modifier_map Shift { Shift_L, Shift_R };
   modifier_map Control { Control_L, Control_R };
   modifier_map Mod1 { Alt_L };
-  // modifier_map Mod2 { ISO_Level5_Shift };
+  modifier_map Mod2 { ISO_Level5_Shift, ISO_Level5_Lock };
   modifier_map Mod4 { Super_L, Super_R };
   modifier_map Mod5 { ISO_Level3_Shift };
 };
