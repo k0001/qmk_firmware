@@ -113,9 +113,9 @@ default xkb_symbols "ergoid80" {
   key <RT32> { [ ISO_Level3_Shift ] };
   key <RT33> { [ BackSpace ] };
 
-  modifier_map Shift { Shift_L, Shift_R };
-  modifier_map Control { Control_L, Control_R };
-  modifier_map Mod4 { Super_L, Super_R };
+  modifier_map Shift { Shift_L };
+  modifier_map Control { Control_L };
+  modifier_map Mod4 { Super_L };
   modifier_map Mod5 { ISO_Level3_Shift };
 };
 
