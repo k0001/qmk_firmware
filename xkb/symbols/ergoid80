@@ -2,25 +2,25 @@ default xkb_symbols "ergoid80" {
   name[Group1] = "Ergoid80";
 
   // Left hand, first row from top, left to right.
-  key <L11> { [ bar ] };
-  key <L12> { [ ampersand, 1 ] };
-  key <L13> { [ asterisk, 2 ] };
-  key <L14> { [ minus, 3 ] };
-  key <L15> { [ at, 4 ] };
-  key <L16> { [ asciicircum, 5 ] };
-  key <L17> { [ asciitilde ] };
+  key <L11> { [ ] };
+  key <L12> { [ ampersand, 1, degree ] };
+  key <L13> { [ asterisk, 2, U201c, U2018 ] }; // “̛ ‘
+  key <L14> { [ minus, 3, U201d, U2019 ] }; // ” ’
+  key <L15> { [ numbersign, 4, at ] };
+  key <L16> { [ backslash, 5, U2013, U2014 ] }; // – —
+  key <L17> { [ XF86AudioMute, XF86AudioMicMute ] };
 
   // Left hand, second row from top, left to right.
-  key <L21> { [ parenleft ] };
+  key <L21> { [ parenleft, braceleft, dollar, EuroSign ] };
   key <L22> { [ x, X, ae, AE ] };
   key <L23> { [ f, F, U0219, U0218 ] }; // ș Ș
-  key <L24> { [ r, R, dead_grave ] };
+  key <L24> { [ r, R, dead_grave, ellipsis ] };
   key <L25> { [ p, P, U021B, U021A ] }; // ț Ț
   key <L26> { [ v, V ] };
-  key <L27> { [ plus ] };
+  key <L27> { [ XF86AudioRaiseVolume ] };
 
   // Left hand, third row from top, left to right.
-  key <L31> { [ comma, comma, U0103, U0102 ] }; // ă Ă
+  key <L31> { [ comma, plus, U0103, U0102 ] }; // ă Ă
   key <L32> { [ a, A, aacute, Aacute ] };
   key <L33> { [ s, S, ssharp, U1E9E ] }; // ẞ
   key <L34> { [ h, H, dead_macron ] };
@@ -28,29 +28,29 @@ default xkb_symbols "ergoid80" {
   key <L36> { [ g, G, dead_acute ] };
 
   // Left hand, fourth row from top, left to right.
-  key <L41> { [ Control_L, Control_L, aring, Aring ] };
+  key <L41> { [ period, asciitilde, aring, Aring ] };
   key <L42> { [ q, Q, atilde, Atilde ] };
   key <L43> { [ z, Z ] };
-  key <L44> { [ colon, dead_doubleacute ] };
-  key <L45> { [ m, M, dead_circumflex ] };
+  key <L44> { [ semicolon, semicolon, dead_doubleacute ] };
+  key <L45> { [ m, M, dead_circumflex, mu ] };
   key <L46> { [ k, K ] };
-  key <L47> { [ numbersign ] };
+  key <L47> { [ XF86AudioLowerVolume ] };
 
   // Left hand, fifth row from top, left to right.
-  key <L51> { [ Alt_L ] };
-  key <L52> { [ braceleft ] };
-  key <L53> { [ braceright ] };
-  key <L54> { [ grave ] };
-  key <L55> { [ Tab ] };
+  key <L51> { [ ] };
+  key <L52> { [ Alt_L ] };
+  key <L53> { [ ] };
+  key <L54> { [ Super_L ] };
+  key <L55> { [ Control_L ] };
 
   // Left thumb, first row from top, left to right.
-  key <LT11> { [ Home ] };
-  key <LT12> { [ Prior ] };
+  key <LT11> { [ XF86AudioPlay ] };
+  key <LT12> { [ XF86KbdBrightnessUp ] };
 
   // Left thumb, second row from top, left to right.
-  key <LT21> { [ ] };
-  key <LT22> { [ End ] };
-  key <LT23> { [ Next ] };
+  key <LT21> { [ XF86AudioPrev ] };
+  key <LT22> { [ XF86AudioNext ] };
+  key <LT23> { [ XF86KbdBrightnessDown ] };
 
   // Left thumb, third row from top, left to right.
   key <LT31> { [ space ] };
@@ -60,20 +60,20 @@ default xkb_symbols "ergoid80" {
   // Right hand, first row from top, left to right.
   key <R11> { [ bracketleft ] };
   key <R12> { [ bracketright, 6 ] };
-  key <R13> { [ quotedbl, 7 ] };
-  key <R14> { [ exclam, 8 ] };
-  key <R15> { [ less, 9 ] };
-  key <R16> { [ greater, 0 ] };
+  key <R13> { [ quotedbl, 7, U2200, U2203 ] }; // ∀ ∃
+  key <R14> { [ apostrophe, 8, grave ] };
+  key <R15> { [ less, 9, guillemotleft ] };
+  key <R16> { [ greater, 0, guillemotright ] };
   key <R17> { [ equal ] };
 
   // Right hand, second row from top, left to right.
-  key <R21> { [ backslash ] };
-  key <R22> { [ b, B ] };
+  key <R21> { [ ] };
+  key <R22> { [ b, B, U03bb, U039b ] }; // λ Λ
   key <R23> { [ l, L, U0142, U0141 ] }; // ł Ł
   key <R24> { [ o, O, oacute, Oacute ] };
   key <R25> { [ w, W, dead_caron ] };
-  key <R26> { [ apostrophe, apostrophe, oe, OE ] };
-  key <R27> { [ parenright ] };
+  key <R26> { [ underscore, asciicircum, oslash, Oslash ] };
+  key <R27> { [ parenright, braceright, sterling, U20BF ] }; // ₿
 
   // Right hand, third row from top, left to right.
   key <R31> { [ c, C, ccedilla, Ccedilla ] };
@@ -81,36 +81,36 @@ default xkb_symbols "ergoid80" {
   key <R33> { [ e, E, eacute, Eacute ] };
   key <R34> { [ u, U, uacute, Uacute ] };
   key <R35> { [ i, I, iacute, Iacute ] };
-  key <R36> { [ y, Y, oslash, Oslash] };
+  key <R36> { [ y, Y, yacute, Yacute ] };
 
   // Right hand, fourth row from top, left to right.
   key <R41> { [ ] };
-  key <R42> { [ question ] };
-  key <R43> { [ d, D, dead_ogonek ] };
-  key <R44> { [ Up, Up, dead_abovedot ] };
-  key <R45> { [ semicolon, semicolon, U016F, U016E ] }; // ů Ů
-  key <R46> { [ j, J, yacute, Yacute ] };
-  key <R47> { [ Super_R ] };
+  key <R42> { [ question, exclam, questiondown, exclamdown ] };
+  key <R43> { [ d, D, dead_ogonek, copyright ] };
+  key <R44> { [ Up, Up, Prior, U2191 ] }; // ↑
+  key <R45> { [ colon, colon, U016F, U016E ] }; // ů Ů
+  key <R46> { [ j, J, oe, OE ] };
+  key <R47> { [ slash, percent, dead_abovedot ] };
 
   // Right hand, fifth row from top, left to right.
-  key <R51> { [ Left ] };
-  key <R52> { [ Down ] };
-  key <R53> { [ Right ] };
-  key <R54> { [ dollar ] };
+  key <R51> { [ Left, Left, Home, U2190 ] }; // ←
+  key <R52> { [ Down, Down, Next, U2193 ] }; // ↓
+  key <R53> { [ Right, Right, End, U2192 ] }; // →
+  key <R54> { [ Escape ] };
   key <R55> { [ ] };
 
   // Right thumb, first row from top, left to right.
   key <RT11> { [ ] };
-  key <RT12> { [ Insert ] };
+  key <RT12> { [ Multi_key ] };
 
   // Right thumb, second row from top, left to right.
   key <RT21> { type = "PC_ALT_LEVEL2", symbols[Group1] = [ Print, Sys_Req ] };
-  key <RT22> { [ ] };
+  key <RT22> { [ Insert ] };
   key <RT23> { [ Delete ] };
 
   // Right thumb, third row from top, left to right.
-  key <RT31> { [ Escape ] };
-  key <RT32> { [ ISO_Level3_Shift, Multi_key ] };
+  key <RT31> { [ Tab ] };
+  key <RT32> { [ ISO_Level3_Shift ] };
   key <RT33> { [ BackSpace ] };
 
   modifier_map Shift { Shift_L, Shift_R };

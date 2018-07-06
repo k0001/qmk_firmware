@@ -5,9 +5,9 @@
 
 // Layers.
 enum my_layers {
-    LAY0 = 0, // normal
-    LAY1,     // mouse stuff
-    LAY2,     // numeric keypad
+    LAY0, // normal
+    LAY1, // mouse stuff
+    LAY2, // numeric keypad
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -15,24 +15,68 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // Left hand
     4,5,6,7,8,9,10,
     11,12,13,14,15,16,17,
-    18,19,20,21,22,23,
-    KC_LCTRL,24,25,26,27,28,29,
-    30,31,32,33,34,
+    LT(LAY2,18),19,20,21,22,23,
+    31,24,25,26,27,28,29,
+    30,KC_LALT,32,KC_LGUI,KC_LCTRL,
     // Left thumb
     35,36,
     37,38,39,
-    40,KC_LSHIFT,41,
+    40,KC_LSFT,41,
     // Right hand
     42,43,44,45,46,47,48,
-    49,51,52,53,54,55,56,
+    49 /*TO(LAY1)*/,51,52,53,54,55,56,
     57,58,59,60,61,62,
-    63,64,65,66,67,68,KC_RGUI,
-    69,70,71,72,73,
+    63 /*TO(LAY2)*/,64,65,66,67,68,69,
+    81,70,71,72,73,
     // Right thumb
     74,75,
     76,77,78,
-    79,KC_RALT,80
-    )
+    79,84,80
+    ),
+[LAY1] = LAYOUT_ergodox_80(
+    // Left hand
+    0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,
+    0,0,0,0,0,0,
+    0,0,0,0,0,0,0,
+    0,0,0,0,0,
+    // Left thumb
+    0,0,
+    0,0,0,
+    0,0,0,
+    // Right hand
+    0,0,0,0,0,0,0,
+    TO(LAY0),0,0,0,0,0,0,
+    0,0,0,0,0,0,
+    0,0,0,0,0,0,0,
+    0,0,0,0,0,
+    // Right thumb
+    0,0,
+    0,0,0,
+    0,0,0
+    ),
+[LAY2] = LAYOUT_ergodox_80(
+    // Left hand
+    0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,
+    0,0,0,0,0,0,
+    0,0,0,0,0,0,0,
+    0,0,0,0,0,
+    // Left thumb
+    0,0,
+    0,0,0,
+    0,0,0,
+    // Right hand
+    0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,
+    0,0,0,0,0,0,
+    TO(LAY0),0,0,0,0,0,0,
+    0,0,0,0,0,
+    // Right thumb
+    0,0,
+    0,0,0,
+    0,0,0
+    ),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {

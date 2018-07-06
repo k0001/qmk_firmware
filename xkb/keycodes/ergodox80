@@ -9,9 +9,9 @@ default xkb_keycodes "ergodox80" {
   // Left hand, third row from top, left to right.
   <L31> = 32; <L32> = 33; <L33> = 24; <L34> = 27; <L35> = 39; <L36> = 28;
   // Left hand, fourth row from top, left to right.
-  <L41> = 37; <L42> = 30; <L43> = 55; <L44> = 25; <L45> = 53; <L46> = 29; <L47> = 52;
+  <L41> = 11; <L42> = 30; <L43> = 55; <L44> = 25; <L45> = 53; <L46> = 29; <L47> = 52;
   // Left hand, fifth row from top, left to right.
-  <L51> = 10; <L52> = 11; <L53> = 12; <L54> = 13; <L55> = 14;
+  <L51> = 10; <L52> = 64; <L53> = 12; <L54> = 133; <L55> = 37;
   // Left thumb, first row from top, left to right.
   <LT11> = 15; <LT12> = 16;
   // Left thumb, second row from top, left to right.
@@ -26,14 +26,14 @@ default xkb_keycodes "ergodox80" {
   // Right hand, third row from top, left to right.
   <R31> = 66; <R32> = 67; <R33> = 68; <R34> = 69; <R35> = 70; <R36> = 71;
   // Right hand, fourth row from top, left to right.
-  <R41> = 72; <R42> = 73; <R43> = 74; <R44> = 75; <R45> = 76; <R46> = 95; <R47> = 134;
+  <R41> = 72; <R42> = 73; <R43> = 74; <R44> = 75; <R45> = 76; <R46> = 95; <R47> = 96;
   // Right hand, fifth row from top, left to right.
-  <R51> = 96; <R52> = 107; <R53> = 78; <R54> = 127; <R55> = 118;
+  <R51> = 116; <R52> = 107; <R53> = 78; <R54> = 127; <R55> = 118;
   // Right thumb, first row from top, left to right.
   <RT11> = 110; <RT12> = 112;
   // Right thumb, second row from top, left to right.
   <RT21> = 119; <RT22> = 115; <RT23> = 117;
   // Right thumb, third row from top, left to right.
-  <RT31> = 114; <RT32> = 108; <RT33> = 113;
+  <RT31> = 114; <RT32> = 106; <RT33> = 113;
 
 };
