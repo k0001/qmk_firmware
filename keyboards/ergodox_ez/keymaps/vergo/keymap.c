@@ -15,7 +15,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // Left hand
     4,5,6,7,8,9,10,
     11,12,13,14,15,16,17,
-    LT(LAY2,18),19,20,21,22,23,
+    18,19,20,21,22,23,
     31,24,25,26,27,28,29,
     30,KC_LALT,32,KC_LGUI,KC_LCTRL,
     // Left thumb
@@ -24,9 +24,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     40,KC_LSFT,41,
     // Right hand
     42,43,44,45,46,47,48,
-    TO(LAY1) /*49*/,51,52,53,54,55,56,
+    49,51,52,53,54,55,56,
     57,58,59,60,61,MT(MOD_LGUI,62),
-    TO(LAY2) /*63*/,64,65,66,67,68,69,
+    63,64,65,66,67,68,69,
     81,70,71,72,73,
     // Right thumb
     74,75,

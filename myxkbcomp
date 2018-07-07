@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-set -x
+xkbcomp -I$PWD/xkb $PWD/xkb/keymap/my -o /tmp/tmp.xkb -xkb || exit 1
 dids=$(xinput -list | grep ErgoDox | grep keyboard | sed 's/.*id=\([0-9]\+\).*/\1/')
+set -x
 for did in $dids; do
-  xkbcomp -I$PWD/xkb $PWD/xkb/keymap/my -o /tmp/tmp.xkb -xkb || exit 1
   xkbcomp -i $did /tmp/tmp.xkb -o "$DISPLAY"
 done
 

@@ -1,8 +1,16 @@
 xkb_keymap "my" {
   xkb_geometry        { include "pc"        };
-  xkb_compatibility   { include "complete"  };
   xkb_types           { include "complete"  };
   xkb_keycodes        { include "ergodox80" };
   xkb_symbols         { include "ergoid80"  };
+  xkb_compatibility   {
+      include "complete"
+//      interpret Switch_to_Group1 {
+//          action = SetGroup(group=1);
+//      };
+//      interpret Switch_to_Group2 {
+//          action = SetGroup(group=2);
+//      };
+  };
 };
 
