@@ -3,37 +3,78 @@ default xkb_keycodes "ergodox80" {
   maximum = 255;
 
   // Left hand, first row from top, left to right.
-  <L11> = 38; <L12> = 56; <L13> = 54; <L14> = 40; <L15> = 26; <L16> = 41; <L17> = 42;
+  <L11> = 49; <L12> = 10; <L13> = 11; <L14> = 12; <L15> = 13; <L16> = 14;
+  // <L17> = Mute;
+
   // Left hand, second row from top, left to right.
-  <L21> = 43; <L22> = 31; <L23> = 44; <L24> = 45; <L25> = 46; <L26> = 58; <L27> = 57;
+  <L21> = 20; <L22> = 53; <L23> = 41; <L24> = 27; <L25> = 33; <L26> = 55;
+  // <L27> = Volume Up;
+
   // Left hand, third row from top, left to right.
-  <L31> = 32; <L32> = 33; <L33> = 24; <L34> = 27; <L35> = 39; <L36> = 28;
+  <L31> = 59; <L32> = 38; <L33> = 39; <L34> = 43; <L35> = 28; <L36> = 42;
+
   // Left hand, fourth row from top, left to right.
-  <L41> = 11; <L42> = 30; <L43> = 55; <L44> = 25; <L45> = 53; <L46> = 29; <L47> = 52;
+  <L41> = 60; <L42> = 24; <L43> = 52; <L44> = 47; <L45> = 58; <L46> = 45;
+  // <L47> = Volume Down;
+
   // Left hand, fifth row from top, left to right.
-  <L51> = 10; <L52> = 64; <L53> = 12; <L54> = 133; <L55> = 37;
+  <L51> = 35; <L52> = 64; <L53> = 51; <L54> = 133; <L55> = 37;
+
   // Left thumb, first row from top, left to right.
-  <LT11> = 15; <LT12> = 16;
+  <LT11> = 172; <LT12> = 48;
+
   // Left thumb, second row from top, left to right.
-  <LT21> = 17; <LT22> = 18; <LT23> = 19;
+  <LT21> = 173; <LT22> = 171; <LT23> = 191;
+
   // Left thumb, third row from top, left to right.
-  <LT31> = 36; <LT32> = 50; <LT33> = 9;
+  <LT31> = 65; <LT32> = 50; <LT33> = 36;
 
   // Right hand, first row from top, left to right.
-  <R11> = 22; <R12> = 23; <R13> = 65; <R14> = 20; <R15> = 21; <R16> = 34; <R17> = 35;
+  <R11> = 34; <R12> = 15; <R13> = 16; <R14> = 17; <R15> = 18; <R16> = 19; <R17> = 21;
+
   // Right hand, second row from top, left to right.
-  <R21> = 51; <R22> = 47; <R23> = 48; <R24> = 49; <R25> = 59; <R26> = 60; <R27> = 61;
+  // <R21> = Numeric Keypad;
+  <R22> = 56; <R23> = 46; <R24> = 32; <R25> = 25; <R26> = 192; <R27> = 193;
+
   // Right hand, third row from top, left to right.
-  <R31> = 66; <R32> = 67; <R33> = 68; <R34> = 69; <R35> = 70; <R36> = 71;
+  <R31> = 54; <R32> = 57; <R33> = 26; <R34> = 30; <R35> = 31; <R36> = 29;
+
   // Right hand, fourth row from top, left to right.
-  <R41> = 72; <R42> = 73; <R43> = 74; <R44> = 75; <R45> = 76; <R46> = 95; <R47> = 96;
+  // <R41> = Mouse;
+  <R42> = 194; <R43> = 40; <R44> = 111; <R45> = 195; <R46> = 44; <R47> = 61;
+
   // Right hand, fifth row from top, left to right.
-  <R51> = 116; <R52> = 107; <R53> = 78; <R54> = 127; <R55> = 118;
+  <R51> = 113; <R52> = 116; <R53> = 114; <R54> = 9; <R55> = 196;
+
   // Right thumb, first row from top, left to right.
-  <RT11> = 110; <RT12> = 112;
+  <RT11> = 197; <RT12> = 198;
+
   // Right thumb, second row from top, left to right.
-  <RT21> = 119; <RT22> = 115; <RT23> = 117;
+  <RT21> = 107; <RT22> = 118; <RT23> = 119;
+
   // Right thumb, third row from top, left to right.
-  <RT31> = 114; <RT32> = 106; <RT33> = 113;
+  <RT31> = 23; <RT32> = 108; <RT33> = 22;
+
+
+  //// Numeric Keypad
+
+  // Right hand, first row from top, left to right.
+  alias <NR11> = <L32>; alias <NR12> = <R22>; alias <NR13> = <R31>;
+  alias <NR14> = <R43>; alias <NR15> = <R33>; alias <NR16> = <L23>; alias <NR17> = <R17>;
+
+  // Right hand, second row from top, left to right.
+  // <NR21> = Numeric Keypad; <NR22> = Nothing;
+  <NR23> = 79; <NR24> = 80; <NR25> = 81; <NR26> = 199; <NR27> = 200;
+
+  // Right hand, third row from top, left to right.
+  // <NR31> = Unused;
+  <NR32> = 83; <NR33> = 84; <NR34> = 85; <NR35> = 63; <NR36> = 106;
+
+  // Right hand, fourth row from top, left to right.
+  // <NR41> = Base Layer; <NR42> = Unused;
+  <NR43> = 87; <NR44> = 88; <NR45> = 89; <NR46> = 86; <NR47> = 82;
+
+  // Right hand, fifth row from top, left to right.
+  <NR51> = 90; alias <NR52> = <L41>; alias <NR53> = <L31>; <NR54> = 201; alias <NR55> = <LT33>;
 
 };

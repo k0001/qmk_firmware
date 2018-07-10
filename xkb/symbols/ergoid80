@@ -9,7 +9,7 @@ default xkb_symbols "ergoid80" {
   key <L14> { [ minus, 3, U201d, U2019 ] }; // ” ’
   key <L15> { [ numbersign, 4, at ] };
   key <L16> { [ backslash, 5, U2013, U2014 ] }; // – —
-  key <L17> { [ XF86AudioMute, XF86AudioMicMute ] };
+  // key <L17> { [ XF86AudioMute, XF86AudioMicMute ] };
 
   // Left hand, second row from top, left to right.
   key <L21> { [ parenleft, braceleft, dollar, EuroSign ] };
@@ -18,7 +18,7 @@ default xkb_symbols "ergoid80" {
   key <L24> { [ r, R, dead_grave, ellipsis ] };
   key <L25> { [ p, P, U021B, U021A ] }; // ț Ț
   key <L26> { [ v, V ] };
-  key <L27> { [ XF86AudioRaiseVolume ] };
+  // key <L27> { [ XF86AudioRaiseVolume ] };
 
   // Left hand, third row from top, left to right.
   key <L31> { [ comma, plus, U0103, U0102 ] }; // ă Ă
@@ -35,7 +35,7 @@ default xkb_symbols "ergoid80" {
   key <L44> { [ semicolon, semicolon, dead_doubleacute ] };
   key <L45> { [ m, M, dead_circumflex, mu ] };
   key <L46> { [ k, K ] };
-  key <L47> { [ XF86AudioLowerVolume ] };
+  // key <L47> { [ XF86AudioLowerVolume ] };
 
   // Left hand, fifth row from top, left to right.
   key <L51> { [ ] };
@@ -68,7 +68,7 @@ default xkb_symbols "ergoid80" {
   key <R17> { [ equal ] };
 
   // Right hand, second row from top, left to right.
-  key <R21> { [ ISO_Last_Group ], [ ISO_First_Group ] };
+  // key <R21> { [ ISO_Last_Group ], [ ISO_First_Group ] };
   key <R22> { [ b, B, U03bb, U039b ], [ f ] }; // λ Λ
   key <R23> { [ l, L, U0142, U0141 ], [ 7 ] }; // ł Ł
   key <R24> { [ o, O, oacute, Oacute ], [ 8 ] };
@@ -85,7 +85,7 @@ default xkb_symbols "ergoid80" {
   key <R36> { [ y, Y, yacute, Yacute ] };
 
   // Right hand, fourth row from top, left to right.
-  key <R41> { [ F13 ] };
+  // key <R41> { [ F13 ] };
   key <R42> { [ question, exclam, questiondown, exclamdown ], [ d ] };
   key <R43> { [ d, D, dead_ogonek, copyright ], [ 1 ] };
   key <R44> { [ Up, Up, Prior, U2191 ], [ 2 ] }; // ↑
@@ -113,10 +113,10 @@ default xkb_symbols "ergoid80" {
   key <RT32> { [ ISO_Level3_Shift ] };
   key <RT33> { [ BackSpace ] };
 
-  modifier_map Shift { Shift_L };
-  modifier_map Control { Control_L };
-  modifier_map Mod1 { Alt_L };
-  modifier_map Mod4 { Super_L };
+  modifier_map Shift { Shift_L, Shift_R };
+  modifier_map Control { Control_L, Control_R };
+  modifier_map Mod1 { Alt_L, Alt_R };
+  modifier_map Mod4 { Super_L, Super_R };
   modifier_map Mod5 { ISO_Level3_Shift };
 };
 
