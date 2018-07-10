@@ -5,12 +5,12 @@ xkb_keymap "my" {
   xkb_symbols         { include "ergoid80"  };
   xkb_compatibility   {
       include "complete"
-//      interpret Switch_to_Group1 {
-//          action = SetGroup(group=1);
-//      };
-//      interpret Switch_to_Group2 {
-//          action = SetGroup(group=2);
-//      };
+      interpret F13 {
+         action = LockControls(controls=MouseKeys);
+      };
+      interpret Pointer_Left {
+          action = MovePtr(x=-1,y=+0);
+      };
   };
 };
 

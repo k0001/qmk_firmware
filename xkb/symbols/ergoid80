@@ -68,7 +68,7 @@ default xkb_symbols "ergoid80" {
   key <R17> { [ equal ] };
 
   // Right hand, second row from top, left to right.
-  key <R21> { [ ISO_Next_Group ], [ ISO_Prev_Group ] };
+  key <R21> { [ ISO_Last_Group ], [ ISO_First_Group ] };
   key <R22> { [ b, B, U03bb, U039b ], [ f ] }; // λ Λ
   key <R23> { [ l, L, U0142, U0141 ], [ 7 ] }; // ł Ł
   key <R24> { [ o, O, oacute, Oacute ], [ 8 ] };
@@ -85,7 +85,7 @@ default xkb_symbols "ergoid80" {
   key <R36> { [ y, Y, yacute, Yacute ] };
 
   // Right hand, fourth row from top, left to right.
-  key <R41> { [ ] };
+  key <R41> { [ F13 ] };
   key <R42> { [ question, exclam, questiondown, exclamdown ], [ d ] };
   key <R43> { [ d, D, dead_ogonek, copyright ], [ 1 ] };
   key <R44> { [ Up, Up, Prior, U2191 ], [ 2 ] }; // ↑
@@ -98,7 +98,7 @@ default xkb_symbols "ergoid80" {
   key <R52> { [ Down, Down, Next, U2193 ], [ period ] }; // ↓
   key <R53> { [ Right, Right, End, U2192 ], [ comma ] }; // →
   key <R54> { [ Escape ] };
-  key <R55> { [ ] };
+  key <R55> { [ Pointer_Left ] };
   // Right thumb, first row from top, left to right.
   key <RT11> { [ ] };
   key <RT12> { [ Multi_key ] };

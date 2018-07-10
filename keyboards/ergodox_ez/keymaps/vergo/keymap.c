@@ -26,35 +26,36 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     42,43,44,45,46,47,48,
     49,51,52,53,54,55,56,
     57,58,59,60,61,MT(MOD_LGUI,62),
-    63,64,65,66,67,68,69,
+    TO(LAY1)/*63*/,64,65,66,67,68,69,
     81,70,71,72,73,
     // Right thumb
     74,75,
     76,77,78,
     79,84,80
     ),
+// mouse stuff
 [LAY1] = LAYOUT_ergodox_80(
-    // Left hand
-    0,0,0,0,0,0,0,
-    0,0,0,0,0,0,0,
-    0,0,0,0,0,0,
+    0,0,0,KC_BTN3,0,0,0,
+    0,0,KC_BTN1,KC_MS_U,KC_BTN2,0,0,
+    0,0,KC_MS_L,KC_MS_D,KC_MS_R,0,
     0,0,0,0,0,0,0,
     0,0,0,0,0,
-    // Left thumb
-    0,0,
-    0,0,0,
-    0,0,0,
-    // Right hand
-    0,0,0,0,0,0,0,
+    // left thumb
+    KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS,
+    // right hand
+    0,0,0,KC_BTN3,0,0,0,
+    0,0,KC_BTN1,KC_MS_U,KC_BTN2,0,0,
+    0,KC_MS_L,KC_MS_D,KC_MS_R,0,0,
     TO(LAY0),0,0,0,0,0,0,
-    0,0,0,0,0,0,
-    0,0,0,0,0,0,0,
     0,0,0,0,0,
-    // Right thumb
-    0,0,
-    0,0,0,
-    0,0,0
+    // right thumb
+    KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS
     ),
+// numeric keypad
 [LAY2] = LAYOUT_ergodox_80(
     // Left hand
     0,0,0,0,0,0,0,
