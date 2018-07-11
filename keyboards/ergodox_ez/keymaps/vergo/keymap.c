@@ -58,25 +58,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // numeric keypad
 [LAY_NUMK] = LAYOUT_ergodox_80(
     // left hand
-    0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 1,
+    0, 0, 0, 0, 0, 0, 1,
     0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 1,
+    0, 1, 0, 1, 1,
     // left thumb
-    0, 0,
-    0, 0, 0,
-    0, 0, 0,
+    1, 1,
+    1, 1, 1,
+    1, 1, 1,
     // right hand
-    KC_A, KC_B, KC_C, KC_D, KC_E, KC_F, KC_EQL,
-    TO(LAY_BASE), 0, KC_KP_7, KC_KP_8, KC_KP_9, KC_F21, KC_F22,
-    0, KC_KP_4, KC_KP_5, KC_KP_6, KC_KP_ASTERISK, KC_KP_SLASH,
-    0,0, KC_KP_1, KC_KP_2, KC_KP_3, KC_KP_PLUS, KC_KP_MINUS,
-    KC_KP_0, KC_DOT, KC_COMMA, KC_F23, KC_ENTER,
+    0,0, KC_A, KC_B, KC_C, KC_F21, 1,
+    TO(LAY_BASE), KC_F, KC_KP_7, KC_KP_8, KC_KP_9, KC_KP_ASTERISK, KC_KP_SLASH,
+    KC_E, KC_KP_4, KC_KP_5, KC_KP_6, KC_KP_PLUS, KC_KP_MINUS,
+    1, KC_D, KC_KP_1, KC_KP_2, KC_KP_3, KC_MINUS, KC_F15,
+    KC_KP_0, KC_KP_DOT, KC_KP_COMMA, 1, KC_KP_ENTER,
     // right thumb
     0, 0,
-    0, 0, 0,
-    0, 0, 0
+    1, 1, 1,
+    1, 1, 1
     )
 };
 

@@ -55,26 +55,65 @@ default xkb_keycodes "ergodox80" {
   // Right thumb, third row from top, left to right.
   <RT31> = 23; <RT32> = 108; <RT33> = 22;
 
-
   //// Numeric Keypad
 
-  // Right hand, first row from top, left to right.
-  alias <NR11> = <L32>; alias <NR12> = <R22>; alias <NR13> = <R31>;
-  alias <NR14> = <R43>; alias <NR15> = <R33>; alias <NR16> = <L23>; alias <NR17> = <R17>;
+  // left hand
+  alias <NL52> = <L52>;
+  alias <NL54> = <L54>;
+  alias <NL55> = <L55>;
 
-  // Right hand, second row from top, left to right.
-  // <NR21> = Numeric Keypad; <NR22> = Nothing;
-  <NR23> = 79; <NR24> = 80; <NR25> = 81; <NR26> = 199; <NR27> = 200;
+  // left thumb
+  alias <NT11> = <LT11>;
+  alias <NT12> = <LT12>;
 
-  // Right hand, third row from top, left to right.
-  // <NR31> = Unused;
-  <NR32> = 83; <NR33> = 84; <NR34> = 85; <NR35> = 63; <NR36> = 106;
+  alias <NT21> = <LT21>;
+  alias <NT22> = <LT22>;
+  alias <NT23> = <LT23>;
 
-  // Right hand, fourth row from top, left to right.
-  // <NR41> = Base Layer; <NR42> = Unused;
-  <NR43> = 87; <NR44> = 88; <NR45> = 89; <NR46> = 86; <NR47> = 82;
+  alias <NT31> = <LT31>;
+  alias <NT32> = <LT32>;
+  alias <NT33> = <LT33>;
 
-  // Right hand, fifth row from top, left to right.
-  <NR51> = 90; alias <NR52> = <L41>; alias <NR53> = <L31>; <NR54> = 201; alias <NR55> = <LT33>;
+  // right hand
+  alias <NR13> = <L32>;
+  alias <NR14> = <R22>;
+  alias <NR15> = <R31>;
+        <NR16> = 199;
+  alias <NR17> = <R17>;
 
+  alias <NR22> = <L23>;
+        <NR23> = 79;
+        <NR24> = 80;
+        <NR25> = 81;
+        <NR26> = 63;
+        <NR27> = 106;
+
+  alias <NR31> = <R33>;
+        <NR32> = 83;
+        <NR33> = 84;
+        <NR34> = 85;
+        <NR35> = 86;
+        <NR36> = 82;
+
+  alias <NR42> = <R43>;
+        <NR43> = 87;
+        <NR44> = 88;
+        <NR45> = 89;
+  alias <NR46> = <L21>;
+  alias <NR47> = <R27>;
+
+        <NR51> = 90;
+        <NR52> = 91;
+        <NR53> = 129;
+  alias <NR54> = <R54>;
+        <NR55> = 104;
+
+  // right thumb
+  alias <NH21> = <RT21>;
+  alias <NH22> = <RT22>;
+  alias <NH23> = <RT23>;
+
+  alias <NH31> = <RT31>;
+  alias <NH32> = <RT32>;
+  alias <NH33> = <RT33>;
 };

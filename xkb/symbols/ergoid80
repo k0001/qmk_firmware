@@ -68,7 +68,7 @@ default xkb_symbols "ergoid80" {
   key <R17> { [ equal ] };
 
   // Right hand, second row from top, left to right.
-  // key <R21> { [ ISO_Last_Group ], [ ISO_First_Group ] };
+  key <R21> { [ Num_Lock ] };
   key <R22> { [ b, B, U03bb, U039b ], [ f ] }; // λ Λ
   key <R23> { [ l, L, U0142, U0141 ], [ 7 ] }; // ł Ł
   key <R24> { [ o, O, oacute, Oacute ], [ 8 ] };
@@ -112,6 +112,9 @@ default xkb_symbols "ergoid80" {
   key <RT31> { [ Tab ] };
   key <RT32> { [ ISO_Level3_Shift ] };
   key <RT33> { [ BackSpace ] };
+
+  //// Numeric Keypad
+
 
   modifier_map Shift { Shift_L, Shift_R };
   modifier_map Control { Control_L, Control_R };
