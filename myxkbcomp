@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-xkbcomp -I$PWD/xkb $PWD/xkb/keymap/my -o /tmp/tmp.xkb -xkb || exit 1
+xkbcomp -v -I$PWD/xkb $PWD/xkb/keymap/my -o /tmp/tmp.xkb -xkb || exit 1
 dids=$(xinput -list | grep ErgoDox | grep keyboard | sed 's/.*id=\([0-9]\+\).*/\1/')
 set -x
 for did in $dids; do

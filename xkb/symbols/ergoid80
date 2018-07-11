@@ -1,6 +1,6 @@
 default xkb_symbols "ergoid80" {
   name[Group1] = "Base";
-  key.type[Group1] = "EIGHT_LEVEL_LEVEL_FIVE_LOCK";
+  key.type[Group1] = "EIGHT_LEVEL";
 
   // Left hand, first row from top, left to right.
   key <L11> { [ ] };
@@ -38,7 +38,7 @@ default xkb_symbols "ergoid80" {
   // key <L47> { [ XF86AudioLowerVolume ] };
 
   // Left hand, fifth row from top, left to right.
-  key <L51> { [ ] };
+  key <L51> { [ ISO_Level5_Shift ] };
   key <L52> { [ Alt_L, Alt_L, Alt_L, Alt_L, Alt_L ] };
   key <L53> { [ ] };
   key <L54> { [ Super_L, Super_L, Super_L, Super_L, Super_L ] };
@@ -94,7 +94,7 @@ default xkb_symbols "ergoid80" {
   key <R47> { [ slash, percent, dead_abovedot, NoSymbol, parenright ] };
 
   // Right hand, fifth row from top, left to right.
-  key <R51> { [ Left, Left, Home, U2190,  0 ] }; // ←
+  key <R51> { [ Left, Left, Home, U2190, 0 ] }; // ←
   key <R52> { [ Down, Down, Next, U2193, period ] }; // ↓
   key <R53> { [ Right, Right, End, U2192, comma ] }; // →
   key <R54> { [ Escape, Escape, Escape, Escape, Escape ] };
@@ -116,9 +116,9 @@ default xkb_symbols "ergoid80" {
   //// Numeric Keypad
 
   modifier_map Shift { Shift_L, Shift_R };
-  modifier_map Control { Control_L, Control_R };
+  modifier_map Control { Control_L };
   modifier_map Mod1 { Alt_L, Alt_R };
-  modifier_map Mod2 { Num_Lock };
+  modifier_map Mod2 { ISO_Level5_Shift };
   modifier_map Mod4 { Super_L, Super_R };
   modifier_map Mod5 { ISO_Level3_Shift };
 };

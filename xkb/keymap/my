@@ -3,14 +3,6 @@ xkb_keymap "my" {
   xkb_types           { include "complete"  };
   xkb_keycodes        { include "ergodox80" };
   xkb_symbols         { include "ergoid80"  };
-  xkb_compatibility   {
-      include "complete"
-      interpret F13 {
-         action = LockControls(controls=MouseKeys);
-      };
-      interpret Pointer_Left {
-          action = MovePtr(x=-1,y=+0);
-      };
-  };
+  xkb_compatibility   { include "complete"  };
 };
 
