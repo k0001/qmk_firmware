@@ -1,6 +1,6 @@
 default xkb_symbols "ergoid80" {
   name[Group1] = "Base";
-  name[Group2] = "Keypad";
+  key.type[Group1] = "EIGHT_LEVEL_LEVEL_FIVE_LOCK";
 
   // Left hand, first row from top, left to right.
   key <L11> { [ ] };
@@ -39,10 +39,10 @@ default xkb_symbols "ergoid80" {
 
   // Left hand, fifth row from top, left to right.
   key <L51> { [ ] };
-  key <L52> { [ Alt_L ] };
+  key <L52> { [ Alt_L, Alt_L, Alt_L, Alt_L, Alt_L ] };
   key <L53> { [ ] };
-  key <L54> { [ Super_L ] };
-  key <L55> { [ Control_L ] };
+  key <L54> { [ Super_L, Super_L, Super_L, Super_L, Super_L ] };
+  key <L55> { [ Control_L, Control_L, Control_L, Control_L, Control_L ] };
 
   // Left thumb, first row from top, left to right.
   key <LT11> { [ XF86AudioPlay ] };
@@ -54,71 +54,71 @@ default xkb_symbols "ergoid80" {
   key <LT23> { [ XF86KbdBrightnessDown ] };
 
   // Left thumb, third row from top, left to right.
-  key <LT31> { [ space ] };
-  key <LT32> { [ Shift_L ] };
-  key <LT33> { [ Return ] };
+  key <LT31> { [ space, space, space, space, space ] };
+  key <LT32> { [ Shift_L, NoSymbol, Shift_L, NoSymbol, Shift_L ] };
+  key <LT33> { [ Return, Return, Return, Return, Return ] };
 
   // Right hand, first row from top, left to right.
   key <R11> { [ bracketleft ] };
   key <R12> { [ bracketright, 6 ] };
-  key <R13> { [ quotedbl, 7, U2200, U2203 ], [ a ] }; // ∀ ∃
-  key <R14> { [ apostrophe, 8, grave ], [ b ] };
-  key <R15> { [ less, 9, guillemotleft ], [ c ] };
-  key <R16> { [ greater, 0, guillemotright ], [ slash ] };
-  key <R17> { [ equal ] };
+  key <R13> { [ quotedbl, 7, U2200, U2203, a ] }; // ∀ ∃
+  key <R14> { [ apostrophe, 8, grave, NoSymbol, b ] };
+  key <R15> { [ less, 9, guillemotleft, NoSymbol, c ] };
+  key <R16> { [ greater, 0, guillemotright, NoSymbol, percent ] };
+  key <R17> { [ equal, NoSymbol, NoSymbol, NoSymbol, equal ] };
 
   // Right hand, second row from top, left to right.
-  key <R21> { [ Num_Lock ] };
-  key <R22> { [ b, B, U03bb, U039b ], [ f ] }; // λ Λ
-  key <R23> { [ l, L, U0142, U0141 ], [ 7 ] }; // ł Ł
-  key <R24> { [ o, O, oacute, Oacute ], [ 8 ] };
-  key <R25> { [ w, W, dead_caron ], [ 9 ] };
-  key <R26> { [ underscore, asciicircum, oslash, Oslash ], [ asterisk ] };
-  key <R27> { [ parenright, braceright, sterling, U20BF ] }; // ₿
+  key <R21> { [ Num_Lock, NoSymbol, NoSymbol, NoSymbol, Num_Lock ] };
+  key <R22> { [ b, B, U03bb, U039b, f ] }; // λ Λ
+  key <R23> { [ l, L, U0142, U0141, 7 ] }; // ł Ł
+  key <R24> { [ o, O, oacute, Oacute,  8 ] };
+  key <R25> { [ w, W, dead_caron, NoSymbol, 9 ] };
+  key <R26> { [ underscore, asciicircum, oslash, Oslash, asterisk ] };
+  key <R27> { [ parenright, braceright, sterling, U20BF, slash ] }; // ₿
 
   // Right hand, third row from top, left to right.
-  key <R31> { [ c, C, ccedilla, Ccedilla ], [ e ] };
-  key <R32> { [ n, N, ntilde, Ntilde ], [ 4 ] };
-  key <R33> { [ e, E, eacute, Eacute ], [ 5 ] };
-  key <R34> { [ u, U, uacute, Uacute ], [ 6 ] };
-  key <R35> { [ i, I, iacute, Iacute ], [ minus ] };
-  key <R36> { [ y, Y, yacute, Yacute ] };
+  key <R31> { [ c, C, ccedilla, Ccedilla, e ] };
+  key <R32> { [ n, N, ntilde, Ntilde, 4 ] };
+  key <R33> { [ e, E, eacute, Eacute, 5 ] };
+  key <R34> { [ u, U, uacute, Uacute, 6 ] };
+  key <R35> { [ i, I, iacute, Iacute, plus ] };
+  key <R36> { [ y, Y, yacute, Yacute, minus ] };
 
   // Right hand, fourth row from top, left to right.
   // key <R41> { [ F13 ] };
-  key <R42> { [ question, exclam, questiondown, exclamdown ], [ d ] };
-  key <R43> { [ d, D, dead_ogonek, copyright ], [ 1 ] };
-  key <R44> { [ Up, Up, Prior, U2191 ], [ 2 ] }; // ↑
-  key <R45> { [ colon, colon, U016F, U016E ], [ 3 ] }; // ů Ů
-  key <R46> { [ j, J, oe, OE ], [ plus ] };
-  key <R47> { [ slash, percent, dead_abovedot ] };
+  key <R42> { [ question, exclam, questiondown, exclamdown, d ] };
+  key <R43> { [ d, D, dead_ogonek, copyright, 1 ] };
+  key <R44> { [ Up, Up, Prior, U2191, 2 ] }; // ↑
+  key <R45> { [ colon, colon, U016F, U016E, 3 ] }; // ů Ů
+  key <R46> { [ j, J, oe, OE, parenleft ] };
+  key <R47> { [ slash, percent, dead_abovedot, NoSymbol, parenright ] };
 
   // Right hand, fifth row from top, left to right.
-  key <R51> { [ Left, Left, Home, U2190 ], [ 0 ] }; // ←
-  key <R52> { [ Down, Down, Next, U2193 ], [ period ] }; // ↓
-  key <R53> { [ Right, Right, End, U2192 ], [ comma ] }; // →
-  key <R54> { [ Escape ] };
-  key <R55> { [ Pointer_Left ] };
+  key <R51> { [ Left, Left, Home, U2190,  0 ] }; // ←
+  key <R52> { [ Down, Down, Next, U2193, period ] }; // ↓
+  key <R53> { [ Right, Right, End, U2192, comma ] }; // →
+  key <R54> { [ Escape, Escape, Escape, Escape, Escape ] };
+  key <R55> { [ NoSymbol, NoSymbol, NoSymbol, NoSymbol, Return ] };
   // Right thumb, first row from top, left to right.
-  key <RT11> { [ ] };
+  key <RT11> { [ Mode_switch ] };
   key <RT12> { [ Multi_key ] };
 
   // Right thumb, second row from top, left to right.
-  key <RT21> { type = "PC_ALT_LEVEL2", symbols[Group1] = [ Print, Sys_Req ] };
-  key <RT22> { [ Insert ] };
-  key <RT23> { [ Delete ] };
+  key <RT21> { [ Print, Sys_Req ], type = "PC_ALT_LEVEL2" };
+  key <RT22> { [ Insert, Insert, Insert, Insert, Insert ] };
+  key <RT23> { [ Delete, Delete, Delete, Delete, Delete ] };
 
   // Right thumb, third row from top, left to right.
-  key <RT31> { [ Tab ] };
-  key <RT32> { [ ISO_Level3_Shift ] };
-  key <RT33> { [ BackSpace ] };
+  key <RT31> { [ Tab, Tab, Tab, Tab, Tab ] };
+  key <RT32> { [ ISO_Level3_Shift, ISO_Level3_Shift, NoSymbol, NoSymbol, ISO_Level3_Shift ] };
+  key <RT33> { [ BackSpace, BackSpace, BackSpace, BackSpace, BackSpace ] };
 
   //// Numeric Keypad
-
 
   modifier_map Shift { Shift_L, Shift_R };
   modifier_map Control { Control_L, Control_R };
   modifier_map Mod1 { Alt_L, Alt_R };
+  modifier_map Mod2 { Num_Lock };
   modifier_map Mod4 { Super_L, Super_R };
   modifier_map Mod5 { ISO_Level3_Shift };
 };

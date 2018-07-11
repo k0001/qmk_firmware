@@ -7,7 +7,6 @@
 enum my_layers {
     LAY_BASE, // normal
     LAY_MAUS, // mouse stuff
-    LAY_NUMK, // numeric keypad
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -24,7 +23,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_SPC, KC_LSHIFT, KC_ENTER,
     // Right hand
     KC_LBRACKET, KC_6, KC_7, KC_8, KC_9, KC_0, KC_EQUAL,
-    TO(LAY_NUMK), KC_B, KC_L, KC_O, KC_W, KC_F14, KC_F15,
+    KC_NUMLOCK, KC_B, KC_L, KC_O, KC_W, KC_F14, KC_F15,
     KC_C, KC_N, KC_E, KC_U, KC_I, KC_Y,
     TO(LAY_MAUS), KC_F16, KC_D, KC_UP, KC_F17, KC_J, KC_SLASH,
     KC_LEFT, KC_DOWN, KC_RIGHT, KC_ESC, KC_F18,
@@ -54,34 +53,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS
-    ),
-// numeric keypad
-[LAY_NUMK] = LAYOUT_ergodox_80(
-    // left hand
-    0, 0, 0, 0, 0, 0, 1,
-    0, 0, 0, 0, 0, 0, 1,
-    0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 1,
-    0, 1, 0, 1, 1,
-    // left thumb
-    1, 1,
-    1, 1, 1,
-    1, 1, 1,
-    // right hand
-    0,0, KC_A, KC_B, KC_C, KC_F21, 1,
-    TO(LAY_BASE), KC_F, KC_KP_7, KC_KP_8, KC_KP_9, KC_KP_ASTERISK, KC_KP_SLASH,
-    KC_E, KC_KP_4, KC_KP_5, KC_KP_6, KC_KP_PLUS, KC_KP_MINUS,
-    1, KC_D, KC_KP_1, KC_KP_2, KC_KP_3, KC_MINUS, KC_F15,
-    KC_KP_0, KC_KP_DOT, KC_KP_COMMA, 1, KC_KP_ENTER,
-    // right thumb
-    0, 0,
-    1, 1, 1,
-    1, 1, 1
     )
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    return true;
+        return true;
 }
 
 // Runs just one time when the keyboard initializes.
@@ -98,9 +74,6 @@ void matrix_scan_user(void) {
     switch (layer) {
         case LAY_MAUS:
             ergodox_right_led_3_on();
-            break;
-        case LAY_NUMK:
-            ergodox_right_led_2_on();
             break;
         default:
             break;

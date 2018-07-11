@@ -33,8 +33,7 @@ default xkb_keycodes "ergodox80" {
   <R11> = 34; <R12> = 15; <R13> = 16; <R14> = 17; <R15> = 18; <R16> = 19; <R17> = 21;
 
   // Right hand, second row from top, left to right.
-  // <R21> = Numeric Keypad;
-  <R22> = 56; <R23> = 46; <R24> = 32; <R25> = 25; <R26> = 192; <R27> = 193;
+  <R21> = 77; <R22> = 56; <R23> = 46; <R24> = 32; <R25> = 25; <R26> = 192; <R27> = 193;
 
   // Right hand, third row from top, left to right.
   <R31> = 54; <R32> = 57; <R33> = 26; <R34> = 30; <R35> = 31; <R36> = 29;
@@ -54,66 +53,4 @@ default xkb_keycodes "ergodox80" {
 
   // Right thumb, third row from top, left to right.
   <RT31> = 23; <RT32> = 108; <RT33> = 22;
-
-  //// Numeric Keypad
-
-  // left hand
-  alias <NL52> = <L52>;
-  alias <NL54> = <L54>;
-  alias <NL55> = <L55>;
-
-  // left thumb
-  alias <NT11> = <LT11>;
-  alias <NT12> = <LT12>;
-
-  alias <NT21> = <LT21>;
-  alias <NT22> = <LT22>;
-  alias <NT23> = <LT23>;
-
-  alias <NT31> = <LT31>;
-  alias <NT32> = <LT32>;
-  alias <NT33> = <LT33>;
-
-  // right hand
-  alias <NR13> = <L32>;
-  alias <NR14> = <R22>;
-  alias <NR15> = <R31>;
-        <NR16> = 199;
-  alias <NR17> = <R17>;
-
-  alias <NR22> = <L23>;
-        <NR23> = 79;
-        <NR24> = 80;
-        <NR25> = 81;
-        <NR26> = 63;
-        <NR27> = 106;
-
-  alias <NR31> = <R33>;
-        <NR32> = 83;
-        <NR33> = 84;
-        <NR34> = 85;
-        <NR35> = 86;
-        <NR36> = 82;
-
-  alias <NR42> = <R43>;
-        <NR43> = 87;
-        <NR44> = 88;
-        <NR45> = 89;
-  alias <NR46> = <L21>;
-  alias <NR47> = <R27>;
-
-        <NR51> = 90;
-        <NR52> = 91;
-        <NR53> = 129;
-  alias <NR54> = <R54>;
-        <NR55> = 104;
-
-  // right thumb
-  alias <NH21> = <RT21>;
-  alias <NH22> = <RT22>;
-  alias <NH23> = <RT23>;
-
-  alias <NH31> = <RT31>;
-  alias <NH32> = <RT32>;
-  alias <NH33> = <RT33>;
 };
