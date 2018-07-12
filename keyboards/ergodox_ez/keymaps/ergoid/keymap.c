@@ -8,71 +8,111 @@
 #define TAPPING_TOGGLE 3
 
 // Layers.
-#define LAY0 0 // ASCII and programming.
-#define LAY1 1 // Like LAY0 but with uppercase letters.
-#define LAY2 2 // Letters and accents of latin european languages.
-#define LAY3 3 // Letters of LAY2 in uppercase.
-#define LAY4 4 // Media keys, Fn keys, mouse, keypad.
-#define LAY5 5 // Numeric keypad.
+enum my_layers {
+  LAY1, // ASCII and programming.
+  LAY2, // Shift-like applied to LAY0
+  LAY3, // AltGr-like applied to LAY0
+  LAY4, // AltGr-Shift-like applied to LAY0
+  LMED, // Media keys, Fn keys, mouse.
+  LNUM  // Numeric keypad.
+};
 
 // us altgr-intl keycodes
-#define UAI_STAR S(KC_8) // *
-#define UAI_DQUO S(KC_QUOT) /* " */
-#define UAI_COLO S(KC_SCLN) // :
-#define UAI_LANG S(KC_COMMA) // <
-#define UAI_RANG S(KC_DOT) // >
-#define UAI_LCRB S(KC_LBRACKET) // {
-#define UAI_RCRB S(KC_RBRACKET) // }
-#define UAI_LGUIL RALT(KC_LBRACKET) // «
-#define UAI_RGUIL RALT(KC_RBRACKET) // »
-#define UAI_LDQUO RALT(S(KC_LBRACKET)) // “
-#define UAI_RDQUO RALT(S(KC_RBRACKET)) // ”
-#define UAI_LQUO RALT(KC_9) // ‘
-#define UAI_RQUO RALT(KC_0) // ’
-#define UAI_LPAR S(KC_9) // (
-#define UAI_RPAR S(KC_0) // )
-#define UAI_QUES S(KC_SLSH) // ?
-#define UAI_CAROT S(KC_6) // ^
-#define UAI_VERTB S(KC_BSLS) // |
-#define UAI_AT S(KC_2) // @
-#define UAI_RBANG S(KC_1) // !
-#define UAI_AMP S(KC_7) // &
-#define UAI_DOLLAR S(KC_4) // $
-#define UAI_EURO RALT(KC_5) // €
-#define UAI_PERC S(KC_5) // %
-#define UAI_USCOR S(KC_MINUS) // _
-#define UAI_PLUS S(KC_EQL) // +
-#define UAI_TILDE S(KC_GRV) // ~
-#define UAI_HASH S(KC_3) // #
-#define UAI_A_ACUTE RALT(KC_A) // á
-#define UAI_E_ACUTE RALT(KC_E) // é
-#define UAI_I_ACUTE RALT(KC_I) // í
-#define UAI_O_ACUTE RALT(KC_O) // ó
-#define UAI_U_ACUTE RALT(KC_U) // ú
-#define UAI_O_SLASH RALT(KC_L) // ø
-#define UAI_C_CEDILLA RALT(KC_COMMA) // ç
-#define UAI_N_TILDE RALT(KC_N) // ñ
-#define UAI_ESZET RALT(KC_S) // ß
-#define UAI_OE RALT(KC_X) // œ
-#define UAI_AE RALT(KC_Z) // æ
-#define UAI_DEAD_ACUTE RALT(KC_QUOT) // ◌́ – acute
-#define UAI_DEAD_UMLAUT S(RALT(KC_QUOT)) // ◌̈ – diaeresis or umlaut
-#define UAI_DEAD_GRAVE RALT(KC_GRV) // ◌̀ – grave
-#define UAI_DEAD_DACUTE S(RALT(KC_2)) // ◌̋ – double acute
-#define UAI_DEAD_CAROT RALT(KC_6) // ◌̂ – circumflex
-#define UAI_DEAD_CARON S(RALT(KC_DOT)) // ◌̌ – caron
-#define UAI_DEAD_OVERDOT RALT(KC_DOT) // ◌̇ – overdot
-#define UAI_DEAD_UNDERDOT S(RALT(KC_MINUS)) // ◌̣ – underdot
-#define UAI_DEAD_BREVE S(RALT(KC_9)) // ◌̆ – breve
-#define UAI_DEAD_TILDE S(RALT(KC_GRV)) // ◌̃ - tilde
-#define UAI_DEAD_MACRON S(RALT(KC_3)) // ◌̄ – macron
-#define UAI_DEAD_ORING S(RALT(KC_0)) // ◌̊ – overring
-#define UAI_DEAD_OGONEK S(RALT(KC_8)) // ◌̨ – ogonek
-#define UAI_DEAD_CEDILLA S(RALT(KC_5)) // ◌̧ – cedilla
-
-#define KC_BRDN 0xE8 // Screen brightness down
-#define KC_BRUP 0xE9 // Screen brightness up
-
+enum keycodes_us_altgr_intl {
+  // 0 - 9
+  K0 = KC_0, K1 = KC_1, K2 = KC_2, K3 = KC_3, K4 = KC_4,
+  K5 = KC_5, K6 = KC_6, K7 = KC_7, K8 = KC_8, K9 = KC_9,
+  // a - z
+  KA = KC_A, KB = KC_B, KC = KC_C, KD = KC_D, KE = KC_E, KF = KC_F,
+  KG = KC_G, KH = KC_H, KI = KC_I, KJ = KC_J, KK = KC_K, KL = KC_L,
+  KM = KC_M, KN = KC_N, KO = KC_O, KP = KC_P, KQ = KC_Q, KR = KC_R,
+  KS = KC_S, KT = KC_T, KU = KC_U, KV = KC_V, KW = KC_W, KX = KC_X,
+  KY = KC_Y, KZ = KC_Z,
+  // A - Z
+  KAU = S(KC_A), KBU = S(KC_B), KCU = S(KC_C), KDU = S(KC_D), KEU = S(KC_E), KFU = S(KC_F),
+  KGU = S(KC_G), KHU = S(KC_H), KIU = S(KC_I), KJU = S(KC_J), KKU = S(KC_K), KLU = S(KC_L),
+  KMU = S(KC_M), KNU = S(KC_N), KOU = S(KC_O), KPU = S(KC_P), KQU = S(KC_Q), KRU = S(KC_R),
+  KSU = S(KC_S), KTU = S(KC_T), KUU = S(KC_U), KVU = S(KC_V), KWU = S(KC_W), KXU = S(KC_X),
+  KYU = S(KC_Y), KZU = S(KC_Z),
+  KSTAR = S(KC_8), // *
+  KCOMMA = KC_COMMA, // ,
+  KLBRK = KC_LBRACKET, // [
+  KRBRK = KC_RBRACKET, // ]
+  KQUOT = KC_QUOT, /* " */
+  KDQUO = S(KC_QUOT), /* " */
+  KCOLO = S(KC_SCLN), // :
+  KSCOLO = KC_SCLN, // :
+  KLANG = S(KC_COMMA), // <
+  KEQL = KC_EQL, // =
+  KRANG = S(KC_DOT), // >
+  KLCRB = S(KC_LBRACKET), // {
+  KRCRB = S(KC_RBRACKET), // }
+  KLGUIL = RALT(KC_LBRACKET), // «
+  KRGUIL = RALT(KC_RBRACKET), // »
+  KLDQUO = RALT(S(KC_LBRACKET)), // “
+  KRDQUO = RALT(S(KC_RBRACKET)), // ”
+  KLQUO = RALT(KC_9), // ‘
+  KRQUO = RALT(KC_0), // ’
+  KLPAR = S(KC_9), // (
+  KRPAR = S(KC_0), // )
+  KSLSH = KC_SLSH, // /
+  KLQUES = RALT(KC_SLSH), // ¿
+  KRQUES = S(KC_SLSH), // ?
+  KCAROT = S(KC_6), // ^
+  KBSLS = KC_BSLS, // backslash
+  KVERTB = S(KC_BSLS), // |
+  KAT = S(KC_2), // @
+  KLEXCL = RALT(S(KC_1)), // ¡
+  KREXCL = S(KC_1), // !
+  KAMP = S(KC_7), // &
+  KDOLLAR = S(KC_4), // $
+  KEURO = RALT(KC_5), // €
+  KPERC = S(KC_5), // %
+  KUSCOR = S(KC_MINUS), // _
+  KPLUS = S(KC_EQL), // +
+  KGRAVE = KC_GRV, // `
+  KTILDE = S(KC_GRV), // ~
+  KHASH = S(KC_3), // #
+  KAACUTE = RALT(KC_A), // á
+  KEACUTE = RALT(KC_E), // é
+  KIACUTE = RALT(KC_I), // í
+  KOACUTE = RALT(KC_O), // ó
+  KUACUTE = RALT(KC_U), // ú
+  KOSLASH = RALT(KC_L), // ø
+  KCCEDILLA = RALT(KC_COMMA), // ç
+  KNTILDE = RALT(KC_N), // ñ
+  KAACUTEU = RALT(S(KC_A)), // á
+  KEACUTEU = RALT(S(KC_E)), // é
+  KIACUTEU = RALT(S(KC_I)), // í
+  KOACUTEU = RALT(S(KC_O)), // ó
+  KUACUTEU = RALT(S(KC_U)), // ú
+  KOSLASHU = RALT(S(KC_L)), // ø
+  KCCEDILLAU = RALT(S(KC_COMMA)), // ç
+  KNTILDEU = RALT(S(KC_N)), // ñ
+  KESZET = RALT(KC_S), // ß
+  KOE = RALT(KC_X), // œ
+  KOEU = RALT(S(KC_X)), // Œ
+  KDOT = KC_DOT, // .
+  KMINUS = KC_MINUS, // -
+  KAE = RALT(KC_Z), // æ
+  KAEU = RALT(S(KC_Z)), // Æ
+  KDEADACUTE = RALT(KC_QUOT), // ◌́ – acute
+  KDEADUMLAUT = S(RALT(KC_QUOT)), // ◌̈ – diaeresis or umlaut
+  KDEADGRAVE = RALT(KC_GRV), // ◌̀ – grave
+  KDEADDACUTE = S(RALT(KC_2)), // ◌̋ – double acute
+  KDEADCAROT = RALT(KC_6), // ◌̂ – circumflex
+  KDEADCARON = RALT(S(KC_DOT)), // ◌̌ – caron
+  KPOUND = RALT(S(KC_4)), // £
+  KDEADOVERDOT = RALT(KC_DOT), // ◌̇ – overdot
+  KDEADUNDERDOT = S(RALT(KC_MINUS)), // ◌̣ – underdot
+  KDEADBREVE = S(RALT(KC_9)), // ◌̆ – breve
+  KDEADTILDE = S(RALT(KC_GRV)), // ◌̃ - tilde
+  KDEADMACRON = S(RALT(KC_3)), // ◌̄ – macron
+  KDEADORING = S(RALT(KC_0)), // ◌̊ – overring
+  KDEADOGONEK = S(RALT(KC_8)), // ◌̨ – ogonek
+  KDEADCEDILLA = S(RALT(KC_5)), // ◌̧ – cedilla
+  KCOPYRIGHT = RALT(KC_C) // ©
+};
 
 // Right Control is our Compose Key.
 #define SS_COMPOSE(string) SS_DOWN(X_RCTRL) string SS_UP(X_RCTRL)
@@ -80,322 +120,181 @@
 
 enum my_keycodes {
     /* These keycodes get mapped to macros that emit Compose strings */
-    MY_S_COMMA = SAFE_RANGE, // ș
-    MY_S_COMMA_U,  // Ș
-    MY_T_COMMA,    // ț
-    MY_T_COMMA_U,  // Ț
-    MY_Y_ACUTE,    // ý
-    MY_Y_ACUTE_U,  // Ý
-    MY_L_SLASH,    // ł
-    MY_L_SLASH_U,  // Ł
-    MY_A_ORING,    // å
-    MY_A_ORING_U,  // Å
-    MY_U_ORING,    // ů
-    MY_U_ORING_U,  // Ů
-    MY_A_TILDE,    // ã
-    MY_A_TILDE_U,  // Ã
-    MY_A_BREVE,    // ă
-    MY_A_BREVE_U,  // Ă
-    MY_ESZET_U,    // ẞ
+    KSCOMMA = SAFE_RANGE, // ș
+    KSCOMMAU,  // Ș
+    KTCOMMA,   // ț
+    KTCOMMAU,  // Ț
+    KYACUTE,   // ý
+    KYACUTEU,  // Ý
+    KLSLASH,   // ł
+    KLSLASHU,  // Ł
+    KAORING,   // å
+    KAORINGU,  // Å
+    KUORING,   // ů
+    KUORINGU,  // Ů
+    KATILDE,   // ã
+    KATILDEU,  // Ã
+    KABREVE,   // ă
+    KABREVEU,  // Ă
+    KESZETU,   // ẞ
+    KBRDN,     // Screen brightness down
+    KBRUP,     // Screen brightness UP
+
+    // TODO
+    KDEGREE = 0,
+    KCOMPOSE = 0,
+    KBITCOIN = 0,
+    KFORALL= 0,
+    KEXISTS = 0,
+    KEMDASH = 0,
+    KENDASH = 0,
+    KELLIPSIS = 0,
+    KLAMBDA = 0,
+    KLAMBDAU = 0,
+    KARROWUP = 0,
+    KARROWDOWN = 0,
+    KARROWLEFT = 0,
+    KARROWRIGHT = 0,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-/* LAY0: ASCII and programming layer.
- *
- * Left:
- * ,--------------------------------------------------.
- * |      | |   &  |   *  |   -  |   @  |   ^  |   ~  |
- * |--------+------+------+------+------+-------------|
- * |      ( |   x  |   f  |   r  |   p  |   v  |   +  |
- * |--------+------+------+------+------+------|      |
- * | LAY5 , |   a  |   s  |   h  |   t  |   g  |------|
- * |--------+------+------+------+------+------|   #  |
- * | LCTL . |   q  |   z  |   :  |   m  |   k  |      |
- * `--------+------+------+------+------+-------------'
- *   | TAB  |   {  |   }  |LALT `|   _  |
- *   `----------------------------------'
- * Right:
- * ,--------------------------------------------------.
- * |  [   |   ]  |   "" |   !  |   <  |  >   | =      |
- * |------+------+------+------+------+------+--------|
- * |  \   |   b  |   l  |   o  |   w  |  '   | )      |
- * |      |------+------+------+------+------+--------|
- * |------|   c  |   n  |   e  |   u  |  i   | RGUI y |
- * | LAY5 |------+------+------+------+------+--------|
- * |      |   ?  |   d  |  Up  |   ;  |  j   | /      |
- * `-------------+------+------+------+------+--------'
- *               | Left | Down | Right|  $   | LAY4 |
- *               `----------------------------------'
- * Left:                        Right:
- *        ,-------------.       ,---------------.
- *        | Home | PgUp |       |RShift| Insert |
- * ,------|------|------|       |------+--------+------.
- * |      | End  | PgDn |       |PrtScr| RGui   |Delete|
- * |------|------|------|       |------|--------|------|
- * | Space| LAY2 | Enter|       | Esc  | LAY1   |Backsp|
- * `--------------------'       `----------------------'
- */
-[LAY0] = LAYOUT_ergodox_80(
-    // left hand
-    UAI_VERTB,            UAI_AMP,   UAI_STAR,  KC_MINUS,                UAI_AT,   UAI_CAROT, UAI_TILDE,
-    UAI_LPAR,             KC_X,      KC_F,      KC_R,                    KC_P,     KC_V,      UAI_PLUS,
-    LT(LAY5, KC_COMMA),   KC_A,      KC_S,      KC_H,                    KC_T,     KC_G,
-    MT(MOD_LCTL, KC_DOT), KC_Q,      KC_Z,      UAI_COLO,                KC_M,     KC_K,      UAI_HASH,
-    KC_TAB,               UAI_LCRB,  UAI_RCRB,  MT(MOD_LALT, KC_GRV),    UAI_USCOR,
-    // left thumb
-            KC_HOME, KC_PGUP,
-    KC_NO,  KC_END,  KC_PGDN,
-    KC_SPC, MO(LAY2),KC_ENTER,
-
-    // right hand
-    KC_LBRACKET, KC_RBRACKET,  UAI_DQUO, UAI_RBANG, UAI_LANG, UAI_RANG,  KC_EQL,
-    KC_BSLS,     KC_B,         KC_L,     KC_O,      KC_W,     KC_QUOT,   UAI_RPAR,
-                 KC_C,         KC_N,     KC_E,      KC_U,     KC_I,      MT(MOD_RGUI, KC_Y),
-    TO(LAY5),    UAI_QUES,     KC_D,     KC_UP,     UAI_COLO, KC_J,      KC_SLSH,
-                               KC_LEFT,  KC_DOWN,   KC_RIGHT, UAI_DOLLAR,TO(LAY4),
-    // right thumb
-    KC_RSFT,   KC_INSERT,
-    KC_PSCR,   KC_RGUI,  KC_DELETE,
-    KC_ESC,    MO(LAY1), KC_BSPC
-    ),
-
-/* LAY1: Uppercase, numbers.
- *
- * Left:
- * ,--------------------------------------------------.
- * |      | |   1  |   2  |   3  |   4  |   5  |   ~  |
- * |--------+------+------+------+------+-------------|
- * |      ( |   X  |   F  |   R  |   P  |   V  |   +  |
- * |--------+------+------+------+------+------|      |
- * | LAY5 , |   A  |   S  |   H  |   T  |   G  |------|
- * |--------+------+------+------+------+------|   #  |
- * | LCTL . |   Q  |   Z  |   :  |   M  |   K  |      |
- * `--------+------+------+------+------+-------------'
- *   | TAB  |   {  |   }  |LALT `|   _  |
- *   `----------------------------------'
- * Right:
- * ,--------------------------------------------------.
- * |  [   |   ]  |   "" |   !  |   <  |  >   | =      |
- * |------+------+------+------+------+------+--------|
- * |  \   |   B  |   L  |   O  |   W  |  '   | )      |
- * |      |------+------+------+------+------+--------|
- * |------|   C  |   N  |   E  |   U  |  I   | Y      |
- * |  $   |------+------+------+------+------+--------|
- * |      |   ?  |   D  |  Up  |   ;  |  J   | /      |
- * `-------------+------+------+------+------+--------'
- *               | Left | Down | Right| LAY5 | LAY4 |
- *               `----------------------------------'
- * Left:                        Right:
- *        ,-------------.       ,---------------.
- *        | Home | PgUp |       |RShift| Insert |
- * ,------|------|------|       |------+--------+------.
- * |      | End  | PgDn |       |PrtScr| RGui   |Delete|
- * |------|------|------|       |------|--------|------|
- * | Space| LAY3 | Enter|       | Esc  | LAY1   |Backsp|
- * `--------------------'       `----------------------'
- */
 [LAY1] = LAYOUT_ergodox_80(
     // left hand
-    KC_TRNS, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_TRNS,
-    KC_TRNS, S(KC_X), S(KC_F), S(KC_R), S(KC_P), S(KC_V), KC_TRNS,
-    KC_TRNS, S(KC_A), S(KC_S), S(KC_H), S(KC_T), S(KC_G),
-    KC_TRNS, S(KC_Q), S(KC_Z), KC_TRNS, S(KC_M), S(KC_K), KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    0, KAMP, KSTAR, KMINUS, KHASH, KBSLS, KC_MUTE,
+    KLPAR, KX, KF, KR, KP, KV, KC_VOLU,
+    LT(LNUM, KCOMMA), KA, KS, KH, KT, KG,
+    KDOT, KQ, KZ, KSCOLO, KM, KK, KC_VOLD,
+    0, KC_LALT, 0, KC_LGUI, KC_LCTL,
     // left thumb
-              KC_TRNS,   KC_TRNS,
-    KC_TRNS,  KC_TRNS,   KC_TRNS,
-    KC_TRNS,  MO(LAY3),  KC_TRNS,
+    KC_MPLY, KBRUP,
+    KC_MPRV, KC_MNXT, KBRUP,
+    KC_SPC, LT(LAY2, KC_LSFT), KC_ENTER,
 
     // right hand
-    KC_TRNS, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_TRNS,
-    KC_TRNS, S(KC_B), S(KC_L), S(KC_O), S(KC_W), KC_TRNS, KC_TRNS,
-             S(KC_C), S(KC_N), S(KC_E), S(KC_U), S(KC_I), KC_TRNS,
-    KC_TRNS, KC_TRNS, S(KC_D), KC_TRNS, KC_TRNS, S(KC_J), KC_TRNS,
-                      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KLBRK, KRBRK, KDQUO, KQUOT, KLANG, KRANG, KEQL,
+    TO(LMED), KB, KL, KO, KW, KUSCOR, KRPAR,
+    KC, KN, KE, KU, KI, MT(MOD_RGUI, KY),
+    TO(LNUM), KRQUES, KD, KC_UP, KCOLO, KJ, KSLSH,
+    KC_LEFT, KC_DOWN, KC_RIGHT, KC_ESC, 0,
     // right thumb
-    KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS,  KC_TRNS,
-    KC_TRNS, KC_TRNS,  KC_TRNS
+    0, KCOMPOSE,
+    KC_PSCR, KC_INSERT, KC_DELETE,
+    KC_TAB, LT(LAY3, KC_RALT), KC_BSPC
     ),
 
-/* LAY2: Letters and accents of latin european languages.
- *
- * Left:
- * ,--------------------------------------------------.
- * |        |      |      |      |      |      |      |
- * |--------+------+------+------+------+-------------|
- * |        |   æ  |   ș  |   ◌̀  |   ț  |      |      |
- * |--------+------+------+------+------+------|      |
- * |     ă  |   á  |   ß  |   ◌̄  |  ◌̈   |   ◌́  |------|
- * |--------+------+------+------+------+------|      |
- * |     å  |   ã  |      |   ◌̋  |  ◌̂   |      |      |
- * `--------+------+------+------+------+-------------'
- *   |      |      |      |      |      |
- *   `----------------------------------'
- * Right:
- * ,--------------------------------------------------.
- * |      |      |      |      |      |      |        |
- * |------+------+------+------+------+------+--------|
- * |      |      |   ł  |   ó  |   ◌̌  |  œ   |        |
- * |      |------+------+------+------+------+--------|
- * |------|   ç  |   ñ  |   é  |   ú  |  í   |  ø     |
- * |      |------+------+------+------+------+--------|
- * |      |      |   ◌̨  |   ◌̇  |   ů  |  ý   |        |
- * `-------------+------+------+------+------+--------'
- *               |      |      |      |      |      |
- *               `----------------------------------'
- * Left:                        Right:
- *        ,-------------.       ,-------------.
- *        |      |      |       |      |        |
- * ,------|------|------|       |------+--------+------.
- * |      |      |      |       |      |        |      |
- * |------|------|------|       |------|--------|------|
- * |      |      |      |       |      | LAY3   |      |
- * `--------------------'       `----------------------'
- */
 [LAY2] = LAYOUT_ergodox_80(
     // left hand
-    KC_NO,      KC_NO,       KC_NO,      KC_NO,           KC_NO,           KC_NO,          KC_NO,
-    KC_NO,      UAI_AE,      MY_S_COMMA, UAI_DEAD_GRAVE,  MY_T_COMMA,      KC_NO,          KC_NO,
-    MY_A_BREVE, UAI_A_ACUTE, UAI_ESZET,  UAI_DEAD_MACRON, UAI_DEAD_UMLAUT, UAI_DEAD_ACUTE,
-    MY_A_ORING, MY_A_TILDE,  KC_NO,      UAI_DEAD_DACUTE, UAI_DEAD_CAROT,  KC_NO,          KC_NO,
-    KC_NO,      KC_NO,       KC_NO,      KC_NO,           KC_NO,
+    0, K1, K2, K3, K4, K5, 0,
+    KLCRB, KXU, KFU, KRU, KPU, KVU, 0,
+    KPLUS, KAU, KSU, KHU, KTU, KGU,
+    KTILDE, KQU, KZU, 1, KMU, KKU, 0,
+    0, 0, 0, 0, 0,
     // left thumb
-           KC_NO, KC_NO,
-    KC_NO, KC_NO, KC_NO,
-    KC_NO, KC_NO, KC_NO,
-
+    0, 0,
+    0, 0, 0,
+    S(KC_SPACE), 0, S(KC_ENTER),
     // right hand
-    KC_NO, KC_NO,         KC_NO,           KC_NO,            KC_NO,          KC_NO,       KC_NO,
-    KC_NO, KC_NO,         MY_L_SLASH,      UAI_O_ACUTE,      UAI_DEAD_CARON, UAI_OE,      KC_NO,
-           UAI_C_CEDILLA, UAI_N_TILDE,     UAI_E_ACUTE,      UAI_U_ACUTE,    UAI_I_ACUTE, UAI_O_SLASH,
-    KC_NO, KC_NO,         UAI_DEAD_OGONEK, UAI_DEAD_OVERDOT, MY_U_ORING,     MY_Y_ACUTE,  KC_NO,
-                          KC_NO,           KC_NO,            KC_NO,          KC_NO,       KC_NO,
+    0, K6, K7, K8, K9, K0, 0,
+    0, KBU, KLU, KOU, KWU, KCAROT, KRCRB,
+    KCU, KNU, KEU, KUU, KIU, KYU,
+    0, KREXCL, KDU, KC_PGUP, 0, KJU, KPERC,
+    KC_HOME, KC_PGDN, KC_END, 0, 0,
     // right thumb
-    KC_NO, KC_NO,
-    KC_NO, KC_NO, KC_NO,
-    KC_NO, MO(LAY3), KC_NO
+    0, 0,
+    0, S(KC_INSERT), S(KC_DELETE),
+    S(KC_TAB), MO(LAY4), S(KC_BSPC)
     ),
 
-/* LAY3: Letters of LAY2 in uppercase. */
 [LAY3] = LAYOUT_ergodox_80(
     // left hand
-    KC_TRNS,      KC_TRNS,        KC_TRNS,      KC_TRNS,KC_TRNS,       KC_TRNS, KC_TRNS,
-    KC_TRNS,      S(UAI_AE),      MY_S_COMMA_U, KC_TRNS,MY_T_COMMA_U,  KC_TRNS, KC_TRNS,
-    MY_A_BREVE_U, S(UAI_A_ACUTE), MY_ESZET_U,   KC_TRNS,KC_TRNS,       KC_TRNS,
-    MY_A_ORING_U, MY_A_TILDE_U,   KC_TRNS,      KC_TRNS,KC_TRNS,       KC_TRNS, KC_TRNS,
-    KC_TRNS,      KC_TRNS,        KC_TRNS,      KC_TRNS,KC_TRNS,
+    0, KDEGREE, KLDQUO, KRDQUO, KAT, KENDASH, 0,
+    KDOLLAR, KAE, KSCOMMA, KDEADGRAVE, KTCOMMA, 0, 0,
+    KABREVE, KAACUTE, KESZET, KDEADMACRON, KDEADUMLAUT, KDEADACUTE,
+    KAORING, KATILDE, 0, KDEADDACUTE, KDEADCAROT, 0, 0,
+    0, 0, 0, 0, 0,
     // left thumb
-             KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS,
-
+    0, 0,
+    0, 0, 0,
+    RALT(KC_SPACE), MO(LAY4), RALT(KC_ENTER),
     // right hand
-    KC_TRNS, KC_TRNS,          KC_TRNS,        KC_TRNS,          KC_TRNS,        KC_TRNS,        KC_TRNS,
-    KC_TRNS, KC_TRNS,          MY_L_SLASH_U,   S(UAI_O_ACUTE),   KC_TRNS,        S(UAI_OE),      KC_TRNS,
-             S(UAI_C_CEDILLA), S(UAI_N_TILDE), S(UAI_E_ACUTE),   S(UAI_U_ACUTE), S(UAI_I_ACUTE), S(UAI_O_SLASH),
-    KC_TRNS, KC_TRNS,          KC_TRNS,        KC_TRNS,          MY_U_ORING_U,   MY_Y_ACUTE_U,   KC_TRNS,
-                               KC_TRNS,        KC_TRNS,          KC_TRNS,        KC_TRNS,        KC_TRNS,
+    0, 0, KFORALL, KGRAVE, KLGUIL, KRGUIL, 0,
+    0, KLAMBDA, KLSLASH, KOACUTE, KDEADCARON, KOSLASH, KPOUND,
+    KCCEDILLA, KNTILDE, KEACUTE, KUACUTE, KIACUTE, KYACUTE,
+    0, KLQUES, KDEADOGONEK, KARROWUP, KUORING, KOE, KDEADOVERDOT,
+    KARROWLEFT, KARROWDOWN, KARROWRIGHT, 0, 0,
     // right thumb
-    KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS
+    0, 0,
+    0, RALT(KC_INSERT), RALT(KC_DELETE),
+    RALT(KC_TAB), 0, RALT(KC_BSPC)
     ),
 
-/* LAY4: Media keys, Fn keys, mouse.
- *
- * Left hand:
- * ,--------------------------------------------------.
- * |    F1  |   F2 |  F3  | Btn3 |  F4  |  F5  |  F6  |
- * |--------+------+------+------+------+-------------|
- * | Space  | Tab  | Btn1 | MsUp | Btn2 | PgUp | BrUp |
- * |--------+------+------+------+------+------|      |
- * | Enter  | WBack|MsLeft|MsDown|MsRght| PgDn |------|
- * |--------+------+------+------+------+------| BrDn |
- * | Play   | Prev | Next |  Up  | Del  | Bspc |      |
- * `--------+------+------+------+------+-------------'
- *   | LAY0 |      | Left | Down | Right|
- *   `----------------------------------'
- * Right:
- * ,--------------------------------------------------.
- * |  F7  |  F8  |  F9  | Btn3 |  F10 |  F11 | F12    |
- * |------+------+------+------+------+------+--------|
- % | BrUp | PgUp | Btn1 | MsUp | Btn2 | Tab  | Space  |
- * |      |------+------+------+------+------+--------|
- * |------| PgDn | MsLft| MsDn | MsRgt| WBack| Enter  |
- * | BrDn |------+------+------+------+------+--------|
- * |      | Bspc | Del  |  Up  | VolDn| VolUp| Mute   |
- * `-------------+------+------+------+------+--------'
- *               | Left | Down | Right|      | LAY0 |
- *               `----------------------------------'
- * Left:                        Right:
- *        ,-------------.       ,-------------.
- *        |      |      |       |      |      |
- * ,------|------|------|       |------+------+------.
- * |      |      |      |       |      |      |      |
- * |------|------|------|       |------|------|------|
- * | LSft | LAlt | LCtl |       | RCtl | RAlt | RSft |
- * `--------------------'       `--------------------'
- */
 [LAY4] = LAYOUT_ergodox_80(
     // left hand
-    KC_F1,    KC_F2,   KC_F3,   KC_BTN3, KC_F4,   KC_F5,   KC_F6,
-    KC_SPC,   KC_TAB,  KC_BTN1, KC_MS_U, KC_BTN2, KC_PGUP, KC_NO,
-    KC_ENTER, KC_WBAK, KC_MS_L, KC_MS_D, KC_MS_R, KC_PGDN,
-    KC_MPLY,  KC_MPRV, KC_MNXT, KC_UP,   KC_DEL,  KC_BSPC, KC_NO,
-    TO(LAY0), KC_NO,   KC_LEFT, KC_DOWN, KC_RIGHT,
+    0, 0, 0, 0, 0, KEMDASH, 0,
+    KEURO, KAEU, KSCOMMAU, KELLIPSIS, KTCOMMAU, 0, 0,
+    KABREVEU, KAACUTEU, KESZETU, 0, 0, 0,
+    KAORINGU, KATILDEU, 0, 0, KMU, 0, 0,
+    0, 0, 0, 0, 0,
     // left thumb
-             KC_NO,   KC_NO,
-    KC_NO,   KC_NO,   KC_NO,
-    KC_LSFT, KC_LALT, KC_LCTL,
+    0, 0,
+    0, 0, 0,
+    RALT(S(KC_SPACE)), 0, RALT(S(KC_ENTER)),
     // right hand
-    KC_F7,   KC_F8,    KC_F9,   KC_BTN3,KC_F10,   KC_F11,   KC_F12,
-    KC_NO,   KC_PGUP,  KC_BTN1, KC_MS_U,KC_BTN2,  KC_TAB,   KC_SPC,
-             KC_PGDN,  KC_MS_L, KC_MS_D,KC_MS_R,  KC_WBAK,  KC_ENTER,
-    KC_NO,   KC_BSPC,  KC_DEL,  KC_UP,  KC_VOLD,  KC_VOLU,  KC_MUTE,
-                       KC_LEFT, KC_DOWN,KC_RIGHT, KC_NO,    TO(LAY0),
+    0, 0, KEXISTS, 0, 0, 0, 0,
+    0, KLAMBDAU, KLSLASHU, KOACUTEU, 0, KOSLASHU, KBITCOIN,
+    KCCEDILLAU, KNTILDEU, KEACUTEU, KUACUTEU, KIACUTEU, KYACUTEU,
+    0, KLEXCL, KCOPYRIGHT, 0, KUORINGU, KOEU, 0,
+    0, 0, 0, 0, 0,
     // right thumb
-    KC_NO,   KC_NO,
-    KC_NO,   KC_NO,   KC_NO,
-    KC_RCTL, KC_RALT, KC_RSFT
+    0, 0,
+    0, RALT(S(KC_INSERT)), RALT(S(KC_DELETE)),
+    RALT(S(KC_TAB)), 0, RALT(S(KC_BSPC))
     ),
 
-/* LAY5: Numeric keypad.
- *
- * Right:
- * ,--------------------------------------------------.
- * |    a |   b  |   c  |   d  |   e  |  f   |  =     |
- * |------+------+------+------+------+------+--------|
- % |      |      |   7  |   8  |   9  |  (   | )      |
- * |      |------+------+------+------+------+--------|
- * |------|      |   4  |   5  |   6  |  *   | /      |
- * | LAY0 |------+------+------+------+------+--------|
- * |      |      |   1  |   2  |   3  |  +   | -      |
- * `-------------+------+------+------+------+--------'
- *               |   0  |   .  |   ,  |  %   | Enter|
- *               `----------------------------------'
- */
-[LAY5] = LAYOUT_ergodox_80(
+[LMED] = LAYOUT_ergodox_80(
     // left hand
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+    KC_F1, KC_F2, KC_F3, KC_BTN3, KC_F4, KC_F5, KC_F6,
+    0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0,
+    0, 1, 0, 1, 1,
     // left thumb
-             KC_NO,   KC_NO,
-    KC_NO,   KC_NO,   KC_NO,
-    KC_NO,   KC_NO,   KC_NO,
+    1, 1,
+    1, 1, 1,
+    1, 1, 1,
     // right hand
-    KC_A,    KC_B,     KC_C, KC_D,   KC_E,     KC_F,     KC_EQL,
-    KC_NO,   KC_NO,    KC_7, KC_8,   KC_9,     UAI_LPAR, UAI_RPAR,
-             KC_NO,    KC_4, KC_5,   KC_6,     UAI_STAR, KC_SLSH,
-    TO(LAY0),KC_NO,    KC_1, KC_2,   KC_3,     KC_PLUS,  KC_MINUS,
-                       KC_0, KC_DOT, KC_COMMA, UAI_PERC, KC_ENTER,
+    KC_F7, KC_F8, KC_F9, KC_BTN3,KC_F10, KC_F11, KC_F12,
+    TO(LAY1), KC_PGUP, KC_BTN1, KC_MS_U, KC_BTN2, 0, 0,
+    KC_PGDN, KC_MS_L, KC_MS_D, KC_MS_R, 0, 0,
+    0, 0, 0, 1, 0, 0, 0,
+    1, 1, 1, 0, 1,
     // right thumb
-    KC_NO,   KC_NO,
-    KC_NO,   KC_NO,   KC_NO,
-    KC_NO,   KC_NO,   KC_NO
+    0, 0,
+    1, 1, 1,
+    1, 1, 1
+    ),
+
+[LNUM] = LAYOUT_ergodox_80(
+    // left hand
+    0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0,
+    // left thumb
+    0, 0,
+    0, 0, 0,
+    0, 0, 0,
+    // right hand
+    0, 0, KA, KB, KC, KPERC, 0,
+    0, KF, K7, K8, K9, KSTAR, KSLSH,
+    KE, K4, K5, K6, KPLUS, KMINUS,
+    TO(LAY1), KD, K1, K2, K3, KLPAR, KRPAR,
+    KC_0, KC_DOT, KC_COMMA, 0, 0,
+    // right thumb
+    0, 0,
+    0, 0, 0,
+    0, 0, 0
     )
 };
 
@@ -404,23 +303,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         /* On key down */
         switch (keycode) {
         // Compose key stuff.
-        case MY_S_COMMA:   SEND_COMPOSE(";s"); return false;
-        case MY_S_COMMA_U: SEND_COMPOSE(";S"); return false;
-        case MY_T_COMMA:   SEND_COMPOSE(";t"); return false;
-        case MY_T_COMMA_U: SEND_COMPOSE(";T"); return false;
-        case MY_Y_ACUTE:   SEND_COMPOSE("'y"); return false;
-        case MY_Y_ACUTE_U: SEND_COMPOSE("'Y"); return false;
-        case MY_L_SLASH:   SEND_COMPOSE("/l"); return false;
-        case MY_L_SLASH_U: SEND_COMPOSE("/L"); return false;
-        case MY_A_ORING:   SEND_COMPOSE("oa"); return false;
-        case MY_A_ORING_U: SEND_COMPOSE("oA"); return false;
-        case MY_U_ORING:   SEND_COMPOSE("ou"); return false;
-        case MY_U_ORING_U: SEND_COMPOSE("oU"); return false;
-        case MY_A_TILDE:   SEND_COMPOSE("~a"); return false;
-        case MY_A_TILDE_U: SEND_COMPOSE("~A"); return false;
-        case MY_A_BREVE:   SEND_COMPOSE("ba"); return false;
-        case MY_A_BREVE_U: SEND_COMPOSE("bA"); return false;
-        case MY_ESZET_U:   SEND_COMPOSE("SS"); return false;
+        case KSCOMMA:   SEND_COMPOSE(";s"); return false;
+        case KSCOMMAU:  SEND_COMPOSE(";S"); return false;
+        case KTCOMMA:   SEND_COMPOSE(";t"); return false;
+        case KTCOMMAU:  SEND_COMPOSE(";T"); return false;
+        case KYACUTE:   SEND_COMPOSE("'y"); return false;
+        case KYACUTEU:  SEND_COMPOSE("'Y"); return false;
+        case KLSLASH:   SEND_COMPOSE("/l"); return false;
+        case KLSLASHU:  SEND_COMPOSE("/L"); return false;
+        case KAORING:   SEND_COMPOSE("oa"); return false;
+        case KAORINGU:  SEND_COMPOSE("oA"); return false;
+        case KUORING:   SEND_COMPOSE("ou"); return false;
+        case KUORINGU:  SEND_COMPOSE("oU"); return false;
+        case KATILDE:   SEND_COMPOSE("~a"); return false;
+        case KATILDEU:  SEND_COMPOSE("~A"); return false;
+        case KABREVE:   SEND_COMPOSE("ba"); return false;
+        case KABREVEU:  SEND_COMPOSE("bA"); return false;
+        case KESZETU:   SEND_COMPOSE("SS"); return false;
         default: break;
         }
     } else {
@@ -445,21 +344,11 @@ void matrix_scan_user(void) {
     ergodox_right_led_2_off();
     ergodox_right_led_3_off();
     switch (layer) {
-        case LAY1:
+        case LMED:
             ergodox_right_led_2_on();
             break;
-        case LAY2:
+        case LNUM:
             ergodox_right_led_3_on();
-            break;
-        case LAY3:
-            ergodox_right_led_2_on();
-            ergodox_right_led_3_on();
-            break;
-        case LAY4:
-            ergodox_right_led_1_on();
-            break;
-        case LAY5:
-            ergodox_right_led_1_on();
             break;
         default:
             break;
