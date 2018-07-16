@@ -118,43 +118,48 @@ enum keycodes_us_altgr_intl {
 #define SS_COMPOSE(string) SS_DOWN(X_RCTRL) string SS_UP(X_RCTRL)
 #define SEND_COMPOSE(string) SEND_STRING(SS_COMPOSE(string))
 
-enum my_keycodes {
+enum my_macros {
     /* These keycodes get mapped to macros that emit Compose strings */
-    KSCOMMA = SAFE_RANGE, // ș
-    KSCOMMAU,  // Ș
-    KTCOMMA,   // ț
-    KTCOMMAU,  // Ț
-    KYACUTE,   // ý
-    KYACUTEU,  // Ý
-    KLSLASH,   // ł
-    KLSLASHU,  // Ł
-    KAORING,   // å
-    KAORINGU,  // Å
-    KUORING,   // ů
-    KUORINGU,  // Ů
-    KATILDE,   // ã
-    KATILDEU,  // Ã
-    KABREVE,   // ă
-    KABREVEU,  // Ă
-    KESZETU,   // ẞ
-    KBRDN,     // Screen brightness down
-    KBRUP,     // Screen brightness UP
+    KABREVE = SAFE_RANGE, // ă
+    KABREVEU,    // Ă
+    KAORING,     // å
+    KAORINGU,    // Å
+    KARROWLEFT,  // ←
+    KARROWRIGHT, // →
+    KATILDE,     // ã
+    KATILDEU,    // Ã
+    KDEGREE,     // °
+    KELLIPSIS,   // …
+    KEMDASH,     // —
+    KENDASH,     // –
+    KESZETU,     // ẞ
+    KLSLASH,     // ł
+    KLSLASHU,    // Ł
+    KSCOMMA,     // ș
+    KSCOMMAU,    // Ș
+    KTCOMMA,     // ț
+    KTCOMMAU,    // Ț
+    KUORING,     // ů
+    KUORINGU,    // Ů
+    KYACUTEU,    // Ý
+    KYACUTE,     // ý
+};
 
+enum my_misc {
+    /* These emit some weird key combination expected to be handled in the OS */
+    KBRDN = RGUI(KC_F13),  // Screen brightness down
+    KBRUP = RGUI(KC_F14)  // Screen brightness UP
+};
+
+enum my_unicode {
     // TODO
-    KDEGREE = 0,
-    KCOMPOSE = 0,
-    KBITCOIN = 0,
-    KFORALL= 0,
-    KEXISTS = 0,
-    KEMDASH = 0,
-    KENDASH = 0,
-    KELLIPSIS = 0,
-    KLAMBDA = 0,
-    KLAMBDAU = 0,
-    KARROWUP = 0,
-    KARROWDOWN = 0,
-    KARROWLEFT = 0,
-    KARROWRIGHT = 0,
+    KBITCOIN = UC(0x20bf),  // ₿
+    KFORALL = UC(0x2200),   // ∀
+    KEXISTS = UC(0x2203),   // ∃
+    KLAMBDA = UC(0x03bb),   // λ
+    KLAMBDAU = UC(0x039b),  // Λ
+    KARROWUP = UC(0x2191),  // ↑
+    KARROWDOWN = UC(0x2193) // ↓
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -167,8 +172,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     0, KC_LALT, 0, KC_LGUI, KC_LCTL,
     // left thumb
     KC_MPLY, KBRUP,
-    KC_MPRV, KC_MNXT, KBRUP,
-    KC_SPC, LT(LAY2, KC_LSFT), KC_ENTER,
+    KC_MPRV, KC_MNXT, KBRDN,
+    KC_SPC, MO(LAY2), KC_ENTER,
 
     // right hand
     KLBRK, KRBRK, KDQUO, KQUOT, KLANG, KRANG, KEQL,
@@ -177,9 +182,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TO(LNUM), KRQUES, KD, KC_UP, KCOLO, KJ, KSLSH,
     KC_LEFT, KC_DOWN, KC_RIGHT, KC_ESC, 0,
     // right thumb
-    0, KCOMPOSE,
+    0, KC_RCTL,
     KC_PSCR, KC_INSERT, KC_DELETE,
-    KC_TAB, LT(LAY3, KC_RALT), KC_BSPC
+    KC_TAB, MO(LAY3), KC_BSPC
     ),
 
 [LAY2] = LAYOUT_ergodox_80(
@@ -303,23 +308,29 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         /* On key down */
         switch (keycode) {
         // Compose key stuff.
-        case KSCOMMA:   SEND_COMPOSE(";s"); return false;
-        case KSCOMMAU:  SEND_COMPOSE(";S"); return false;
-        case KTCOMMA:   SEND_COMPOSE(";t"); return false;
-        case KTCOMMAU:  SEND_COMPOSE(";T"); return false;
-        case KYACUTE:   SEND_COMPOSE("'y"); return false;
-        case KYACUTEU:  SEND_COMPOSE("'Y"); return false;
-        case KLSLASH:   SEND_COMPOSE("/l"); return false;
-        case KLSLASHU:  SEND_COMPOSE("/L"); return false;
-        case KAORING:   SEND_COMPOSE("oa"); return false;
-        case KAORINGU:  SEND_COMPOSE("oA"); return false;
-        case KUORING:   SEND_COMPOSE("ou"); return false;
-        case KUORINGU:  SEND_COMPOSE("oU"); return false;
-        case KATILDE:   SEND_COMPOSE("~a"); return false;
-        case KATILDEU:  SEND_COMPOSE("~A"); return false;
-        case KABREVE:   SEND_COMPOSE("ba"); return false;
-        case KABREVEU:  SEND_COMPOSE("bA"); return false;
-        case KESZETU:   SEND_COMPOSE("SS"); return false;
+        case KABREVE:     SEND_COMPOSE("ba"); return false;
+        case KABREVEU:    SEND_COMPOSE("bA"); return false;
+        case KAORING:     SEND_COMPOSE("oa"); return false;
+        case KAORINGU:    SEND_COMPOSE("oA"); return false;
+        case KARROWLEFT:  SEND_COMPOSE("<-"); return false;
+        case KARROWRIGHT: SEND_COMPOSE("->"); return false;
+        case KATILDE:     SEND_COMPOSE("~a"); return false;
+        case KATILDEU:    SEND_COMPOSE("~A"); return false;
+        case KDEGREE:     SEND_COMPOSE("oo"); return false;
+        case KELLIPSIS:   SEND_COMPOSE(".."); return false;
+        case KEMDASH:     SEND_COMPOSE("---"); return false;
+        case KENDASH:     SEND_COMPOSE("--."); return false;
+        case KESZETU:     SEND_COMPOSE("SS"); return false;
+        case KLSLASH:     SEND_COMPOSE("/l"); return false;
+        case KLSLASHU:    SEND_COMPOSE("/L"); return false;
+        case KSCOMMA:     SEND_COMPOSE(";s"); return false;
+        case KSCOMMAU:    SEND_COMPOSE(";S"); return false;
+        case KTCOMMA:     SEND_COMPOSE(";t"); return false;
+        case KTCOMMAU:    SEND_COMPOSE(";T"); return false;
+        case KUORING:     SEND_COMPOSE("ou"); return false;
+        case KUORINGU:    SEND_COMPOSE("oU"); return false;
+        case KYACUTE:     SEND_COMPOSE("'y"); return false;
+        case KYACUTEU:    SEND_COMPOSE("'Y"); return false;
         default: break;
         }
     } else {
@@ -333,6 +344,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 // Runs just one time when the keyboard initializes.
 void matrix_init_user(void) {
+    set_unicode_input_mode(UC_LNX);
 };
 
 // Runs constantly in the background, in a loop.
