@@ -147,8 +147,8 @@ enum my_macros {
 
 enum my_misc {
     /* These emit some weird key combination expected to be handled in the OS */
-    KBRDN = RGUI(KC_F13),  // Screen brightness down
-    KBRUP = RGUI(KC_F14)  // Screen brightness UP
+    KBRDN = RGUI(LSFT(KC_F11)),  // Screen brightness down
+    KBRUP = RGUI(LSFT(KC_F12))  // Screen brightness UP
 };
 
 enum my_unicode {
