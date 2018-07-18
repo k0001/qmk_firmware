@@ -165,11 +165,11 @@ enum my_unicode {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [LAY1] = LAYOUT_ergodox_80(
     // left hand
-    KC_ESC, KAMP, KSTAR, KMINUS, KHASH, KBSLS, KC_MUTE,
+    0, KPLUS, KSTAR, KMINUS, KHASH, KBSLS, KC_MUTE,
     KLPAR, KX, KF, KR, KP, KV, KC_VOLU,
     LT(LNUM, KCOMMA), KA, KS, KH, KT, KG,
     MT(MOD_LCTL, KDOT), KQ, KZ, KSCOLO, KM, KK, KC_VOLD,
-    KC_LALT, 0, 0, KC_LEFT, KC_RIGHT,
+    KC_LALT, 0, 0, 0, KC_ESC,
     // left thumb
     KC_MPLY, KBRUP,
     KC_MPRV, KC_MNXT, KBRDN,
@@ -190,9 +190,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // left hand
     0, K1, K2, K3, K4, K5, 0,
     KLCRB, KXU, KFU, KRU, KPU, KVU, 0,
-    KPLUS, KAU, KSU, KHU, KTU, KGU,
-    KTILDE, KQU, KZU, 1, KMU, KKU, 0,
-    0, 0, 0, 0, 0,
+    KAMP, KAU, KSU, KHU, KTU, KGU,
+    MT(MOD_LSFT|MOD_LCTL, KTILDE), KQU, KZU, 0, KMU, KKU, 0,
+    S(KC_LALT), 0, 0, 0, S(KC_ESC),
     // left thumb
     0, 0,
     0, 0, 0,
@@ -200,7 +200,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // right hand
     0, K6, K7, K8, K9, K0, 0,
     0, KBU, KLU, KOU, KWU, KCAROT, KRCRB,
-    KCU, KNU, KEU, KUU, KIU, KYU,
+    KCU, KNU, KEU, KUU, KIU, MT(MOD_LSFT|MOD_RGUI, KYU),
     0, KREXCL, KDU, KC_PGUP, 0, KJU, KPERC,
     KC_HOME, KC_PGDN, KC_END, 0, 0,
     // right thumb
@@ -214,8 +214,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     0, KDEGREE, KLDQUO, KRDQUO, KAT, KENDASH, 0,
     KDOLLAR, KAE, KSCOMMA, KDEADGRAVE, KTCOMMA, 0, 0,
     KABREVE, KAACUTE, KESZET, KDEADMACRON, KDEADUMLAUT, KDEADACUTE,
-    KAORING, KATILDE, 0, KDEADDACUTE, KDEADCAROT, 0, 0,
-    0, 0, 0, 0, 0,
+    MT(MOD_RALT|MOD_LCTL, KAORING), KATILDE, 0, KDEADDACUTE, KDEADCAROT, 0, 0,
+    RALT(KC_LALT), 0, 0, 0, RALT(KC_ESC),
     // left thumb
     0, 0,
     0, 0, 0,
@@ -223,7 +223,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // right hand
     0, 0, KFORALL, KGRAVE, KLGUIL, KRGUIL, 0,
     0, KLAMBDA, KLSLASH, KOACUTE, KDEADCARON, KOSLASH, KPOUND,
-    KCCEDILLA, KNTILDE, KEACUTE, KUACUTE, KIACUTE, KYACUTE,
+    KCCEDILLA, KNTILDE, KEACUTE, KUACUTE, KIACUTE, MT(MOD_RALT|MOD_RGUI, KYACUTE),
     0, KLQUES, KDEADOGONEK, KARROWUP, KUORING, KOE, KDEADOVERDOT,
     KARROWLEFT, KARROWDOWN, KARROWRIGHT, 0, 0,
     // right thumb
@@ -237,8 +237,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     0, 0, 0, 0, 0, KEMDASH, 0,
     KEURO, KAEU, KSCOMMAU, KELLIPSIS, KTCOMMAU, 0, 0,
     KABREVEU, KAACUTEU, KESZETU, 0, 0, 0,
-    KAORINGU, KATILDEU, 0, 0, KMU, 0, 0,
-    0, 0, 0, 0, 0,
+    MT(MOD_RALT|MOD_LSFT|MOD_LCTL, KAORINGU), KATILDEU, 0, 0, KMU, 0, 0,
+    RALT(S(KC_LALT)), 0, 0, 0, RALT(S(KC_ESC)),
     // left thumb
     0, 0,
     0, 0, 0,
@@ -246,7 +246,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // right hand
     0, 0, KEXISTS, 0, 0, 0, 0,
     0, KLAMBDAU, KLSLASHU, KOACUTEU, 0, KOSLASHU, KBITCOIN,
-    KCCEDILLAU, KNTILDEU, KEACUTEU, KUACUTEU, KIACUTEU, KYACUTEU,
+    KCCEDILLAU, KNTILDEU, KEACUTEU, KUACUTEU, KIACUTEU, MT(MOD_RALT|MOD_LSFT|MOD_RGUI, KYACUTEU),
     0, KLEXCL, KCOPYRIGHT, 0, KUORINGU, KOEU, 0,
     0, 0, 0, 0, 0,
     // right thumb
@@ -260,8 +260,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     0, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,
     0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0,
-    KC_LALT, 0, 0, KC_LEFT, KC_RIGHT,
+    KC_LCTL, 0, 0, 0, 0, 0, 0,
+    KC_LALT, 0, 0, 0, KC_ESC,
     // left thumb
     KC_MPLY, KBRUP,
     KC_MPRV, KC_MNXT, KBRDN,
@@ -269,9 +269,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // right hand
     KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, 0,
     TO(LAY1), KC_PGUP, KC_BTN3, KC_MS_U, KC_BTN2, 0, 0,
-    KC_PGDN, KC_MS_L, KC_MS_D, KC_MS_R, 0, 0,
+    KC_PGDN, KC_MS_L, KC_MS_D, KC_MS_R, KC_WBAK, KC_RGUI,
     0, 0, 0, KC_UP, 0, 0, 0,
-    KC_LEFT, KC_DOWN, KC_RIGHT, KC_ESC, 0,
+    KC_LEFT, KC_DOWN, KC_RIGHT, 0, 0,
     // right thumb
     0, KC_RCTL,
     KC_PSCR, KC_INSERT, KC_DELETE,
