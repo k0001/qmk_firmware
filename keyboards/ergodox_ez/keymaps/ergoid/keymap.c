@@ -178,8 +178,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KLBRK, KRBRK, KDQUO, KQUOT, KLANG, KRANG, KEQL,
     TO(LMED), KB, KL, KO, KW, KUSCOR, KRPAR,
     KC, KN, KE, KU, KI, MT(MOD_RGUI, KY),
-    TO(LNUM), KRQUES, KD, KC_ESC, KCOLO, KJ, KSLSH,
-    KC_DOWN, KC_UP, 0, 0, 0,
+    TO(LNUM), KRQUES, KD, KC_UP, KCOLO, KJ, KSLSH,
+    KC_LEFT, KC_DOWN, KC_RIGHT, KC_ESC, 0,
     // right thumb
     0, KC_RCTL,
     KC_PSCR, KC_INSERT, KC_DELETE,
@@ -270,8 +270,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, 0,
     TO(LAY1), KC_PGUP, KC_BTN3, KC_MS_U, KC_BTN2, 0, 0,
     KC_PGDN, KC_MS_L, KC_MS_D, KC_MS_R, 0, 0,
-    0, 0, 0, KC_ESC, 0, 0, 0,
-    KC_DOWN, KC_UP, 0, 0, 0,
+    0, 0, 0, KC_UP, 0, 0, 0,
+    KC_LEFT, KC_DOWN, KC_RIGHT, KC_ESC, 0,
     // right thumb
     0, KC_RCTL,
     KC_PSCR, KC_INSERT, KC_DELETE,
