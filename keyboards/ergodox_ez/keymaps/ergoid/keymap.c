@@ -200,7 +200,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // right hand
     0, K6, K7, K8, K9, K0, 0,
     0, KBU, KLU, KOU, KWU, KCAROT, KRCRB,
-    KCU, KNU, KEU, KUU, KIU, MT(MOD_RGUI, KYU),
+    KCU, KNU, KEU, KUU, KIU, KYU,
     0, KREXCL, KDU, KC_PGUP, 0, KJU, KPERC,
     KC_HOME, KC_PGDN, KC_END, 0, 0,
     // right thumb
