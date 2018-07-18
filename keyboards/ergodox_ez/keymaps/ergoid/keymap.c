@@ -109,7 +109,7 @@ enum keycodes_us_altgr_intl {
   KDEADTILDE = S(RALT(KC_GRV)), // ◌̃ - tilde
   KDEADMACRON = S(RALT(KC_3)), // ◌̄ – macron
   KDEADORING = S(RALT(KC_0)), // ◌̊ – overring
-  KDEADOGONEK = S(RALT(KC_8)), // ◌̨ – ogonek
+  KDEADOGONEK = RALT(KC_8), // ◌̨ – ogonek
   KDEADCEDILLA = S(RALT(KC_5)), // ◌̧ – cedilla
   KCOPYRIGHT = RALT(KC_C) // ©
 };
