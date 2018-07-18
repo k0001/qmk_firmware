@@ -165,22 +165,21 @@ enum my_unicode {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [LAY1] = LAYOUT_ergodox_80(
     // left hand
-    0, KAMP, KSTAR, KMINUS, KHASH, KBSLS, KC_MUTE,
+    KC_ESC, KAMP, KSTAR, KMINUS, KHASH, KBSLS, KC_MUTE,
     KLPAR, KX, KF, KR, KP, KV, KC_VOLU,
     LT(LNUM, KCOMMA), KA, KS, KH, KT, KG,
-    KDOT, KQ, KZ, KSCOLO, KM, KK, KC_VOLD,
-    0, KC_LALT, 0, KC_LGUI, KC_LCTL,
+    MT(MOD_LCTL, KDOT), KQ, KZ, KSCOLO, KM, KK, KC_VOLD,
+    KC_LALT, 0, 0, KC_LEFT, KC_RIGHT,
     // left thumb
     KC_MPLY, KBRUP,
     KC_MPRV, KC_MNXT, KBRDN,
     KC_SPC, MO(LAY2), KC_ENTER,
-
     // right hand
     KLBRK, KRBRK, KDQUO, KQUOT, KLANG, KRANG, KEQL,
     TO(LMED), KB, KL, KO, KW, KUSCOR, KRPAR,
     KC, KN, KE, KU, KI, MT(MOD_RGUI, KY),
-    TO(LNUM), KRQUES, KD, KC_UP, KCOLO, KJ, KSLSH,
-    KC_LEFT, KC_DOWN, KC_RIGHT, KC_ESC, 0,
+    TO(LNUM), KRQUES, KD, KC_ESC, KCOLO, KJ, KSLSH,
+    KC_DOWN, KC_UP, 0, 0, 0,
     // right thumb
     0, KC_RCTL,
     KC_PSCR, KC_INSERT, KC_DELETE,
@@ -258,25 +257,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [LMED] = LAYOUT_ergodox_80(
     // left hand
-    KC_F1, KC_F2, KC_F3, KC_BTN3, KC_F4, KC_F5, KC_F6,
+    0, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,
     0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0,
-    0, 1, 0, 1, 1,
+    KC_LALT, 0, 0, KC_LEFT, KC_RIGHT,
     // left thumb
-    1, 1,
-    1, 1, 1,
-    1, 1, 1,
+    KC_MPLY, KBRUP,
+    KC_MPRV, KC_MNXT, KBRDN,
+    KC_SPC, KC_LSHIFT, KC_ENTER,
     // right hand
-    KC_F7, KC_F8, KC_F9, KC_BTN3,KC_F10, KC_F11, KC_F12,
-    TO(LAY1), KC_PGUP, KC_BTN1, KC_MS_U, KC_BTN2, 0, 0,
+    KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, 0,
+    TO(LAY1), KC_PGUP, KC_BTN3, KC_MS_U, KC_BTN2, 0, 0,
     KC_PGDN, KC_MS_L, KC_MS_D, KC_MS_R, 0, 0,
-    0, 0, 0, 1, 0, 0, 0,
-    1, 1, 1, 0, 1,
+    0, 0, 0, KC_ESC, 0, 0, 0,
+    KC_DOWN, KC_UP, 0, 0, 0,
     // right thumb
-    0, 0,
-    1, 1, 1,
-    1, 1, 1
+    0, KC_RCTL,
+    KC_PSCR, KC_INSERT, KC_DELETE,
+    KC_TAB, KC_BTN1, KC_BSPC
     ),
 
 [LNUM] = LAYOUT_ergodox_80(
