@@ -14,7 +14,8 @@ enum my_layers {
   LAY3, // AltGr-like applied to LAY0
   LAY4, // AltGr-Shift-like applied to LAY0
   LMED, // Media keys, Fn keys, mouse.
-  LNUM  // Numeric keypad.
+  LNUM, // Numeric keypad.
+  LVIM  // Vim stuff.
 };
 
 // us altgr-intl keycodes
@@ -143,6 +144,8 @@ enum my_macros {
     KUORINGU,    // Ů
     KYACUTEU,    // Ý
     KYACUTE,     // ý
+    /* This is emits ESC when pressed, switching to LVIM while held */
+    KESCVIM
 };
 
 enum my_misc {
@@ -169,7 +172,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KLPAR, KX, KF, KR, KP, KV, KC_VOLU,
     LT(LNUM, KCOMMA), KA, KS, KH, KT, KG,
     MT(MOD_LCTL, KDOT), KQ, KZ, KSCOLO, KM, KK, KC_VOLD,
-    KC_LALT, 0, 0, 0, KC_ESC,
+    KC_LALT, 0, 0, 0, KESCVIM,
     // left thumb
     KC_MPLY, KBRUP,
     KC_MPRV, KC_MNXT, KBRDN,
@@ -179,7 +182,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TO(LMED), KB, KL, KO, KW, KUSCOR, KRPAR,
     KC, KN, KE, KU, KI, KY,
     TO(LNUM), KRQUES, KD, KC_UP, KCOLO, KJ, MT(MOD_RGUI, KSLSH),
-    KC_LEFT, KC_DOWN, KC_RIGHT, KC_ESC, 0,
+    KC_LEFT, KC_DOWN, KC_RIGHT, 0, 0,
     // right thumb
     0, KC_RCTL,
     KC_PSCR, KC_INSERT, KC_DELETE,
@@ -191,7 +194,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     0, K1, K2, K3, K4, K5, 0,
     KLCRB, KXU, KFU, KRU, KPU, KVU, 0,
     KAMP, KAU, KSU, KHU, KTU, KGU,
-    MT(MOD_LCTL, KTILDE), KQU, KZU, 0, KMU, KKU, 0,
+    KTILDE, KQU, KZU, 0, KMU, KKU, 0,
     S(KC_LALT), 0, 0, 0, S(KC_ESC),
     // left thumb
     0, 0,
@@ -214,7 +217,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     0, KDEGREE, KLDQUO, KRDQUO, KAT, KENDASH, 0,
     KDOLLAR, KAE, KSCOMMA, KDEADGRAVE, KTCOMMA, 0, 0,
     KABREVE, KAACUTE, KESZET, KDEADMACRON, KDEADUMLAUT, KDEADACUTE,
-    MT(MOD_LCTL, KAORING), KATILDE, 0, KDEADDACUTE, KDEADCAROT, 0, 0,
+    KAORING, KATILDE, 0, KDEADDACUTE, KDEADCAROT, 0, 0,
     RALT(KC_LALT), 0, 0, 0, RALT(KC_ESC),
     // left thumb
     0, 0,
@@ -237,7 +240,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     0, 0, 0, 0, 0, KEMDASH, 0,
     KEURO, KAEU, KSCOMMAU, KELLIPSIS, KTCOMMAU, 0, 0,
     KABREVEU, KAACUTEU, KESZETU, 0, 0, 0,
-    MT(MOD_LCTL, KAORINGU), KATILDEU, 0, 0, KMU, 0, 0,
+    KAORINGU, KATILDEU, 0, 0, KMU, 0, 0,
     RALT(S(KC_LALT)), 0, 0, 0, RALT(S(KC_ESC)),
     // left thumb
     0, 0,
@@ -246,7 +249,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // right hand
     0, 0, KEXISTS, 0, 0, 0, 0,
     0, KLAMBDAU, KLSLASHU, KOACUTEU, 0, KOSLASHU, KBITCOIN,
-    KCCEDILLAU, KNTILDEU, KEACUTEU, KUACUTEU, KIACUTEU, MT(MOD_RGUI, KYACUTEU),
+    KCCEDILLAU, KNTILDEU, KEACUTEU, KUACUTEU, KIACUTEU, KYACUTEU,
     0, KLEXCL, KCOPYRIGHT, 0, KUORINGU, KOEU, 0,
     0, 0, 0, 0, 0,
     // right thumb
@@ -299,6 +302,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     0, 0,
     0, 0, 0,
     0, 0, 0
+    ),
+[LVIM] = LAYOUT_ergodox_80(
+    // left hand
+    0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0,
+    0, LCTL(KV), 0, 0, S(KV), 0,
+    0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0,
+    // left thumb
+    0, 0,
+    0, 0, 0,
+    0, 0, 0,
+    // right hand
+    0, 0, 0, 0, 0, 0, 0,
+    0, KHASH, KSTAR, KLCRB, KRCRB, 0, 0,
+    0, KH, KJ, KK, KL, 0,
+    0, 0, K0, 0, 0, KDOLLAR, 0,
+    0, 0, 0, 0, 0,
+    // right thumb
+    0, 0,
+    0, 0, 0,
+    0, 0, 0
     )
 };
 
@@ -306,6 +331,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
         /* On key down */
         switch (keycode) {
+        case KESCVIM:
+           register_code(KC_ESC);
+           unregister_code(KC_ESC);
+           layer_on(LVIM);
+           return false;
         // Compose key stuff.
         case KABREVE:     SEND_COMPOSE("ba"); return false;
         case KABREVEU:    SEND_COMPOSE("bA"); return false;
@@ -335,6 +365,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     } else {
         /* On key down */
         switch (keycode) {
+        case KESCVIM:
+           layer_off(LVIM);
+           return false;
         default: break;
         }
     }
@@ -364,5 +397,4 @@ void matrix_scan_user(void) {
         default:
             break;
     }
-
 };
