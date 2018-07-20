@@ -168,10 +168,10 @@ enum my_unicode {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [LAY1] = LAYOUT_ergodox_80(
     // left hand
-    0, KPLUS, KSTAR, KMINUS, KHASH, KBSLS, KC_MUTE,
+    0, KPLUS, KSTAR, KSCOLO, KHASH, KBSLS, KC_MUTE,
     KLPAR, KX, KF, KR, KP, KV, KC_VOLU,
     LT(LNUM, KCOMMA), KA, KS, KH, KT, KG,
-    MT(MOD_LCTL, KDOT), KQ, KZ, KSCOLO, KM, KK, KC_VOLD,
+    MT(MOD_LCTL, KDOT), KQ, KZ, KMINUS, KM, KK, KC_VOLD,
     KC_LALT, 0, 0, 0, KESCVIM,
     // left thumb
     KC_MPLY, KBRUP,
