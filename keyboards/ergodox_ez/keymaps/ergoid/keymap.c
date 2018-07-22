@@ -168,7 +168,7 @@ enum my_unicode {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [LAY1] = LAYOUT_ergodox_80(
     // left hand
-    0, KPLUS, KSTAR, KSCOLO, KHASH, KBSLS, KC_MUTE,
+    0, KPLUS, KSTAR, KDQUO, KHASH, KBSLS, KC_MUTE,
     KLPAR, KX, KF, KR, KP, KV, KC_VOLU,
     LT(LNUM, KCOMMA), KA, KS, KH, KT, KG,
     MT(MOD_LCTL, KDOT), KQ, KZ, KMINUS, KM, KK, KC_VOLD,
@@ -178,7 +178,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_MPRV, KC_MNXT, KBRDN,
     KC_SPC, MO(LAY2), KC_ENTER,
     // right hand
-    KLBRK, KRBRK, KDQUO, KQUOT, KLANG, KRANG, KEQL,
+    KLBRK, KRBRK, KSCOLO, KQUOT, KLANG, KRANG, KEQL,
     TO(LMED), KB, KL, KO, KW, KUSCOR, KRPAR,
     KC, KN, KE, KU, KI, KY,
     TO(LNUM), KRQUES, KD, KC_UP, KCOLO, KJ, MT(MOD_RGUI, KSLSH),
@@ -194,7 +194,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     0, K1, K2, K3, K4, K5, 0,
     KLCRB, KXU, KFU, KRU, KPU, KVU, 0,
     KAMP, KAU, KSU, KHU, KTU, KGU,
-    KTILDE, KQU, KZU, 0, KMU, KKU, 0,
+    KTILDE, KQU, KZU, KVERTB, KMU, KKU, 0,
     S(KC_LALT), 0, 0, 0, S(KC_ESC),
     // left thumb
     0, 0,
