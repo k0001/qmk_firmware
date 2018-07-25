@@ -186,7 +186,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // right thumb
     0, KC_RCTL,
     KC_PSCR, KC_INSERT, KC_DELETE,
-    KC_TAB, MO(LAY3), KC_BSPC
+    KC_TAB, LT(LAY3, KC_ESC), KC_BSPC
     ),
 
 [LAY2] = LAYOUT_ergodox_80(
