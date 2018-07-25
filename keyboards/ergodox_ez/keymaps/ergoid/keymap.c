@@ -180,8 +180,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // right hand
     KLBRK, KRBRK, KSCOLO, KQUOT, KLANG, KRANG, KEQL,
     TO(LMED), KB, KL, KO, KW, KUSCOR, KRPAR,
-    KC, KN, KE, KU, KI, KY,
-    TO(LNUM), KRQUES, KD, KC_UP, KCOLO, KJ, MT(MOD_RGUI, KSLSH),
+    KC, KN, KE, KU, KI, MT(MOD_RGUI, KY),
+    TO(LNUM), KRQUES, KD, KC_UP, KCOLO, KJ, KSLSH,
     KC_LEFT, KC_DOWN, KC_RIGHT, KC_ESC, 0,
     // right thumb
     0, KC_RCTL,
