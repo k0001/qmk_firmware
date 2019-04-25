@@ -272,22 +272,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     0, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,
     KC_WBAK, 0, KC_BTN3, KC_MS_U, KC_BTN2, KC_PGUP, 0,
     KC_LCTL, KC_BTN1, KC_MS_L, KC_MS_D, KC_MS_R, KC_PGDN,
-    KC_LSHIFT, 0, 0, KC_UP, 0, 0, 0,
+    0, 0, 0, KC_UP, 0, 0, 0,
     KC_LALT, 0, KC_LEFT, KC_DOWN, KC_RIGHT,
     // left thumb
     KC_MPLY, KBRUP,
     KC_MPRV, KC_MNXT, KBRDN,
-    KC_SPC, KC_BTN1, KC_ENTER,
+    KC_SPC, KC_LSHIFT, KC_ENTER,
     // right hand
     KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, 0,
     TO(LAY1), KC_PGUP, KC_BTN3, KC_MS_U, KC_BTN2, 0, KC_WBAK,
-    KC_PGDN, KC_MS_L, KC_MS_D, KC_MS_R, 0, KC_RGUI,
+    KC_PGDN, KC_MS_L, KC_MS_D, KC_MS_R, KC_BTN1, KC_RGUI,
     TO(LNUM), 0, 0, KC_UP, 0, 0, KC_RALT,
     KC_LEFT, KC_DOWN, KC_RIGHT, KC_ESC, 0,
     // right thumb
     KXLOCK, KC_RCTL,
     KC_PSCR, KC_INSERT, KC_DELETE,
-    KC_TAB, KC_LSHIFT, KC_BSPC
+    KC_TAB, KC_RALT, KC_BSPC
     ),
 
 [LNUM] = LAYOUT_ergodox_80(
