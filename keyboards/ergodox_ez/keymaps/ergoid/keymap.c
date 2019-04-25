@@ -150,8 +150,10 @@ enum my_macros {
 
 enum my_misc {
     /* These emit some weird key combination expected to be handled in the OS */
-    KBRDN = RGUI(LSFT(KC_F11)),  // Screen brightness down
-    KBRUP = RGUI(LSFT(KC_F12))  // Screen brightness UP
+    KBRDN = RGUI(LSFT(KC_F11)), // Screen brightness down
+    KBRUP = RGUI(LSFT(KC_F12)), // Screen brightness UP
+    KSUSP = RGUI(LSFT(KC_F10)), // Suspend
+    KXLOCK = RGUI(LSFT(KC_F9))  // Lock screen
 };
 
 enum my_unicode {
@@ -164,27 +166,34 @@ enum my_unicode {
     KARROWUP = UC(0x2191),  // ↑
     KARROWDOWN = UC(0x2193) // ↓
 };
+/*
+\+*"`# []'.<>=
+(-frpv  blow_)
+,ashtg cneuiy
+xqz mk ?d :j/
+ ;
+*/
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [LAY1] = LAYOUT_ergodox_80(
     // left hand
-    0, KPLUS, KSTAR, KDQUO, KHASH, KBSLS, KC_MUTE,
-    KLPAR, KX, KF, KR, KP, KV, KC_VOLU,
+    KBSLS, KPLUS, KSTAR, KDQUO, KGRAVE, KHASH, KC_MUTE,
+    KLPAR, KMINUS, KF, KR, KP, KV, KC_VOLU,
     MT(MOD_LCTL, KCOMMA), KA, KS, KH, KT, KG,
-    LT(LNUM, KDOT), KQ, KZ, KSCOLO, KM, KK, KC_VOLD,
-    KC_LALT, 0, 0, 0, KESCVIM,
-    // left thumb
+    LT(LNUM, KX), KQ, KZ, KC_UP, KM, KK, KC_VOLD,
+    KC_LALT, KSCOLO, KC_LEFT, KC_DOWN, KC_RIGHT,
+    // left thumb thnseaui
     KC_MPLY, KBRUP,
     KC_MPRV, KC_MNXT, KBRDN,
     KC_SPC, MO(LAY2), KC_ENTER,
     // right hand
-    KLBRK, KRBRK, KQUOT, KMINUS, KLANG, KRANG, KEQL,
+    KLBRK, KRBRK, KQUOT, KDOT, KLANG, KRANG, KEQL,
     TO(LMED), KB, KL, KO, KW, KUSCOR, KRPAR,
     KC, KN, KE, KU, KI, MT(MOD_RGUI, KY),
-    TO(LNUM), KRQUES, KD, KC_UP, KCOLO, KJ, KSLSH,
-    KC_LEFT, KC_DOWN, KC_RIGHT, KC_ESC, 0,
+    TO(LNUM), KRQUES, KD, KC_PGUP, KCOLO, KJ, KSLSH,
+    KC_HOME, KC_PGDN, KC_END, KESCVIM, 0,
     // right thumb
-    0, KC_RCTL,
+    KXLOCK, KC_RCTL,
     KC_PSCR, KC_INSERT, KC_DELETE,
     KC_TAB, LT(LAY3, KC_ESC), KC_BSPC
     ),
@@ -192,10 +201,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [LAY2] = LAYOUT_ergodox_80(
     // left hand
     0, K1, K2, K3, K4, K5, 0,
-    KLCRB, KXU, KFU, KRU, KPU, KVU, 0,
+    KLCRB, KTILDE, KFU, KRU, KPU, KVU, KC_PGUP,
     KAMP, KAU, KSU, KHU, KTU, KGU,
-    KTILDE, KQU, KZU, KVERTB, KMU, KKU, 0,
-    S(KC_LALT), 0, 0, 0, S(KC_ESC),
+    KXU, KQU, KZU, S(KC_UP), KMU, KKU, KC_PGDN,
+    S(KC_LALT), KVERTB, S(KC_LEFT), S(KC_DOWN), S(KC_RIGHT),
     // left thumb
     0, 0,
     0, 0, 0,
@@ -204,10 +213,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     0, K6, K7, K8, K9, K0, 0,
     0, KBU, KLU, KOU, KWU, KCAROT, KRCRB,
     KCU, KNU, KEU, KUU, KIU, KYU,
-    0, KLQUES, KDU, KC_PGUP, 0, KJU, KPERC,
-    KC_HOME, KC_PGDN, KC_END, 0, 0,
+    0, KLQUES, KDU, S(KC_PGUP), 0, KJU, KPERC,
+    S(KC_HOME), S(KC_PGDN), S(KC_END), S(KC_ESC), 0,
     // right thumb
-    0, 0,
+    KSUSP, 0,
     0, S(KC_INSERT), S(KC_DELETE),
     S(KC_TAB), MO(LAY4), S(KC_BSPC)
     ),
@@ -217,20 +226,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     0, KDEGREE, KLDQUO, KRDQUO, KAT, KENDASH, 0,
     KDOLLAR, KAE, KSCOMMA, KDEADGRAVE, KTCOMMA, 0, 0,
     KABREVE, KAACUTE, KESZET, KDEADMACRON, KDEADUMLAUT, KDEADACUTE,
-    KAORING, KATILDE, 0, KDEADDACUTE, KDEADCAROT, 0, 0,
-    RALT(KC_LALT), 0, 0, 0, RALT(KC_ESC),
+    KAORING, KATILDE, KDEADDACUTE, KARROWUP, KDEADCAROT, 0, 0,
+    RALT(KC_LALT), 0, KARROWLEFT, KARROWDOWN, KARROWRIGHT,
     // left thumb
     0, 0,
     0, 0, 0,
     RALT(KC_SPACE), MO(LAY4), RALT(KC_ENTER),
-    // right hand
-    0, 0, KFORALL, KGRAVE, KLGUIL, KRGUIL, 0,
+    // right had
+    0, 0, KFORALL, KBSLS, KLGUIL, KRGUIL, 0,
     0, KLAMBDA, KLSLASH, KOACUTE, KDEADCARON, KOSLASH, KPOUND,
     KCCEDILLA, KNTILDE, KEACUTE, KUACUTE, KIACUTE, KYACUTE,
-    0, KREXCL, KDEADOGONEK, KARROWUP, KUORING, KOE, KDEADOVERDOT,
-    KARROWLEFT, KARROWDOWN, KARROWRIGHT, 0, 0,
+    0, KREXCL, KDEADOGONEK, 0, KUORING, KOE, KDEADOVERDOT,
+    0, 0, 0, RALT(KC_ESC), 0,
     // right thumb
-    0, 0,
+    KSUSP, 0,
     0, RALT(KC_INSERT), RALT(KC_DELETE),
     RALT(KC_TAB), 0, RALT(KC_BSPC)
     ),
@@ -241,7 +250,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KEURO, KAEU, KSCOMMAU, KELLIPSIS, KTCOMMAU, 0, 0,
     KABREVEU, KAACUTEU, KESZETU, 0, 0, 0,
     KAORINGU, KATILDEU, 0, 0, KMU, 0, 0,
-    RALT(S(KC_LALT)), 0, 0, 0, RALT(S(KC_ESC)),
+    RALT(S(KC_LALT)), 0, 0, RALT(S(KC_ESC)), 0,
     // left thumb
     0, 0,
     0, 0, 0,
@@ -261,24 +270,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [LMED] = LAYOUT_ergodox_80(
     // left hand
     0, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,
-    0, 0, 0, 0, 0, 0, 0,
-    KC_LCTL, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0,
-    KC_LALT, 0, 0, 0, KC_ESC,
+    KC_WBAK, 0, KC_BTN3, KC_MS_U, KC_BTN2, KC_PGUP, 0,
+    KC_LCTL, KC_BTN1, KC_MS_L, KC_MS_D, KC_MS_R, KC_PGDN,
+    KC_LSHIFT, 0, 0, KC_UP, 0, 0, 0,
+    KC_LALT, 0, KC_LEFT, KC_DOWN, KC_RIGHT,
     // left thumb
     KC_MPLY, KBRUP,
     KC_MPRV, KC_MNXT, KBRDN,
-    KC_SPC, KC_LSHIFT, KC_ENTER,
+    KC_SPC, KC_BTN1, KC_ENTER,
     // right hand
     KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, 0,
-    TO(LAY1), KC_PGUP, KC_BTN3, KC_MS_U, KC_BTN2, 0, KC_RGUI,
-    KC_PGDN, KC_MS_L, KC_MS_D, KC_MS_R, KC_WBAK, 0,
-    0, 0, 0, KC_UP, 0, 0, 0,
-    KC_LEFT, KC_DOWN, KC_RIGHT, 0, 0,
+    TO(LAY1), KC_PGUP, KC_BTN3, KC_MS_U, KC_BTN2, 0, KC_WBAK,
+    KC_PGDN, KC_MS_L, KC_MS_D, KC_MS_R, 0, KC_RGUI,
+    TO(LNUM), 0, 0, KC_UP, 0, 0, KC_RALT,
+    KC_LEFT, KC_DOWN, KC_RIGHT, KC_ESC, 0,
     // right thumb
-    0, KC_RCTL,
+    KXLOCK, KC_RCTL,
     KC_PSCR, KC_INSERT, KC_DELETE,
-    KC_TAB, KC_BTN1, KC_BSPC
+    KC_TAB, KC_LSHIFT, KC_BSPC
     ),
 
 [LNUM] = LAYOUT_ergodox_80(
@@ -289,19 +298,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0,
     // left thumb
-    0, 0,
-    0, 0, 0,
-    0, 0, 0,
+    KC_MPLY, KBRUP,
+    KC_MPRV, KC_MNXT, KBRDN,
+    KC_SPC, KC_LSHIFT, KC_ENTER,
     // right hand
     0, 0, KA, KB, KC, KPERC, 0,
-    0, KF, K7, K8, K9, KSTAR, KSLSH,
+    TO(LMED), KF, K7, K8, K9, KSTAR, KSLSH,
     KE, K4, K5, K6, KPLUS, KMINUS,
     TO(LAY1), KD, K1, K2, K3, KLPAR, KRPAR,
-    KC_0, KC_DOT, KC_COMMA, 0, 0,
+    KC_0, KC_DOT, KC_COMMA, KC_ESC, 0,
     // right thumb
-    0, 0,
-    0, 0, 0,
-    0, 0, 0
+    KXLOCK, KC_RCTL,
+    KC_PSCR, KC_INSERT, KC_DELETE,
+    KC_TAB, KC_ENTER, KC_BSPC
     ),
 [LVIM] = LAYOUT_ergodox_80(
     // left hand
