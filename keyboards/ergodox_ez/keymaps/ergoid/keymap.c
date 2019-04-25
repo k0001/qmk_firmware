@@ -178,16 +178,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [LAY1] = LAYOUT_ergodox_80(
     // left hand
     KBSLS, KPLUS, KSTAR, KDQUO, KGRAVE, KHASH, KC_MUTE,
-    KLPAR, KMINUS, KF, KR, KP, KV, KC_VOLU,
+    KLPAR, KX, KF, KR, KP, KV, KC_VOLU,
     MT(MOD_LCTL, KCOMMA), KA, KS, KH, KT, KG,
-    LT(LNUM, KX), KQ, KZ, KC_UP, KM, KK, KC_VOLD,
+    LT(LNUM, KDOT), KQ, KZ, KC_UP, KM, KK, KC_VOLD,
     KC_LALT, KSCOLO, KC_LEFT, KC_DOWN, KC_RIGHT,
     // left thumb thnseaui
     KC_MPLY, KBRUP,
     KC_MPRV, KC_MNXT, KBRDN,
     KC_SPC, MO(LAY2), KC_ENTER,
     // right hand
-    KLBRK, KRBRK, KQUOT, KDOT, KLANG, KRANG, KEQL,
+    KLBRK, KRBRK, KQUOT, KMINUS, KLANG, KRANG, KEQL,
     TO(LMED), KB, KL, KO, KW, KUSCOR, KRPAR,
     KC, KN, KE, KU, KI, MT(MOD_RGUI, KY),
     TO(LNUM), KRQUES, KD, KC_PGUP, KCOLO, KJ, KSLSH,
@@ -201,9 +201,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [LAY2] = LAYOUT_ergodox_80(
     // left hand
     0, K1, K2, K3, K4, K5, 0,
-    KLCRB, KTILDE, KFU, KRU, KPU, KVU, KC_PGUP,
+    KLCRB, KXU, KFU, KRU, KPU, KVU, KC_PGUP,
     KAMP, KAU, KSU, KHU, KTU, KGU,
-    KXU, KQU, KZU, S(KC_UP), KMU, KKU, KC_PGDN,
+    KTILDE, KQU, KZU, S(KC_UP), KMU, KKU, KC_PGDN,
     S(KC_LALT), 0, S(KC_LEFT), S(KC_DOWN), S(KC_RIGHT),
     // left thumb
     0, 0,
